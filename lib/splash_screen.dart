@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
-import 'features/auth/screens/login/login_page.dart';
-import 'features/homescreen/screens/doctor_page.dart';
-import 'features/homescreen/screens/patient_page.dart';
+import 'features/presentation/screens/homescreen/doctor_page.dart';
+import 'features/presentation/screens/homescreen/patient_page.dart';
+import 'features/presentation/screens/login_screen/login_page.dart';
 
 class splashScreen extends StatefulWidget {
   const splashScreen({super.key});
@@ -64,11 +64,11 @@ class _splashScreenState extends State<splashScreen> {
   }
 
   void _navigateToDoctor() {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> doctorPage()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> DoctorPage()));
   }
 
   void _navigateToPatient() {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> patientPage()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> PatientPage()));
   }
 
 }

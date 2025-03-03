@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:raion_intern_15/features/auth/widgets/formField.dart';
+import 'package:raion_intern_15/features/widgets/formField.dart';
 
-import '../../widgets/button.dart';
+import '../../../widgets/button.dart';
+
 
 class loginPage extends StatefulWidget {
   const loginPage({super.key});
@@ -23,14 +24,14 @@ class _loginPageState extends State<loginPage> {
             padding: EdgeInsets.all(20),
             child: Column(
               children: [
-                formField(
+                FormFieldWidget(
                     inputType: TextInputType.emailAddress,
                     obscureText: false,
                     labelText: "Email",
                     icon: Icon(Icons.mail),
                     validator: (val) => val!.isEmpty ? 'Enter an email address' : null,
                 ),
-                formField(
+                FormFieldWidget(
                     obscureText: true,
                     labelText: "Password",
                     icon: Icon(Icons.lock),

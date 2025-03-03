@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class doctorPage extends StatelessWidget {
-  const doctorPage({super.key});
+class PatientPage extends StatelessWidget {
+  const PatientPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         child: Center(
-          child: Text("Doctor Page"),
+          child: Text("Patient Page"),
         ),
       ),
     );
