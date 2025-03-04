@@ -60,7 +60,7 @@ class _splashScreenState extends State<splashScreen> {
   }
 
   void _navigateToLogin() {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> loginPage()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> LoginPage()));
   }
 
   void _navigateToDoctor() {

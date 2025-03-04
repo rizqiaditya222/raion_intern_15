@@ -1,6 +1,9 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_it/get_it.dart';
+import 'package:raion_intern_15/features/data/repositories/user_repository_impl.dart';
+import 'package:raion_intern_15/features/domain/repositorires/user_repository.dart';
+import 'package:raion_intern_15/features/domain/usecases/get_user_profile.dart';
 import 'package:raion_intern_15/features/domain/usecases/register_doctor.dart';
 import 'package:raion_intern_15/features/domain/usecases/register_user.dart';
 
@@ -18,18 +21,22 @@ void setupDependencyInjection() {
   // Data Layer
   sl.registerLazySingleton<FirebaseAuthService>(() => FirebaseAuthService());
 
-  // Repository Layer
-  sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(sl()));
+  // Repository Layer (Pastikan AuthService sudah terdaftar sebelum ini)
+  sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(sl<FirebaseAuthService>()));
+
+sl.registerLazySingleton<UserRepository>(() => UserRepositoryImpl(firestore: sl<FirebaseFirestore>()));
 
   // Use Cases
-  sl.registerLazySingleton<LoginUser>(() => LoginUser(sl()));
-  sl.registerLazySingleton<RegisterCustomer>(() => RegisterCustomer(sl()));
-  sl.registerLazySingleton<RegisterDoctor>(() => RegisterDoctor(sl()));
+  sl.registerLazySingleton<LoginUser>(() => LoginUser(sl<AuthRepository>()));
+  sl.registerLazySingleton<RegisterCustomer>(() => RegisterCustomer(sl<AuthRepository>()));
+  sl.registerLazySingleton<RegisterDoctor>(() => RegisterDoctor(sl<AuthRepository>()));
+  sl.registerLazySingleton<GetUserProfile>(() => GetUserProfile(sl<UserRepository>()));
 
   // Providers
   sl.registerLazySingleton<AuthProvider>(() => AuthProvider(
-    loginUser: sl(),
-    registerCustomer: sl(),
-    registerDoctor: sl()
+    getUserProfile: sl<GetUserProfile>(),
+    loginUser: sl<LoginUser>(),
+    registerCustomer: sl<RegisterCustomer>(),
+    registerDoctor: sl<RegisterDoctor>(),
   ));
 }

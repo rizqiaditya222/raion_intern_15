@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:raion_intern_15/features/presentation/screens/profile.dart';
 import 'features/presentation/screens/login_screen/login_page.dart';
 import 'features/presentation/screens/signup_screen/sign_up_doctor.dart';
 import 'features/presentation/screens/signup_screen/sign_up_patients.dart';
@@ -30,13 +31,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => AuthProvider(
-            loginUser: di.sl(),
-            registerCustomer: di.sl(),
-            registerDoctor: di.sl(),
-          ),
-        ),
+ChangeNotifierProvider.value(
+  value: di.sl<AuthProvider>(),
+),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -60,7 +57,7 @@ class MyApp extends StatelessWidget {
                 final user = snapshot.data;
                 if (user != null) {
                   return FutureBuilder(
-                    future: authProvider.getUserRole(user.email!),
+                    future: authProvider.getUserRole(user.uid!),
                     builder: (context, AsyncSnapshot<String> roleSnapshot) {
                       if (roleSnapshot.connectionState == ConnectionState.waiting) {
                         return const Scaffold(
@@ -73,12 +70,12 @@ class MyApp extends StatelessWidget {
                         );
                       }
                       return roleSnapshot.data == 'doctor'
-                          ? const DoctorPage()
+                          ? ProfilePage()
                           : const PatientPage();
                     },
                   );
                 } else {
-                  return const RegisterCustomerScreen();
+                  return const LoginPage();
                 }
               },
             );
