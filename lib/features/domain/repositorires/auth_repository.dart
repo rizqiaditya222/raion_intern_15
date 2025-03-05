@@ -9,7 +9,7 @@ abstract class AuthRepository {
     required String email,
     required String password,
     required String fullName,
-    required String bio,
+    String bio,
   });
 
   // Registrasi untuk dokter

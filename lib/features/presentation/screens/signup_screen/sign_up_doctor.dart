@@ -2,9 +2,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../../widgets/formField.dart';
-import '../../provider/auth_provider.dart'; // Pastikan path sesuai
+import 'package:raion_intern_15/assets/constants/image_strings.dart';
+import 'package:raion_intern_15/assets/widgets/formField.dart';
+import '../../provider/auth_provider.dart'; 
 
 class RegisterDoctorScreen extends StatefulWidget {
   const RegisterDoctorScreen({Key? key}) : super(key: key);
@@ -68,7 +68,8 @@ class _RegisterDoctorScreenState extends State<RegisterDoctorScreen> {
                   inputType: TextInputType.text,
                   obscureText: false,
                   labelText: "Full Name",
-                  icon: const Icon(Icons.person),
+                hintText: "Password",
+                  icon: name,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Full Name is required";
@@ -81,7 +82,8 @@ class _RegisterDoctorScreenState extends State<RegisterDoctorScreen> {
                   inputType: TextInputType.text,
                   obscureText: false,
                   labelText: "Bio",
-                  icon: const Icon(Icons.info),
+                hintText: "Password",
+                  icon: name,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Bio is required";
@@ -94,7 +96,8 @@ class _RegisterDoctorScreenState extends State<RegisterDoctorScreen> {
                   inputType: TextInputType.emailAddress,
                   obscureText: false,
                   labelText: "Email",
-                  icon: const Icon(Icons.email),
+                hintText: "Password",
+                  icon: mail,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Email is required";
@@ -110,7 +113,8 @@ class _RegisterDoctorScreenState extends State<RegisterDoctorScreen> {
                   inputType: TextInputType.text,
                   obscureText: true,
                   labelText: "Password",
-                  icon: const Icon(Icons.lock),
+                hintText: "Password",
+                  icon: lock,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Password is required";
@@ -124,9 +128,10 @@ class _RegisterDoctorScreenState extends State<RegisterDoctorScreen> {
                 FormFieldWidget(
                   controller: _licenseController,
                   inputType: TextInputType.text,
+                hintText: "Password",
                   obscureText: false,
                   labelText: "License Number",
-                  icon: const Icon(Icons.badge),
+                  icon: lock,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "License Number is required";
@@ -137,9 +142,10 @@ class _RegisterDoctorScreenState extends State<RegisterDoctorScreen> {
                 FormFieldWidget(
                   controller: _specializationController,
                   inputType: TextInputType.text,
+                hintText: "Password",
                   obscureText: false,
                   labelText: "Specialization",
-                  icon: const Icon(Icons.medical_services),
+                  icon: lock,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Specialization is required";

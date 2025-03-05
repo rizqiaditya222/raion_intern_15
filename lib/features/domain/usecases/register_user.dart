@@ -13,7 +13,6 @@ class RegisterCustomer implements UseCase<UserEntity, RegisterCustomerParams> {
       email: params.email,
       password: params.password,
       fullName: params.fullName,
-      bio: params.bio,
     );
   }
 }
@@ -22,12 +21,10 @@ class RegisterCustomerParams {
   final String email;
   final String password;
   final String fullName;
-  final String bio;
 
   RegisterCustomerParams({
     required this.email,
     required this.password,
     required this.fullName,
-    required this.bio,
   });
 }

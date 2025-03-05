@@ -27,13 +27,12 @@ class AuthRepositoryImpl implements AuthRepository {
     required String email,
     required String password,
     required String fullName,
-    required String bio,
+    String? bio,
   }) async {
     final user = await firebaseAuthService.registerCustomer(
       email: email,
       password: password,
       fullName: fullName,
-      bio: bio,
     );
 
     return UserEntity(

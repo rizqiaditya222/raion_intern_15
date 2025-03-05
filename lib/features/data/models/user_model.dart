@@ -5,7 +5,7 @@ class UserModel extends UserEntity {
     required super.id,
     required super.email,
     required super.fullName,
-    required super.bio,
+    super.bio,
     required super.role,
     super.licenseNumber,
     super.specialization,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:raion_intern_15/assets/themeData.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile.dart';
 import 'features/presentation/screens/login_screen/login_page.dart';
 import 'features/presentation/screens/signup_screen/sign_up_doctor.dart';
@@ -38,7 +39,7 @@ ChangeNotifierProvider.value(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Mental Health App',
-        theme: ThemeData(primarySwatch: Colors.blue),
+        theme: AppTheme.lighTheme,
         home: Consumer<AuthProvider>(
           builder: (context, authProvider, _) {
             return StreamBuilder<firebase_auth.User?>(
@@ -71,7 +72,7 @@ ChangeNotifierProvider.value(
                       }
                       return roleSnapshot.data == 'doctor'
                           ? ProfilePage()
-                          : const PatientPage();
+                          : ProfilePage();
                     },
                   );
                 } else {
@@ -84,6 +85,7 @@ ChangeNotifierProvider.value(
         routes: {
           '/registerDoctor': (context) => const RegisterDoctorScreen(),
           '/registerPatient': (context) => const RegisterCustomerScreen(),
+          '/login': (context) => const LoginPage(),
         },
       ),
     );

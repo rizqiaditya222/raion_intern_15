@@ -1,6 +1,10 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../widgets/formField.dart';
+import 'package:raion_intern_15/assets/constants/image_strings.dart';
+import 'package:raion_intern_15/assets/widgets/button.dart';
+import 'package:raion_intern_15/assets/widgets/formField.dart';
+import 'package:raion_intern_15/features/presentation/screens/login_screen/welcome_section.dart';
 import '../../provider/auth_provider.dart';
 
 
@@ -31,57 +35,87 @@ class _RegisterCustomerScreenState extends State<RegisterCustomerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Register as Customer")),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              FormFieldWidget(
-                controller: _fullNameController,
-                labelText: "Full Name",
-                obscureText: false,
-                icon: Icon(Icons.person),
-                validator: (value) =>
-                value == null || value.isEmpty ? "Nama tidak boleh kosong" : null,
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Form(
+            key: _formKey,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.08),
+                  WelcomeSection(
+                    title: "Buat akun baru",
+                     subtitle: "Buat akun dengan menggunakan email dan kata sandi",
+                     hPadding: 40,),
+                  FormFieldWidget(
+                    controller: _fullNameController,
+                    labelText: "Nama",
+                    hintText: "Nama Lengkap",
+                    obscureText: false,
+                    icon: name,
+                    validator: (value) =>
+                    value == null || value.isEmpty ? "Nama tidak boleh kosong" : null,
+                  ),
+                 
+                  FormFieldWidget(
+                    controller: _emailController,
+                    labelText: "Email",
+                    hintText: "example@gmail.com",
+                    obscureText: false,
+                    icon: mail,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) return "Email tidak boleh kosong";
+                      if (!value.contains('@')) return "Masukkan email yang valid";
+                      return null;
+                    },
+                  ),
+                  FormFieldWidget(
+                    controller: _passwordController,
+                    labelText: "Password",
+                    hintText: "Password",
+                    obscureText: true,
+                    icon: lock,
+                    validator: (value) =>
+                    value == null || value.length < 6 ? "Password minimal 6 karakter" : null,
+                  ),
+                  
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: SubmitButton(
+                      myText: "Daftar", 
+                      onPressed: _register),
+                  ),
+                  GoogleButton(
+                    myText: "Masuk dengan Akun Google"),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.08),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                              text: "Sudah punya akun?",
+                              style: Theme.of(context).textTheme.bodyLarge),
+                          TextSpan(
+                            text: " Masuk",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge
+                                ?.copyWith(fontWeight: FontWeight.bold),
+                            recognizer: TapGestureRecognizer()..onTap = () {
+                              Navigator.pushReplacementNamed(context, '/login');
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              FormFieldWidget(
-                controller: _bioController,
-                labelText: "Bio",
-                obscureText: false,
-                icon: Icon(Icons.info_outline),
-                validator: (value) =>
-                value == null || value.isEmpty ? "Bio tidak boleh kosong" : null,
-              ),
-              FormFieldWidget(
-                controller: _emailController,
-                labelText: "Email",
-                obscureText: false,
-                icon: Icon(Icons.email),
-                validator: (value) {
-                  if (value == null || value.isEmpty) return "Email tidak boleh kosong";
-                  if (!value.contains('@')) return "Masukkan email yang valid";
-                  return null;
-                },
-              ),
-              FormFieldWidget(
-                controller: _passwordController,
-                labelText: "Password",
-                obscureText: true,
-                icon: Icon(Icons.lock),
-                validator: (value) =>
-                value == null || value.length < 6 ? "Password minimal 6 karakter" : null,
-              ),
-              const SizedBox(height: 20),
-              _isLoading
-                  ? const CircularProgressIndicator()
-                  : ElevatedButton(
-                onPressed: _register,
-                child: const Text("Register as Customer"),
-              ),
-            ],
+            ),
           ),
         ),
       ),
@@ -89,27 +123,56 @@ class _RegisterCustomerScreenState extends State<RegisterCustomerScreen> {
   }
 
   Future<void> _register() async {
-    if (!_formKey.currentState!.validate()) return;
+  if (!_formKey.currentState!.validate()) return;
 
-    setState(() {
-      _isLoading = true;
-    });
+  setState(() {
+    _isLoading = true;
+  });
 
-    final email = _emailController.text;
-    final password = _passwordController.text;
-    final fullName = _fullNameController.text;
-    final bio = _bioController.text;
+  final email = _emailController.text;
+  final password = _passwordController.text;
+  final fullName = _fullNameController.text;
 
-    try {
-      await Provider.of<AuthProvider>(context, listen: false)
-          .registerAsCustomer(email, password, fullName, bio, context);
-    } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(e.toString())));
-    } finally {
+  try {
+    await Provider.of<AuthProvider>(context, listen: false)
+        .registerAsCustomer(email, password, fullName, context);
+
+    if (mounted) {
       setState(() {
         _isLoading = false;
       });
+
+      _showSuccessDialog(); 
+    }
+  } catch (e) {
+    if (mounted) {
+      setState(() {
+        _isLoading = false;
+      });
+
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.toString())));
     }
   }
+}
+
+void _showSuccessDialog() {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text("Registrasi Berhasil"),
+        content: const Text("Akun Anda telah berhasil dibuat!"),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(); // Menutup dialog
+            },
+            child: const Text("OK"),
+          ),
+        ],
+      );
+    },
+  );
+}
 }

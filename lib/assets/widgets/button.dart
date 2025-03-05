@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:raion_intern_15/assets/color.dart';
+import 'package:raion_intern_15/assets/constants/image_strings.dart';
 
   class SubmitButton extends StatelessWidget {
     const SubmitButton({
@@ -14,14 +16,18 @@ import 'package:flutter/material.dart';
     Widget build(BuildContext context) {
       return SizedBox(
         width: double.infinity,
-        height: 50,
+        height: 56,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.white,
-            foregroundColor: Colors.black,
+            elevation: 0,
+            backgroundColor: primary[90],
+            foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10), // Atur sesuai kebutuhan (0 untuk tanpa rounded)
+    )
           ),
           onPressed: onPressed, // Gunakan onPressed sebagai event handler
-          child: Text(myText),
+          child: Text(myText, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
         ),
       );
     }
@@ -36,14 +42,23 @@ class GoogleButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 50,
+      height: 56,
       child: OutlinedButton.icon(
+        
+        style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10)
+          ),
+          side: BorderSide(color: primary[90] ?? primary[90]!, width: 1),
+          
+        ),
         icon: Image(
-          image: AssetImage('assets/images/google_icon.png'),
-          width: 20,
+          image: AssetImage(google,),
+          width: 35,
+          fit: BoxFit.contain,
         ),
         onPressed: () {},
-        label: Text(myText),
+        label: Text(myText, style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600)),
       ),
     );
   }

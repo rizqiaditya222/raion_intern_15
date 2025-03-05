@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:raion_intern_15/features/presentation/screens/profile.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/usecases/login_user.dart';
 import '../../domain/usecases/register_doctor.dart';
@@ -60,9 +61,8 @@ Future<void> login(String email, String password, BuildContext context) async {
         MaterialPageRoute(builder: (context) => const DoctorPage()),
       );
     } else {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const PatientPage()),
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => ProfilePage()),
       );
     }
   } catch (e) {
@@ -96,7 +96,6 @@ Future<void> login(String email, String password, BuildContext context) async {
     String email,
     String password,
     String fullName,
-    String bio,
     BuildContext context,
   ) async {
     _setLoading(true);
@@ -106,7 +105,6 @@ Future<void> login(String email, String password, BuildContext context) async {
         email: email,
         password: password,
         fullName: fullName,
-        bio: bio,
       ));
       Navigator.pop(context);
     } catch (e) {
