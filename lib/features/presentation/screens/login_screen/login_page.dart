@@ -48,22 +48,20 @@ class _LoginPageState extends State<LoginPage> {
           .showSnackBar(SnackBar(content: Text(e.toString())));
     } finally {
       setState(() {
-        _isLoading =
-            false; // Sembunyikan loading indicator setelah proses selesai
+        _isLoading = false; // Sembunyikan loading indicator setelah proses selesai
       });
     }
   }
-@override
-Widget build(BuildContext context) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 16),
-    child: Scaffold(
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       body: SingleChildScrollView(
-        child: Center( // Tambahkan Center agar Column tetap di tengah
+        child: Center(
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 600), // Batasi lebar maksimal 600
+            constraints: BoxConstraints(maxWidth: 600),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -84,7 +82,7 @@ Widget build(BuildContext context) {
                           hintText: "example@gmail.com",
                           icon: mail,
                           validator: (val) =>
-                              val!.isEmpty ? 'Enter an email address' : null,
+                          val!.isEmpty ? 'Enter an email address' : null,
                         ),
                         FormFieldWidget(
                           controller: _passwordController,
@@ -106,9 +104,9 @@ Widget build(BuildContext context) {
                         _isLoading
                             ? const CircularProgressIndicator()
                             : SubmitButton(
-                                myText: "Sign in",
-                                onPressed: _handleLogin,
-                              ),
+                          myText: "Sign in",
+                          onPressed: _handleLogin,
+                        ),
                         const SizedBox(height: 20),
                         GoogleButton(myText: "Login with Google"),
                       ],
@@ -143,8 +141,6 @@ Widget build(BuildContext context) {
           ),
         ),
       ),
-    ),
-  );
-}
-
+    );
+  }
 }
