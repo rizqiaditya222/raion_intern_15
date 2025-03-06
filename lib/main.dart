@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:raion_intern_15/assets/themeData.dart';
+import 'package:raion_intern_15/features/presentation/screens/onboardingpage.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile.dart';
 import 'features/presentation/screens/login_screen/login_page.dart';
 import 'features/presentation/screens/signup_screen/sign_up_doctor.dart';
@@ -76,7 +77,7 @@ ChangeNotifierProvider.value(
                     },
                   );
                 } else {
-                  return const LoginPage();
+                  return const Onboardingpage();
                 }
               },
             );
