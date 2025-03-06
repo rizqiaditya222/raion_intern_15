@@ -166,70 +166,74 @@ class _OnboardingpageState extends State<Onboardingpage> {
 
   /// Widget Bottom OnBoarding
   Widget _buildBottomOnBoarding() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 10.0),
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.4,
-              child: LinearProgressIndicator(
-                value: (_currentPage + 1) / _onBoardingData.length,
-                backgroundColor: Colors.grey.shade300,
-                color: secondaryYellow[50],
-                minHeight: 6,
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-          const SizedBox(height: 24),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 10.0),
-            child: Text(
-              _onBoardingData[_currentPage]["text"],
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 24,
-                fontFamily: 'Nunito',
-                fontWeight: FontWeight.bold,
-                color: primary[90],
-              ),
-            ),
-          ),
-          SizedBox(height: 20),
-          SizedBox(
-            width: double.infinity,
-            height: 48,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: primary[90],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+    return IntrinsicHeight(
+      // Menyesuaikan tinggi dengan elemen tertinggi
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min, // Agar mengikuti ukuran kontennya
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.4,
+                child: LinearProgressIndicator(
+                  value: (_currentPage + 1) / _onBoardingData.length,
+                  backgroundColor: Colors.grey.shade300,
+                  color: secondaryYellow[50],
+                  minHeight: 6,
+                  borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              onPressed: () {
-                if (_currentPage < _onBoardingData.length - 1) {
-                  _pageController.nextPage(
-                    duration: Duration(milliseconds: 300),
-                    curve: Curves.easeInOut,
-                  );
-                } else {
-                  Navigator.pushReplacementNamed(context, '/registerPatient');
-                }
-              },
+            ),
+            const SizedBox(height: 24),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
               child: Text(
-                _currentPage < _onBoardingData.length - 1
-                    ? "Selanjutnya"
-                    : "Mulai Sekarang",
+                _onBoardingData[_currentPage]["text"],
+                textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                  fontSize: 24,
+                  fontFamily: 'Nunito',
+                  fontWeight: FontWeight.bold,
+                  color: primary[90],
+                ),
               ),
             ),
-          ),
-        ],
+            SizedBox(height: 20),
+            SizedBox(
+              width: double.infinity,
+              height: 48, // Tinggi tombol sebagai batas bawah
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: primary[90],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                onPressed: () {
+                  if (_currentPage < _onBoardingData.length - 1) {
+                    _pageController.nextPage(
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                    );
+                  } else {
+                    Navigator.pushReplacementNamed(context, '/registerPatient');
+                  }
+                },
+                child: Text(
+                  _currentPage < _onBoardingData.length - 1
+                      ? "Selanjutnya"
+                      : "Mulai Sekarang",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
