@@ -33,9 +33,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-ChangeNotifierProvider.value(
-  value: di.sl<AuthProvider>(),
-),
+        ChangeNotifierProvider.value(
+          value: di.sl<AuthProvider>(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -61,7 +61,8 @@ ChangeNotifierProvider.value(
                   return FutureBuilder(
                     future: authProvider.getUserRole(user.uid!),
                     builder: (context, AsyncSnapshot<String> roleSnapshot) {
-                      if (roleSnapshot.connectionState == ConnectionState.waiting) {
+                      if (roleSnapshot.connectionState ==
+                          ConnectionState.waiting) {
                         return const Scaffold(
                           body: Center(child: CircularProgressIndicator()),
                         );

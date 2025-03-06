@@ -14,32 +14,41 @@ class OnboardingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Container(
-      height: MediaQuery.of(context).size.height * 0.8,
-      width: MediaQuery.of(context).size.width,
+      height: screenHeight,
+      width: screenWidth,
       color: backgroundColor,
       child: Stack(
-        alignment: Alignment.center,
-        children: _buildPositionedImages(),
+        children: _buildPositionedImages(screenWidth, screenHeight),
       ),
     );
   }
 
-  List<Widget> _buildPositionedImages() {
+  List<Widget> _buildPositionedImages(double screenWidth, double screenHeight) {
     List<Widget> positionedImages = [];
 
     for (int i = 0; i < images.length; i++) {
       if (i < imageConfigs.length) {
         ImagePositionConfig config = imageConfigs[i];
+
         positionedImages.add(
-          Positioned(
+          Positioned.fill(
+            left: config
+                .left, // Jika null, biarkan null agar tidak mengganggu posisi
             top: config.top,
-            bottom: config.bottom,
-            left: config.left,
             right: config.right,
-            child: Image.asset(
-              images[i],
-              fit: config.fit ?? BoxFit.cover,
+            bottom: config.bottom,
+            child: Align(
+              alignment: Alignment.center, // Posisikan ke tengah
+              child: Image.asset(
+                images[i],
+                width: screenWidth,
+                height: screenHeight,
+                fit: config.fit ?? BoxFit.fitWidth,
+              ),
             ),
           ),
         );

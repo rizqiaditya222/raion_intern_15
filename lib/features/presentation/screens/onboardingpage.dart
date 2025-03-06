@@ -15,66 +15,49 @@ class _OnboardingpageState extends State<Onboardingpage> {
   final List<Map<String, dynamic>> _onBoardingData = [
     {
       "images": [
-        "lib/assets/images/onBoard1/vector.png",
-        "lib/assets/images/onBoard1/Anxiety 1.png",
-        "lib/assets/images/onBoard1/Frame.png",
-        "lib/assets/images/onBoard1/Frame-1.png",
-        "lib/assets/images/onBoard1/Frame-2.png"
+        "lib/assets/images/onBoard1.png",
       ],
       "color": Color(0xFFF9C83A),
       "text":
           "Lacak suasana hatimu dan temukan pola emosi untuk hidup lebih seimbang",
       "imageConfigs": [
-        ImagePositionConfig(bottom: 1),
-        ImagePositionConfig(top: 145),
-        ImagePositionConfig(top: 300, right: 50),
-        ImagePositionConfig(top: 150, right: 70),
-        ImagePositionConfig(bottom: 200, left: 20),
+        ImagePositionConfig(
+          top: null,
+          bottom: null,
+          left: null,
+          right: null,
+          fit: BoxFit.fitHeight,
+        ),
       ]
     },
     {
-      "images": [
-        "lib/assets/images/onBoard2/vector.png",
-        "lib/assets/images/onBoard2/Therapy Session 1.png",
-        "lib/assets/images/onBoard2/vector-1.png",
-        "lib/assets/images/onBoard2/vector-2.png",
-      ],
-      "color": Color.fromARGB(255, 246, 103, 241),
+      "images": ["lib/assets/images/onBoard2.png"],
+      "color": Color(0xFFCA1F97),
       "text":
           "Dapatkan dukungan profesional melalui sesi konsultasi bersama spesialis",
       "imageConfigs": [
-        ImagePositionConfig(top: 100),
         ImagePositionConfig(
-          bottom: 1,
-          right: 1,
-          left: 1,
-          top: 1,
+          top: null,
+          bottom: null,
+          left: null,
+          right: null,
+          fit: BoxFit.fitHeight,
         ),
-        ImagePositionConfig(top: 80, left: 100),
-        ImagePositionConfig(top: 140, left: 180),
       ]
     },
     {
-      "images": [
-        "lib/assets/images/onBoard3/Deep Breathing 1.png",
-        "lib/assets/images/onBoard3/Vector.png",
-        "lib/assets/images/onBoard3/Vector-3.png",
-        "lib/assets/images/onBoard3/Vector-2.png",
-        "lib/assets/images/onBoard3/Vector-1.png",
-        "lib/assets/images/onBoard3/Vector-4.png",
-      ],
-      "color": Color.fromRGBO(138, 224, 255, 0.878),
+      "images": ["lib/assets/images/onBoard3.png"],
+      "color": Color(0xFF1F9CCA),
       "text":
           "Temukan ketenangan, redakan stres, dan tingkatkan fokus dengan meditasi",
       "imageConfigs": [
         ImagePositionConfig(
-          top: 100,
+          top: null,
+          bottom: 50,
+          left: 10,
+          right: null,
+          fit: BoxFit.contain, // Membuat gambar lebih kecil
         ),
-        ImagePositionConfig(bottom: 100, left: 1),
-        ImagePositionConfig(bottom: 50, right: 1),
-        ImagePositionConfig(top: 60, left: 1),
-        ImagePositionConfig(top: 180, right: 1),
-        ImagePositionConfig(top: 1),
       ]
     },
   ];
@@ -115,8 +98,23 @@ class _OnboardingpageState extends State<Onboardingpage> {
                   ),
                 ),
               ),
-              _buildBottomOnBoarding(),
             ],
+          ),
+
+          // Gambar Bottom Widget
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: SizedBox(
+              height: 600,
+              child: Image.asset(
+                "lib/assets/images/bottomWidget.png",
+                width: double.infinity,
+                height: double.infinity, // Pastikan tetap sama
+                fit: BoxFit.fill,
+              ),
+            ),
           ),
 
           // Conditional Back Button
@@ -153,6 +151,14 @@ class _OnboardingpageState extends State<Onboardingpage> {
                 ),
               ),
             ),
+
+          // Konten Bottom OnBoarding (agar berada di atas gambar)
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: _buildBottomOnBoarding(),
+          ),
         ],
       ),
     );
@@ -162,33 +168,33 @@ class _OnboardingpageState extends State<Onboardingpage> {
   Widget _buildBottomOnBoarding() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-      ),
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: LinearProgressIndicator(
-              value: (_currentPage + 1) / _onBoardingData.length, // Progress
-              backgroundColor: Colors.grey.shade300,
-              color: Colors.lightBlue,
-              minHeight: 6,
-              borderRadius: BorderRadius.circular(10),
+            padding: const EdgeInsets.only(bottom: 10.0),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.4,
+              child: LinearProgressIndicator(
+                value: (_currentPage + 1) / _onBoardingData.length,
+                backgroundColor: Colors.grey.shade300,
+                color: secondaryYellow[50],
+                minHeight: 6,
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
           ),
-          const SizedBox(height: 12),
-
-          SizedBox(height: 12),
-          Text(
-            _onBoardingData[_currentPage]["text"],
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 24,
-              fontFamily: 'Nunito',
-              fontWeight: FontWeight.bold,
-              color: primary[90],
+          const SizedBox(height: 24),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10.0),
+            child: Text(
+              _onBoardingData[_currentPage]["text"],
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 24,
+                fontFamily: 'Nunito',
+                fontWeight: FontWeight.bold,
+                color: primary[90],
+              ),
             ),
           ),
           SizedBox(height: 20),
