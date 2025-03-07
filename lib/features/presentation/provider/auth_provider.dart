@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:raion_intern_15/features/presentation/screens/homescreen/main_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/usecases/login_user.dart';
@@ -62,7 +63,7 @@ Future<void> login(String email, String password, BuildContext context) async {
       );
     } else {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => ProfilePage()),
+        MaterialPageRoute(builder: (context) => MainScreen()),
       );
     }
   } catch (e) {

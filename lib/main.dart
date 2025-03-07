@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:raion_intern_15/assets/themeData.dart';
-import 'package:raion_intern_15/features/presentation/screens/onboardingpage.dart';
-import 'package:raion_intern_15/features/presentation/screens/profile.dart';
+import 'package:raion_intern_15/features/presentation/provider/bottom_navbar.dart';
+import 'package:raion_intern_15/features/presentation/screens/homescreen/main_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/mood_screen/mood_screen.dart';
 import 'features/presentation/screens/login_screen/login_page.dart';
-import 'features/presentation/screens/signup_screen/sign_up_doctor.dart';
 import 'features/presentation/screens/signup_screen/sign_up_patients.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';
 import 'features/presentation/provider/auth_provider.dart';
-import 'features/presentation/screens/homescreen/doctor_page.dart';
-import 'features/presentation/screens/homescreen/patient_page.dart';
 import 'di/injection_container.dart' as di;
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
@@ -33,9 +31,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-ChangeNotifierProvider.value(
-  value: di.sl<AuthProvider>(),
-),
+        ChangeNotifierProvider.value(
+          value: di.sl<AuthProvider>(),
+        ),
+        ChangeNotifierProvider(create: (context) => BottomNavbarProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -46,47 +45,27 @@ ChangeNotifierProvider.value(
             return StreamBuilder<firebase_auth.User?>(
               stream: firebase_auth.FirebaseAuth.instance.authStateChanges(),
               builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Scaffold(
-                    body: Center(child: CircularProgressIndicator()),
-                  );
-                }
+                // if (snapshot.connectionState == ConnectionState.waiting) {
+                //   return const Scaffold(
+                //     body: Center(child: CircularProgressIndicator()),
+                //   );
+                // }
                 if (snapshot.hasError) {
                   return const Scaffold(
                     body: Center(child: Text('Something went wrong!')),
                   );
                 }
                 final user = snapshot.data;
-                if (user != null) {
-                  return FutureBuilder(
-                    future: authProvider.getUserRole(user.uid!),
-                    builder: (context, AsyncSnapshot<String> roleSnapshot) {
-                      if (roleSnapshot.connectionState == ConnectionState.waiting) {
-                        return const Scaffold(
-                          body: Center(child: CircularProgressIndicator()),
-                        );
-                      }
-                      if (roleSnapshot.hasError || !roleSnapshot.hasData) {
-                        return const Scaffold(
-                          body: Center(child: Text('Failed to get user role')),
-                        );
-                      }
-                      return roleSnapshot.data == 'doctor'
-                          ? ProfilePage()
-                          : ProfilePage();
-                    },
-                  );
-                } else {
-                  return const Onboardingpage();
-                }
+                return user != null ? MainScreen() : MainScreen();
               },
             );
           },
         ),
         routes: {
-          '/registerDoctor': (context) => const RegisterDoctorScreen(),
           '/registerPatient': (context) => const RegisterCustomerScreen(),
           '/login': (context) => const LoginPage(),
+          '/main': (context) =>  MainScreen(),
+          '/moodScreen': (context) =>  MoodScreen(),
         },
       ),
     );

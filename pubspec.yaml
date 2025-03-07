@@ -30,18 +30,18 @@ flutter:
     - lib/assets/images/logo.png
     - lib/assets/images/mailIcon.png
     - lib/assets/images/nameIcon.png
-    - lib/assets/images/onBoard1/Anxiety 1.png
-    - lib/assets/images/onBoard1/Frame-1.png
-    - lib/assets/images/onBoard1/Frame.png
-    - lib/assets/images/onBoard1/Frame-2.png
-    - lib/assets/images/onBoard1/vector.png
-    - lib/assets/images/onBoard2/vector.png
-    - lib/assets/images/onBoard2/Therapy Session 1.png
-    - lib/assets/images/onBoard2/vector-1.png
-    - lib/assets/images/onBoard2/vector-2.png
-    - lib/assets/images/onBoard3/Deep Breathing 1.png
-    - lib/assets/images/onBoard3/Vector.png
-    - lib/assets/images/onBoard3/Vector-1.png
-    - lib/assets/images/onBoard3/Vector-2.png
-    - lib/assets/images/onBoard3/Vector-3.png
-    - lib/assets/images/onBoard3/Vector-4.png
+    - lib/assets/images/onBoard1.png
+    - lib/assets/images/onBoard2.png
+    - lib/assets/images/onBoard3.png
+    - lib/assets/images/bottomWidget.png
+    - lib/assets/images/navbar_icon/book.png
+    - lib/assets/images/navbar_icon/health.png
+    - lib/assets/images/navbar_icon/home.png
+    - lib/assets/images/navbar_icon/profile.png
+    - lib/assets/images/navbar_icon/happy.png
+    - lib/assets/images/navbar_icon/profile_active.png
+    - lib/assets/images/mood/happy.png
+    - lib/assets/images/mood/sad.png
+    - lib/assets/images/mood/anxious.png
+    - lib/assets/images/mood/flat.png
+    - lib/assets/images/mood/excellent.png
