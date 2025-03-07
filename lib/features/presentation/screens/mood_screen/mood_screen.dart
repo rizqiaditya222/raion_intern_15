@@ -71,7 +71,7 @@ class Mood extends StatelessWidget {
             ),
             Image.asset(image, height: 140),
             Text(
-              mood,
+              mood,textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                 color: Colors.white, // Warna teks putih
               ),
