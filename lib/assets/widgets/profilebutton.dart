@@ -20,7 +20,7 @@ class YellowButton extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 60,
-      margin: const EdgeInsets.only(bottom: 27),
+      margin: const EdgeInsets.only(bottom: 22),
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
