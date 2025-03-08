@@ -30,4 +30,18 @@ flutter:
     - lib/assets/images/logo.png
     - lib/assets/images/mailIcon.png
     - lib/assets/images/nameIcon.png
-
+    - lib/assets/images/onBoard1.png
+    - lib/assets/images/onBoard2.png
+    - lib/assets/images/onBoard3.png
+    - lib/assets/images/bottomWidget.png
+    - lib/assets/images/navbar_icon/book.png
+    - lib/assets/images/navbar_icon/health.png
+    - lib/assets/images/navbar_icon/home.png
+    - lib/assets/images/navbar_icon/profile.png
+    - lib/assets/images/navbar_icon/happy.png
+    - lib/assets/images/navbar_icon/profile_active.png
+    - lib/assets/images/mood/happy.png
+    - lib/assets/images/mood/sad.png
+    - lib/assets/images/mood/anxious.png
+    - lib/assets/images/mood/flat.png
+    - lib/assets/images/mood/excellent.png

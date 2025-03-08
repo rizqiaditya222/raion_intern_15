@@ -3,35 +3,43 @@ import 'package:raion_intern_15/assets/color.dart';
 import 'package:raion_intern_15/assets/constants/image_strings.dart';
 
   class SubmitButton extends StatelessWidget {
-    const SubmitButton({
-      super.key,
-      required this.myText,
-      required this.onPressed, // Tambahkan parameter onPressed
-    });
+  SubmitButton({
+    super.key,
+    required this.myText,
+    required this.onPressed,
+    this.bgColor, 
+    this.fgColor = Colors.white, 
+  });
 
-    final String myText;
-    final VoidCallback onPressed; // Tipe data VoidCallback (alias untuk Function())
+  final String myText;
+  final VoidCallback onPressed;
+  final Color? bgColor; 
+  final Color fgColor; 
 
-    @override
-    Widget build(BuildContext context) {
-      return SizedBox(
-        width: double.infinity,
-        height: 56,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            backgroundColor: primary[90],
-            foregroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10), // Atur sesuai kebutuhan (0 untuk tanpa rounded)
-    )
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: 56,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          backgroundColor: bgColor ?? primary[90], 
+          foregroundColor: fgColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
           ),
-          onPressed: onPressed, // Gunakan onPressed sebagai event handler
-          child: Text(myText, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
         ),
-      );
-    }
+        onPressed: onPressed,
+        child: Text(
+          myText,
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        ),
+      ),
+    );
   }
+}
 
 class GoogleButton extends StatelessWidget {
   const GoogleButton({super.key, required this.myText});
