@@ -22,24 +22,26 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final bottomProvider = Provider.of<BottomNavbarProvider>(context);
     return Scaffold(
-      body: screens[bottomProvider.currentIndex], // Menampilkan layar yang sesuai
+      body:
+          screens[bottomProvider.currentIndex], // Menampilkan layar yang sesuai
       floatingActionButton: SizedBox(
-  width: 65, // Atur lebar FAB
-  height: 65, // Atur tinggi FAB
-  child: FloatingActionButton(
-    onPressed: () {
-      bottomProvider.changeIndex(2);
-    },
-    backgroundColor: Colors.white,
-    hoverColor: secondaryYellow,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(50), 
-      side: BorderSide(color: Colors.white, width: 5),
-    ),
-    child: Image.asset(happy, width: 65, height: 65), // Perbesar gambar
-  ),
-),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked, // Posisikan FAB di tengah
+        width: 65, // Atur lebar FAB
+        height: 65, // Atur tinggi FAB
+        child: FloatingActionButton(
+          onPressed: () {
+            bottomProvider.changeIndex(2);
+          },
+          backgroundColor: Colors.white,
+          hoverColor: secondaryYellow,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+            side: BorderSide(color: Colors.white, width: 5),
+          ),
+          child: Image.asset(happy, width: 65, height: 65), // Perbesar gambar
+        ),
+      ),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.centerDocked, // Posisikan FAB di tengah
       bottomNavigationBar: Container(
         height: 80,
         decoration: BoxDecoration(
@@ -55,12 +57,12 @@ class MainScreen extends StatelessWidget {
             topRight: Radius.circular(20),
           ),
           child: BottomNavigationBar(
-            currentIndex: bottomProvider.currentIndex, 
+            currentIndex: bottomProvider.currentIndex,
             onTap: (index) {
               bottomProvider.changeIndex(index);
             },
             type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.transparent, 
+            backgroundColor: Colors.transparent,
             unselectedItemColor: Colors.white,
             unselectedFontSize: 10,
             selectedItemColor: Colors.white,

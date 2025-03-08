@@ -36,13 +36,12 @@ class OnboardingCard extends StatelessWidget {
 
         positionedImages.add(
           Positioned.fill(
-            left: config
-                .left, // Jika null, biarkan null agar tidak mengganggu posisi
+            left: config.left,
             top: config.top,
             right: config.right,
             bottom: config.bottom,
             child: Align(
-              alignment: Alignment.center, // Posisikan ke tengah
+              alignment: Alignment.center,
               child: Image.asset(
                 images[i],
                 width: screenWidth,
