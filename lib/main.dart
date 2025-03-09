@@ -64,8 +64,8 @@ class MyApp extends StatelessWidget {
         routes: {
           '/registerPatient': (context) => const RegisterCustomerScreen(),
           '/login': (context) => const LoginPage(),
-          '/main': (context) =>  MainScreen(),
-          '/moodScreen': (context) =>  MoodScreen(),
+          '/main': (context) => MainScreen(),
+          '/moodScreen': (context) => MoodScreen(),
         },
       ),
     );
