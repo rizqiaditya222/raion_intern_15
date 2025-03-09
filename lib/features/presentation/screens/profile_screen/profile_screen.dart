@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:raion_intern_15/assets/color.dart';
 import 'package:raion_intern_15/assets/widgets/profilebutton.dart';
-// Import the new YellowButton class
-// Assuming it's in the same directory as button.dart:
-// import 'package:raion_intern_15/assets/widgets/yellow_button.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
