@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:raion_intern_15/assets/color.dart';
 
-class YellowButton extends StatelessWidget {
+class ProfileButton extends StatelessWidget {
   final String text;
   final IconData icon;
   final VoidCallback onPressed;
   final Color? badgeColor;
 
-  const YellowButton({
+  const ProfileButton({
     Key? key,
     required this.text,
     required this.icon,
@@ -19,35 +19,34 @@ class YellowButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 60,
+      height: 64,
       margin: const EdgeInsets.only(bottom: 22),
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFFFFD700), // Warna kuning
+          backgroundColor: Colors.white,
           foregroundColor: Colors.black,
           elevation: 2,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(1234),
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
         ),
         child: Row(
-          mainAxisAlignment:
-              MainAxisAlignment.center, // Pusatkan elemen dalam Row
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               width: 32,
               height: 32,
               decoration: const BoxDecoration(
-                color: primary,
+                color: Color(0xFFF7F4F2),
                 shape: BoxShape.circle,
               ),
               child: Center(
                 child: Icon(
                   icon,
                   size: 20,
-                  color: Colors.white,
+                  color: primary[90],
                 ),
               ),
             ),
@@ -55,11 +54,12 @@ class YellowButton extends StatelessWidget {
             Expanded(
               child: Text(
                 text,
-                textAlign: TextAlign.center, // Pusatkan teks
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Nutino",
+                  color: primary[90],
                 ),
               ),
             ),
