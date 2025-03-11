@@ -37,7 +37,7 @@ class _OnboardingpageState extends State<Onboardingpage> {
           "Dapatkan dukungan profesional melalui sesi konsultasi bersama spesialis",
       "imageConfigs": [
         ImagePositionConfig(
-          top: null,
+          top: 80,
           bottom: null,
           left: null,
           right: null,
@@ -54,7 +54,7 @@ class _OnboardingpageState extends State<Onboardingpage> {
         ImagePositionConfig(
           top: null,
           bottom: 50,
-          left: 10,
+          left: 8,
           right: null,
           fit: BoxFit.contain,
         ),
@@ -107,7 +107,7 @@ class _OnboardingpageState extends State<Onboardingpage> {
             left: 0,
             right: 0,
             child: SizedBox(
-              height: 600,
+              height: 675,
               child: Image.asset(
                 "lib/assets/images/bottomWidget.png",
                 width: double.infinity,
@@ -172,7 +172,7 @@ class _OnboardingpageState extends State<Onboardingpage> {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(bottom: 10.0),
+            padding: const EdgeInsets.only(bottom: 0.0),
             child: SizedBox(
               width: MediaQuery.of(context).size.width * 0.4,
               child: LinearProgressIndicator(
@@ -186,7 +186,7 @@ class _OnboardingpageState extends State<Onboardingpage> {
           ),
           const SizedBox(height: 24),
           Padding(
-            padding: const EdgeInsets.only(bottom: 10.0),
+            padding: const EdgeInsets.only(bottom: 6.0),
             child: Text(
               _onBoardingData[_currentPage]["text"],
               textAlign: TextAlign.center,

@@ -9,6 +9,7 @@ import 'package:raion_intern_15/features/presentation/screens/consultation_scree
 import 'package:raion_intern_15/features/presentation/screens/dummy.dart';
 import 'package:raion_intern_15/features/presentation/screens/mood_screen/mood_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile.dart';
+import 'package:raion_intern_15/features/presentation/screens/profile_screen/profile_screen.dart';
 
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});
@@ -18,7 +19,7 @@ class MainScreen extends StatelessWidget {
     Specialization(),
     MoodScreen(),
     ProfilePage(),
-    Dummy(),
+    ProfileScreen(),
   ];
 
   @override

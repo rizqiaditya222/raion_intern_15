@@ -8,6 +8,12 @@ import 'package:raion_intern_15/features/presentation/screens/consultation_scree
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/specialization.dart';
 import 'package:raion_intern_15/features/presentation/screens/homescreen/main_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/mood_screen/mood_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/profile.dart';
+import 'package:raion_intern_15/features/presentation/screens/profile_screen/akun.dart';
+import 'package:raion_intern_15/features/presentation/screens/profile_screen/faq.dart';
+import 'package:raion_intern_15/features/presentation/screens/profile_screen/privacy_policy.dart';
+import 'package:raion_intern_15/features/presentation/screens/profile_screen/profile_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/profile_screen/term_of_service.dart';
 import 'features/presentation/screens/login_screen/login_page.dart';
 import 'features/presentation/screens/signup_screen/sign_up_patients.dart';
 import 'firebase_options.dart';
@@ -43,7 +49,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Mental Health App', 
+        title: 'Mental Health App',
         theme: AppTheme.lighTheme,
         home: Consumer<AuthProvider>(
           builder: (context, authProvider, _) {
@@ -69,12 +75,16 @@ class MyApp extends StatelessWidget {
         routes: {
           '/registerPatient': (context) => const RegisterCustomerScreen(),
           '/login': (context) => const LoginPage(),
-          '/main': (context) =>  MainScreen(),
-          '/moodScreen': (context) =>  MoodScreen(),
-          '/loading': (context) =>  LoadingScreen(),
-          '/information': (context) =>  InformationForm(),
-          '/specialization': (context) =>  Specialization(),
-          
+          '/moodScreen': (context) => MoodScreen(),
+          '/loading': (context) => LoadingScreen(),
+          '/information': (context) => InformationForm(),
+          '/specialization': (context) => Specialization(),
+          '/main': (context) => MainScreen(),
+          '/moodScreen': (context) => MoodScreen(),
+          '/faq': (context) => const Faq(),
+          '/privacypolicy': (context) => const PrivacyPolicy(),
+          '/termofService': (context) => const TermOfService(),
+          '/akun': (context) => const Akun(),
         },
       ),
     );
