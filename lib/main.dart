@@ -71,8 +71,6 @@ class MyApp extends StatelessWidget {
           '/login': (context) => const LoginPage(),
           '/main': (context) =>  MainScreen(),
           '/moodScreen': (context) =>  MoodScreen(),
-
-
           '/loading': (context) =>  LoadingScreen(),
           '/information': (context) =>  InformationForm(),
           '/specialization': (context) =>  Specialization(),
