@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:raion_intern_15/assets/themeData.dart';
 import 'package:raion_intern_15/features/presentation/provider/bottom_navbar.dart';
+import 'package:raion_intern_15/features/presentation/provider/mood.provider.dart';
+import 'package:raion_intern_15/features/presentation/screens/consultation_screen/information_form.dart';
+import 'package:raion_intern_15/features/presentation/screens/consultation_screen/loading_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/consultation_screen/specialization.dart';
 import 'package:raion_intern_15/features/presentation/screens/homescreen/main_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/mood_screen/mood_screen.dart';
 import 'features/presentation/screens/login_screen/login_page.dart';
@@ -35,10 +39,11 @@ class MyApp extends StatelessWidget {
           value: di.sl<AuthProvider>(),
         ),
         ChangeNotifierProvider(create: (context) => BottomNavbarProvider()),
+        ChangeNotifierProvider(create: (context) => MoodProvider())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Mental Health App',
+        title: 'Mental Health App', 
         theme: AppTheme.lighTheme,
         home: Consumer<AuthProvider>(
           builder: (context, authProvider, _) {
@@ -66,6 +71,12 @@ class MyApp extends StatelessWidget {
           '/login': (context) => const LoginPage(),
           '/main': (context) =>  MainScreen(),
           '/moodScreen': (context) =>  MoodScreen(),
+
+
+          '/loading': (context) =>  LoadingScreen(),
+          '/information': (context) =>  InformationForm(),
+          '/specialization': (context) =>  Specialization(),
+          
         },
       ),
     );

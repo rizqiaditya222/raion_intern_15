@@ -28,6 +28,7 @@ flutter:
     - lib/assets/images/google_icon.png
     - lib/assets/images/lockIcon.png
     - lib/assets/images/logo.png
+    - lib/assets/images/logoIcon.png
     - lib/assets/images/mailIcon.png
     - lib/assets/images/nameIcon.png
     - lib/assets/images/onBoard1.png
@@ -39,9 +40,37 @@ flutter:
     - lib/assets/images/navbar_icon/home.png
     - lib/assets/images/navbar_icon/profile.png
     - lib/assets/images/navbar_icon/happy.png
+    - lib/assets/images/navbar_icon/sad.png
+    - lib/assets/images/navbar_icon/anxious.png
+    - lib/assets/images/navbar_icon/flat.png
+    - lib/assets/images/navbar_icon/excellent.png
     - lib/assets/images/navbar_icon/profile_active.png
+    - lib/assets/images/navbar_icon/book_active.png
+    - lib/assets/images/navbar_icon/home_active.png
+    - lib/assets/images/navbar_icon/health_active.png
     - lib/assets/images/mood/happy.png
     - lib/assets/images/mood/sad.png
     - lib/assets/images/mood/anxious.png
     - lib/assets/images/mood/flat.png
     - lib/assets/images/mood/excellent.png
+    - lib/assets/images/consultation/thumbnail.png
+    - lib/assets/images/radio_icon/adiksi.png
+    - lib/assets/images/radio_icon/adiksi_active.png
+    - lib/assets/images/radio_icon/anak.png
+    - lib/assets/images/radio_icon/anak_active.png
+    - lib/assets/images/radio_icon/anxiety.png
+    - lib/assets/images/radio_icon/anxiety_active.png
+    - lib/assets/images/radio_icon/bipolar.png
+    - lib/assets/images/radio_icon/bipolar_active.png
+    - lib/assets/images/radio_icon/depresi.png
+    - lib/assets/images/radio_icon/depresi_active.png
+    - lib/assets/images/radio_icon/hubungan.png
+    - lib/assets/images/radio_icon/hubungan_active.png
+    - lib/assets/images/radio_icon/lgbt.png
+    - lib/assets/images/radio_icon/lgbt_active.png
+    - lib/assets/images/radio_icon/makan.png
+    - lib/assets/images/radio_icon/makan_active.png
+    - lib/assets/images/radio_icon/skizo.png
+    - lib/assets/images/radio_icon/skizo_active.png
+    - lib/assets/images/radio_icon/tidur.png
+    - lib/assets/images/radio_icon/tidur_active.png
