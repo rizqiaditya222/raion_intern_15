@@ -32,7 +32,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
         titleSpacing: -5,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(50),
+        padding: const EdgeInsets.all(20),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
