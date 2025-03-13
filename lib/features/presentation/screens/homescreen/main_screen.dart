@@ -4,7 +4,10 @@ import 'package:raion_intern_15/assets/color.dart';
 import 'package:raion_intern_15/assets/constants/image_strings.dart';
 import 'package:raion_intern_15/features/presentation/provider/bottom_navbar.dart';
 import 'package:raion_intern_15/features/presentation/provider/mood.provider.dart';
+import 'package:raion_intern_15/features/presentation/screens/consultation_screen/appointment_date.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/empty_consultation.dart';
+import 'package:raion_intern_15/features/presentation/screens/consultation_screen/payment_success.dart';
+import 'package:raion_intern_15/features/presentation/screens/consultation_screen/search_doctor.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/specialization.dart';
 import 'package:raion_intern_15/features/presentation/screens/dummy.dart';
 import 'package:raion_intern_15/features/presentation/screens/mood_screen/mood_screen.dart';
@@ -15,10 +18,10 @@ class MainScreen extends StatelessWidget {
   MainScreen({super.key});
 
   final List<Widget> screens = [
-    Dummy(),
+    AppointmentDate(),
     Specialization(),
     MoodScreen(),
-    ProfilePage(),
+    SearchDoctor(),
     ProfileScreen(),
   ];
 

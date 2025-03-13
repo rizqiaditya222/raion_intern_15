@@ -5,6 +5,7 @@ import 'package:raion_intern_15/features/presentation/provider/bottom_navbar.dar
 import 'package:raion_intern_15/features/presentation/provider/mood.provider.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/information_form.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/loading_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/consultation_screen/search_doctor.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/specialization.dart';
 import 'package:raion_intern_15/features/presentation/screens/homescreen/main_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/mood_screen/mood_screen.dart';
@@ -79,6 +80,7 @@ class MyApp extends StatelessWidget {
           '/loading': (context) => LoadingScreen(),
           '/information': (context) => InformationForm(),
           '/specialization': (context) => Specialization(),
+          '/search': (context) => SearchDoctor(),
           '/main': (context) => MainScreen(),
           '/moodScreen': (context) => MoodScreen(),
           '/faq': (context) => const Faq(),

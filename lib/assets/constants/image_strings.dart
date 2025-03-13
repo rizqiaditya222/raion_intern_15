@@ -30,6 +30,8 @@ const String moodFlat = "lib/assets/images/mood/flat.png";
 
 // Consultation
 const String emptyConsult = "lib/assets/images/consultation/thumbnail.png";
+const String map = "lib/assets/images/consultation/map.png";
+const String hospital = "lib/assets/images/consultation/hospital.png";
 
 // Radio Icons
 const String adiksi = "lib/assets/images/radio_icon/adiksi.png";

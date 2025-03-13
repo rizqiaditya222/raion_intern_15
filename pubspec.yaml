@@ -21,6 +21,8 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^5.0.0
   google_fonts: ^6.2.1
+  table_calendar: ^3.2.0
+  intl: ^0.20.2
 
 flutter:
   uses-material-design: true
@@ -54,6 +56,10 @@ flutter:
     - lib/assets/images/mood/flat.png
     - lib/assets/images/mood/excellent.png
     - lib/assets/images/consultation/thumbnail.png
+    - lib/assets/images/consultation/map.png
+    - lib/assets/images/consultation/hospital.png
+    - lib/assets/images/consultation/rating.png
+    - lib/assets/images/consultation/success.png
     - lib/assets/images/radio_icon/adiksi.png
     - lib/assets/images/radio_icon/adiksi_active.png
     - lib/assets/images/radio_icon/anak.png
