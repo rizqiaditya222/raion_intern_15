@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:raion_intern_15/assets/color.dart';
 import 'package:raion_intern_15/assets/constants/image_strings.dart';
+import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnal_manager.dart';
+import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnalblank.dart';
 import 'package:raion_intern_15/features/presentation/provider/bottom_navbar.dart';
 import 'package:raion_intern_15/features/presentation/provider/mood.provider.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/appointment_date.dart';
@@ -21,7 +23,7 @@ class MainScreen extends StatelessWidget {
     AppointmentDate(),
     Specialization(),
     MoodScreen(),
-    SearchDoctor(),
+    JurnalManager(),
     ProfileScreen(),
   ];
 

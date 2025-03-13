@@ -16,7 +16,8 @@ class _FaqState extends State<Faq> {
         title: const Text(
           'FAQ',
           style: TextStyle(
-            color: Colors.white, // Ubah jadi hitam agar lebih terlihat
+            color: Colors.white,
+            fontFamily: "Nutino", // Ubah jadi hitam agar lebih terlihat
           ),
         ),
         leading: IconButton(

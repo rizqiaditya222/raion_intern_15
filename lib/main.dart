@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:raion_intern_15/assets/themeData.dart';
+import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnal_manager.dart';
+import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnal_screen.dart';
+import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnalselect.dart';
+import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnaltext.dart';
+import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnalvoice.dart';
 import 'package:raion_intern_15/features/presentation/provider/bottom_navbar.dart';
 import 'package:raion_intern_15/features/presentation/provider/mood.provider.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/information_form.dart';
@@ -9,6 +14,7 @@ import 'package:raion_intern_15/features/presentation/screens/consultation_scree
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/specialization.dart';
 import 'package:raion_intern_15/features/presentation/screens/homescreen/main_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/mood_screen/mood_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/onboardingpage.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/akun.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/faq.dart';
@@ -46,7 +52,10 @@ class MyApp extends StatelessWidget {
           value: di.sl<AuthProvider>(),
         ),
         ChangeNotifierProvider(create: (context) => BottomNavbarProvider()),
-        ChangeNotifierProvider(create: (context) => MoodProvider())
+        ChangeNotifierProvider(create: (context) => MoodProvider()),
+        ChangeNotifierProvider(
+            create: (context) =>
+                JournalSaveProvider()), 
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -87,6 +96,11 @@ class MyApp extends StatelessWidget {
           '/privacypolicy': (context) => const PrivacyPolicy(),
           '/termofService': (context) => const TermOfService(),
           '/akun': (context) => const Akun(),
+          '/jurnalselect': (context) => const Jurnalselect(),
+          '/jurnalvoice': (context) => const Jurnalvoice(),
+          '/jurnaltext': (context) => const Jurnaltext(),
+          '/jurnalscreen': (context) => const JurnalScreen(),
+          '/jurnalmanager': (context) => const JurnalManager(),
         },
       ),
     );
