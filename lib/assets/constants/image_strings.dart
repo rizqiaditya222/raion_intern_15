@@ -4,6 +4,11 @@ const String google = "lib/assets/images/google_icon.png";
 const String logo = "lib/assets/images/logo.png";
 const String logoIcon = "lib/assets/images/logoIcon.png";
 const String name = "lib/assets/images/nameIcon.png";
+const String line = "lib/assets/images/lines.png";
+const String card = "lib/assets/images/Mastercard.png";
+const String doctor = "lib/assets/images/doctor.png";
+const String check = "lib/assets/images/check.png";
+const String chart = "lib/assets/images/chart.png";
 
 // Nav Icon
 const String book = "lib/assets/images/navbar_icon/book.png";
@@ -54,3 +59,10 @@ const String skizo = "lib/assets/images/radio_icon/skizo.png";
 const String skizo_active = "lib/assets/images/radio_icon/skizo_active.png";
 const String tidur = "lib/assets/images/radio_icon/tidur.png";
 const String tidur_active = "lib/assets/images/radio_icon/tidur_active.png";
+
+const String address = "lib/assets/images/consultation/information/address.png";
+const String gender = "lib/assets/images/consultation/information/gender.png";
+const String height = "lib/assets/images/consultation/information/height.png";
+const String nameInfo = "lib/assets/images/consultation/information/name.png";
+const String online = "lib/assets/images/consultation/information/online.png";
+const String weight = "lib/assets/images/consultation/information/weight.png";

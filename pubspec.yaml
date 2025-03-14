@@ -38,6 +38,11 @@ flutter:
     - lib/assets/images/onBoard2.png
     - lib/assets/images/onBoard3.png
     - lib/assets/images/bottomWidget.png
+    - lib/assets/images/lines.png
+    - lib/assets/images/doctor.png
+    - lib/assets/images/check.png
+    - lib/assets/images/chart.png
+    - lib/assets/images/Mastercard.png
     - lib/assets/images/navbar_icon/book.png
     - lib/assets/images/navbar_icon/health.png
     - lib/assets/images/navbar_icon/home.png
@@ -82,3 +87,9 @@ flutter:
     - lib/assets/images/radio_icon/tidur.png
     - lib/assets/images/radio_icon/tidur_active.png
     - lib/assets/images/jurnal/therapy3.png
+    - lib/assets/images/consultation/information/address.png
+    - lib/assets/images/consultation/information/gender.png
+    - lib/assets/images/consultation/information/height.png
+    - lib/assets/images/consultation/information/name.png
+    - lib/assets/images/consultation/information/online.png
+    - lib/assets/images/consultation/information/weight.png

@@ -11,6 +11,7 @@ import 'package:raion_intern_15/features/presentation/screens/consultation_scree
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/payment_success.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/search_doctor.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/specialization.dart';
+import 'package:raion_intern_15/features/presentation/screens/consultation_screen/stepper.dart';
 import 'package:raion_intern_15/features/presentation/screens/dummy.dart';
 import 'package:raion_intern_15/features/presentation/screens/mood_screen/mood_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile.dart';
@@ -20,11 +21,11 @@ class MainScreen extends StatelessWidget {
   MainScreen({super.key});
 
   final List<Widget> screens = [
-    AppointmentDate(),
+    StepperScreen(),
     Specialization(),
     MoodScreen(),
     JurnalManager(),
-    ProfileScreen(),
+    AppointmentDate(),
   ];
 
   @override

@@ -8,10 +8,14 @@ import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnaltext.d
 import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnalvoice.dart';
 import 'package:raion_intern_15/features/presentation/provider/bottom_navbar.dart';
 import 'package:raion_intern_15/features/presentation/provider/mood.provider.dart';
+import 'package:raion_intern_15/features/presentation/provider/step_provider.dart';
+import 'package:raion_intern_15/features/presentation/screens/consultation_screen/doctor_profile.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/information_form.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/loading_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/consultation_screen/payment_success.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/search_doctor.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/specialization.dart';
+import 'package:raion_intern_15/features/presentation/screens/consultation_screen/stepper.dart';
 import 'package:raion_intern_15/features/presentation/screens/homescreen/main_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/mood_screen/mood_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/onboardingpage.dart';
@@ -53,6 +57,7 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(create: (context) => BottomNavbarProvider()),
         ChangeNotifierProvider(create: (context) => MoodProvider()),
+        ChangeNotifierProvider(create: (context) => StepProvider()),
         ChangeNotifierProvider(
             create: (context) =>
                 JournalSaveProvider()), 
@@ -77,7 +82,7 @@ class MyApp extends StatelessWidget {
                   );
                 }
                 final user = snapshot.data;
-                return user != null ? MainScreen() : MainScreen();
+                return user != null ? DoctorProfile() : DoctorProfile();
               },
             );
           },
@@ -89,6 +94,8 @@ class MyApp extends StatelessWidget {
           '/loading': (context) => LoadingScreen(),
           '/information': (context) => InformationForm(),
           '/specialization': (context) => Specialization(),
+          '/step': (context) => StepperScreen(),
+          '/success': (context) => PaymentSuccess(),
           '/search': (context) => SearchDoctor(),
           '/main': (context) => MainScreen(),
           '/moodScreen': (context) => MoodScreen(),
@@ -101,6 +108,7 @@ class MyApp extends StatelessWidget {
           '/jurnaltext': (context) => const Jurnaltext(),
           '/jurnalscreen': (context) => const JurnalScreen(),
           '/jurnalmanager': (context) => const JurnalManager(),
+
         },
       ),
     );
