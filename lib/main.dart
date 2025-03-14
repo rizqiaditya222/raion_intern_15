@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:raion_intern_15/assets/themeData.dart';
+import 'package:raion_intern_15/assets/widgets/loading_indicator.dart';
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_manager.dart';
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnalselect.dart';
@@ -16,6 +17,8 @@ import 'package:raion_intern_15/features/presentation/screens/profile_screen/faq
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/privacy_policy.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/profile_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/term_of_service.dart';
+import 'package:raion_intern_15/features/presentation/screens/test_screen/mental_health_test.dart';
+import 'package:raion_intern_15/features/presentation/screens/test_screen/test_hasil.dart';
 import 'features/presentation/screens/login_screen/login_page.dart';
 import 'features/presentation/screens/signup_screen/sign_up_patients.dart';
 import 'firebase_options.dart';
@@ -90,6 +93,9 @@ class MyApp extends StatelessWidget {
           '/jurnaltext': (context) => const Jurnaltext(),
           '/jurnalscreen': (context) => const JurnalScreen(),
           '/jurnalmanager': (context) => const JurnalManager(),
+          '/testloading': (context) => const LoadingIndicator(),
+          '/testhasil': (context) => const TestHasil(),
+          '/mentaltest': (context) => const MentalHealthTest(),
         },
       ),
     );

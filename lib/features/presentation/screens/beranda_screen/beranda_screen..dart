@@ -18,7 +18,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(120),
         child: AppBar(
-          backgroundColor: Color(0xFF193A63),
+          backgroundColor: primary[90],
           elevation: 0,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -90,6 +90,9 @@ class _BerandaScreenState extends State<BerandaScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(
+                height: 5,
+              ),
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -133,7 +136,9 @@ class _BerandaScreenState extends State<BerandaScreen> {
                           ),
                           const SizedBox(height: 8),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/mentaltest');
+                            },
                             style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.white54,
                               backgroundColor: const Color(0xFF1A4D8C),
@@ -280,6 +285,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
                 'Teman baik kurangi beban pikiran yang menumpuk terus',
                 'lib/assets/images/beranda/artikel3.png',
               ),
+              const SizedBox(height: 20),
             ],
           ),
         ),
@@ -360,7 +366,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
   Widget _buildArticleCard(String title, String imagePath) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade200),
+        color: Color(0xFFFAFAFA),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
@@ -394,44 +400,47 @@ class _BerandaScreenState extends State<BerandaScreen> {
                     overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(height: 6),
-                  Row(
-                    children: [
-                      Text(
-                        "Mozaik",
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey.shade600,
+                  Padding(
+                    padding: const EdgeInsets.only(right: 25),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Mozaik",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey.shade600,
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 8),
-                      Icon(
-                        Icons.chat_bubble_outline,
-                        size: 14,
-                        color: Colors.grey.shade500,
-                      ),
-                      SizedBox(width: 4),
-                      Text(
-                        "28",
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey.shade600,
+                        SizedBox(width: 8),
+                        Icon(
+                          Icons.chat_bubble_outline,
+                          size: 14,
+                          color: Colors.grey.shade500,
                         ),
-                      ),
-                      SizedBox(width: 8),
-                      Text(
-                        "12h",
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey.shade600,
+                        SizedBox(width: 4),
+                        Text(
+                          "28",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey.shade600,
+                          ),
                         ),
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.more_horiz,
-                        color: Colors.grey.shade500,
-                        size: 18,
-                      ),
-                    ],
+                        SizedBox(width: 8),
+                        Text(
+                          "12h",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey.shade600,
+                          ),
+                        ),
+                        Spacer(),
+                        Icon(
+                          Icons.more_horiz,
+                          color: Colors.grey.shade500,
+                          size: 18,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
