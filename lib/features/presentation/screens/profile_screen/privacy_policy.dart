@@ -17,7 +17,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
           'Privacy Policy',
           style: TextStyle(
             color: Colors.white,
-            fontFamily: "Nutino", // Ubah jadi hitam agar lebih terlihat
+            fontFamily: "Nunito", // Ubah jadi hitam agar lebih terlihat
           ),
         ),
         leading: IconButton(
@@ -44,7 +44,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                 "Terakhir diperbarui: 10 Maret 2025",
                 style: TextStyle(
                   color: primary[90],
-                  fontFamily: "Nutino",
+                  fontFamily: "Nunito",
                   fontSize: 18,
                 ),
               ),
@@ -55,7 +55,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                 "1. Informasi Pihak Ketiga",
                 style: TextStyle(
                   color: primary[90],
-                  fontFamily: "Nutino",
+                  fontFamily: "Nunito",
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -69,7 +69,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                     "Jika Anda menggunakan metode masuk pihak ketiga (Google, Facebook, dll.), kami dapat menerima informasi dasar seperti nama dan alamat email sesuai dengan kebijakan privasi mereka.",
                     style: TextStyle(
                       color: primary[90],
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                       fontSize: 18,
                     ),
                   ),
@@ -82,7 +82,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                 "2. Penyimpanan Data",
                 style: TextStyle(
                   color: primary[90],
-                  fontFamily: "Nutino",
+                  fontFamily: "Nunito",
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -96,7 +96,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                     "Kami menyimpan data pengguna hanya selama diperlukan untuk tujuan yang dijelaskan dalam kebijakan ini. Jika Anda menghapus akun, data Anda akan dihapus atau dianonimkan dalam jangka waktu tertentu sesuai kebijakan retensi kami.",
                     style: TextStyle(
                       color: primary[90],
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                       fontSize: 18,
                     ),
                   ),
@@ -110,7 +110,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                 style: TextStyle(
                   color: primary[90],
                   fontSize: 18,
-                  fontFamily: "Nutino",
+                  fontFamily: "Nunito",
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -123,7 +123,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                     "Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu. Jika ada perubahan signifikan, kami akan memberitahu pengguna melalui email atau dalam aplikasi.",
                     style: TextStyle(
                       color: primary[90],
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                       fontSize: 18,
                     ),
                   ),
@@ -136,7 +136,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                 "4. Kontak",
                 style: TextStyle(
                   color: primary[90],
-                  fontFamily: "Nutino",
+                  fontFamily: "Nunito",
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -150,7 +150,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                     "Jika ada pertanyaan atau keluhan terkait layanan Serenia, dapat menghubungi kami melalui:",
                     style: TextStyle(
                       color: primary[90],
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                       fontSize: 18,
                     ),
                   ),
@@ -163,7 +163,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                 "Email: support@serenia.com",
                 style: TextStyle(
                   color: primary[90],
-                  fontFamily: "Nutino",
+                  fontFamily: "Nunito",
                   fontSize: 18,
                 ),
               ),

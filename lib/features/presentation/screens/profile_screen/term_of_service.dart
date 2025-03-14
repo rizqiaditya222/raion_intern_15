@@ -17,7 +17,7 @@ class _TermOfServiceState extends State<TermOfService> {
           'Term of Service',
           style: TextStyle(
             color: Colors.white,
-            fontFamily: "Nutino", // Ubah jadi hitam agar lebih terlihat
+            fontFamily: "Nunito", // Ubah jadi hitam agar lebih terlihat
           ),
         ),
         leading: IconButton(
@@ -44,7 +44,7 @@ class _TermOfServiceState extends State<TermOfService> {
                 "Terakhir diperbarui: 10 Maret 2025",
                 style: TextStyle(
                   color: primary[90],
-                  fontFamily: "Nutino",
+                  fontFamily: "Nunito",
                   fontSize: 18,
                 ),
               ),
@@ -55,7 +55,7 @@ class _TermOfServiceState extends State<TermOfService> {
                 "1. Penerimaan Ketentuan",
                 style: TextStyle(
                   color: primary[90],
-                  fontFamily: "Nutino",
+                  fontFamily: "Nunito",
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -69,7 +69,7 @@ class _TermOfServiceState extends State<TermOfService> {
                     "Dengan mengunduh, mengakses, atau menggunakan aplikasi Serenia, Anda menyetujui untuk terikat dengan Syarat dan Ketentuan ini. Jika Anda tidak setuju dengan ketentuan ini, mohon untuk tidak menggunakan aplikasi.",
                     style: TextStyle(
                       color: primary[90],
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                       fontSize: 18,
                     ),
                   ),
@@ -82,7 +82,7 @@ class _TermOfServiceState extends State<TermOfService> {
                 "2. Layanan yang Disediakan",
                 style: TextStyle(
                   color: primary[90],
-                  fontFamily: "Nutino",
+                  fontFamily: "Nunito",
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -96,7 +96,7 @@ class _TermOfServiceState extends State<TermOfService> {
                     "Serenia adalah aplikasi kesehatan mental yang menyediakan fitur seperti test kesehatan mental, jurnal refleksi, pemantauan suasana hati, dan konsultasi dengan profesional kesehatan mental. Aplikasi ini bukan pengganti layanan medis dan tidak dapat digunakan untuk diagnosis atau pengobatan penyakit mental.",
                     style: TextStyle(
                       color: primary[90],
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                       fontSize: 18,
                     ),
                   ),
@@ -109,7 +109,7 @@ class _TermOfServiceState extends State<TermOfService> {
                 "3. Pendaftaran Akun Pengguna",
                 style: TextStyle(
                   color: primary[90],
-                  fontFamily: "Nutino",
+                  fontFamily: "Nunito",
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -123,7 +123,7 @@ class _TermOfServiceState extends State<TermOfService> {
                     "Harus berusia minimal 17 tahun atau memiliki izin dari orang tua/wali untuk menggunakan Serenia. Pengguna bertanggung jawab menjaga keamanan informasi akun, termasuk kata sandi. Serenia berhak menangguhkan atau menutup akun jika ditemukan pelanggaran terhadap ketentuan ini.",
                     style: TextStyle(
                       color: primary[90],
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                       fontSize: 18,
                     ),
                   ),
@@ -136,7 +136,7 @@ class _TermOfServiceState extends State<TermOfService> {
                 "4. Kontak",
                 style: TextStyle(
                   color: primary[90],
-                  fontFamily: "Nutino",
+                  fontFamily: "Nunito",
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -150,7 +150,7 @@ class _TermOfServiceState extends State<TermOfService> {
                     "Jika ada pertanyaan atau keluhan terkait layanan Serenia, dapat menghubungi kami melalui:",
                     style: TextStyle(
                       color: primary[90],
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                       fontSize: 18,
                     ),
                   ),
@@ -163,7 +163,7 @@ class _TermOfServiceState extends State<TermOfService> {
                 "Email: support@serenia.com",
                 style: TextStyle(
                   color: primary[90],
-                  fontFamily: "Nutino",
+                  fontFamily: "Nunito",
                   fontSize: 18,
                 ),
               ),

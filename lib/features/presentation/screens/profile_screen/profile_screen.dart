@@ -41,7 +41,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         'Anonim',
                         style: TextStyle(
                           fontSize: 18,
-                          fontFamily: "Nutino",
+                          fontFamily: "Nunito",
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -55,7 +55,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     'Informasi Pribadi',
                     style: TextStyle(
                       color: Colors.black,
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -80,7 +80,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 18,
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -126,7 +126,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       style: TextStyle(
                         color: Colors.red,
                         fontSize: 16,
-                        fontFamily: "Nutino",
+                        fontFamily: "Nunito",
                         fontWeight: FontWeight.bold,
                       ),
                     ),

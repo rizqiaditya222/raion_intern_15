@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:raion_intern_15/assets/themeData.dart';
-import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnal_manager.dart';
-import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnal_screen.dart';
-import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnalselect.dart';
-import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnaltext.dart';
-import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnalvoice.dart';
+import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_manager.dart';
+import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnalselect.dart';
+import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnaltext.dart';
+import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnalvoice.dart';
 import 'package:raion_intern_15/features/presentation/provider/bottom_navbar.dart';
 import 'package:raion_intern_15/features/presentation/screens/homescreen/main_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/mood_screen/mood_screen.dart';

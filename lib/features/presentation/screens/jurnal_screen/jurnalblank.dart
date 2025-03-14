@@ -24,7 +24,7 @@ class _JurnalblankState extends State<Jurnalblank> {
                 "Mulai Jurnal Pertamamu!",
                 style: TextStyle(
                   fontSize: 20,
-                  fontFamily: "Nutino",
+                  fontFamily: "Nunito",
                   color: primary[90],
                   fontWeight: FontWeight.bold,
                 ),
@@ -36,7 +36,7 @@ class _JurnalblankState extends State<Jurnalblank> {
                     "Kamu belum pernah menulis jurnal di sini. Yuk, mulai sekarang! Menulis jurnal bisa membantumu merefleksikan hari, mengelola emosi, dan tetap produktif",
                     style: TextStyle(
                       fontSize: 20,
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                       color: primary[90],
                     ),
                     textAlign: TextAlign.center,
@@ -64,7 +64,7 @@ class _JurnalblankState extends State<Jurnalblank> {
                       "Buat Jurnal Baru",
                       style: TextStyle(
                         fontSize: 16,
-                        fontFamily: "Nutino",
+                        fontFamily: "Nunito",
                         color: Colors.white,
                       ),
                     ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnal_manager.dart';
+import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_manager.dart';
 
 class Jurnaltext extends StatefulWidget {
   const Jurnaltext({super.key});

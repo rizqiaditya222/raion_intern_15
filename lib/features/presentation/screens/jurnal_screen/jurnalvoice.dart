@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnal_manager.dart';
+import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_manager.dart';
 
 class Jurnalvoice extends StatefulWidget {
   const Jurnalvoice({super.key});
@@ -77,7 +77,7 @@ class _JurnalvoiceState extends State<Jurnalvoice> {
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                       color: Color(0xFF193A63),
                     ),
                     textAlign: TextAlign.center,
@@ -88,7 +88,7 @@ class _JurnalvoiceState extends State<Jurnalvoice> {
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                       color: Color(0xFF193A63),
                     ),
                     textAlign: TextAlign.center,
@@ -100,7 +100,7 @@ class _JurnalvoiceState extends State<Jurnalvoice> {
                       '00:00',
                       style: TextStyle(
                         fontSize: 18,
-                        fontFamily: "Nutino",
+                        fontFamily: "Nunito",
                         color: Colors.grey,
                       ),
                     ),

@@ -47,3 +47,10 @@ flutter:
     - lib/assets/images/mood/flat.png
     - lib/assets/images/mood/excellent.png
     - lib/assets/images/jurnal/therapy3.png
+    - lib/assets/images/jurnal/jurnaldetail.png
+    - lib/assets/images/jurnal/jurnalcek.png
+    - lib/assets/images/beranda/api.png
+    - lib/assets/images/beranda/artikel1.png
+    - lib/assets/images/beranda/artikel2.png
+    - lib/assets/images/beranda/artikel3.png
+    - lib/assets/images/beranda/positiveAffirmation.png

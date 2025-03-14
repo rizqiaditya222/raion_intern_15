@@ -67,7 +67,7 @@ class _AkunState extends State<Akun> {
             hintText: 'Masukkan $label',
             hintStyle: TextStyle(
               color: Colors.black54,
-              fontFamily: "Nutino",
+              fontFamily: "Nunito",
             ),
             suffixIcon: isPassword
                 ? IconButton(
@@ -109,7 +109,7 @@ class _AkunState extends State<Akun> {
           'Akun',
           style: TextStyle(
             color: Colors.white,
-            fontFamily: "Nutino",
+            fontFamily: "Nunito",
           ),
         ),
         leading: IconButton(
@@ -149,7 +149,7 @@ class _AkunState extends State<Akun> {
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          fontFamily: "Nutino",
+                          fontFamily: "Nunito",
                           color: primary[90]),
                     ),
                     SizedBox(height: 20),
@@ -194,7 +194,7 @@ class _AkunState extends State<Akun> {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                     ),
                   ),
                 ),

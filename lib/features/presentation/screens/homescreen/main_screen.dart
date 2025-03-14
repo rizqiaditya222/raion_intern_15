@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:raion_intern_15/assets/color.dart';
 import 'package:raion_intern_15/assets/constants/image_strings.dart';
-import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnal_manager.dart';
-import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnalblank.dart';
+import 'package:raion_intern_15/features/presentation/screens/beranda_screen/beranda_screen..dart';
+import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_manager.dart';
+import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnalblank.dart';
 import 'package:raion_intern_15/features/presentation/provider/bottom_navbar.dart';
 import 'package:raion_intern_15/features/presentation/screens/dummy.dart';
 import 'package:raion_intern_15/features/presentation/screens/mood_screen/mood_screen.dart';
@@ -14,7 +15,7 @@ class MainScreen extends StatelessWidget {
   MainScreen({super.key});
 
   final List<Widget> screens = [
-    Dummy(),
+    BerandaScreen(),
     Dummy(),
     MoodScreen(),
     JurnalManager(),
