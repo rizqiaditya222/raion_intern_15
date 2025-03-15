@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:raion_intern_15/assets/color.dart';
+import 'package:raion_intern_15/assets/widgets/artikel_card.dart';
 
 class BerandaScreen extends StatefulWidget {
   const BerandaScreen({super.key});
@@ -9,8 +10,6 @@ class BerandaScreen extends StatefulWidget {
 }
 
 class _BerandaScreenState extends State<BerandaScreen> {
-  // int _selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -255,7 +254,9 @@ class _BerandaScreenState extends State<BerandaScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/artikel');
+                    },
                     child: const Text(
                       'Lihat semua',
                       style: TextStyle(
@@ -271,20 +272,24 @@ class _BerandaScreenState extends State<BerandaScreen> {
 
               // Article cards
               const SizedBox(height: 10),
-              _buildArticleCard(
-                'Pentingnya Dukungan Sosial dalam Menjaga Kesehatan Mental',
-                'lib/assets/images/beranda/artikel1.png',
+              const SizedBox(height: 10),
+              ArticleCard(
+                title:
+                    'Pentingnya Dukungan Sosial dalam Menjaga Kesehatan Mental',
+                imagePath: 'lib/assets/images/beranda/artikel1.png',
               ),
               const SizedBox(height: 16),
-              _buildArticleCard(
-                'Kesepian dapat memberi dampak buruk bagi mental seseorang',
-                'lib/assets/images/beranda/artikel2.png',
+              ArticleCard(
+                title:
+                    'Kesepian dapat memberi dampak buruk bagi mental seseorang',
+                imagePath: 'lib/assets/images/beranda/artikel2.png',
               ),
               const SizedBox(height: 16),
-              _buildArticleCard(
-                'Teman baik kurangi beban pikiran yang menumpuk terus',
-                'lib/assets/images/beranda/artikel3.png',
+              ArticleCard(
+                title: 'Teman baik kurangi beban pikiran yang menumpuk terus',
+                imagePath: 'lib/assets/images/beranda/artikel3.png',
               ),
+
               const SizedBox(height: 20),
             ],
           ),
@@ -357,94 +362,6 @@ class _BerandaScreenState extends State<BerandaScreen> {
                 ),
               );
             },
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildArticleCard(String title, String imagePath) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Color(0xFFFAFAFA),
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Row(
-        children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(16),
-              bottomLeft: Radius.circular(16),
-            ),
-            child: Image.asset(
-              imagePath,
-              width: 100,
-              height: 100,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Spacer antara info & judul
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  SizedBox(height: 6),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 25),
-                    child: Row(
-                      children: [
-                        Text(
-                          "Mozaik",
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey.shade600,
-                          ),
-                        ),
-                        SizedBox(width: 8),
-                        Icon(
-                          Icons.chat_bubble_outline,
-                          size: 14,
-                          color: Colors.grey.shade500,
-                        ),
-                        SizedBox(width: 4),
-                        Text(
-                          "28",
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey.shade600,
-                          ),
-                        ),
-                        SizedBox(width: 8),
-                        Text(
-                          "12h",
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey.shade600,
-                          ),
-                        ),
-                        Spacer(),
-                        Icon(
-                          Icons.more_horiz,
-                          color: Colors.grey.shade500,
-                          size: 18,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
           ),
         ],
       ),

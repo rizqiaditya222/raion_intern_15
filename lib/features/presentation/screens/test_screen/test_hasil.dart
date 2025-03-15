@@ -79,8 +79,6 @@ class _TestHasilState extends State<TestHasil> {
                   setState(() {
                     _currentPage = page;
                   });
-                  // Reset idle timer on user interaction
-                  _startIdleTimer();
                 },
                 children: [
                   // First page
