@@ -65,3 +65,7 @@ flutter:
     - lib/assets/images/artikel/bipolar4.png
     - lib/assets/images/artikel/bipolar5.png
     - lib/assets/images/artikel/bipolar6.png
+    - lib/assets/images/testmanager/testhidup.png
+    - lib/assets/images/testmanager/testnegatif.png
+    - lib/assets/images/testmanager/testpositif.png
+    - lib/assets/images/loading/check.png

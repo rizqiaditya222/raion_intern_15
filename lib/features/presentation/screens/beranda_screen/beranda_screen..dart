@@ -10,6 +10,351 @@ class BerandaScreen extends StatefulWidget {
 }
 
 class _BerandaScreenState extends State<BerandaScreen> {
+  bool _showFirstContainer = true;
+
+  @override
+  void initState() {
+    super.initState();
+    // Set up a timer to switch containers every 10 seconds
+    Future.delayed(const Duration(seconds: 10), () {
+      _toggleContainer();
+    });
+  }
+
+  void _toggleContainer() {
+    setState(() {
+      _showFirstContainer = !_showFirstContainer;
+    });
+
+    // Continue toggling every 10 seconds
+    Future.delayed(const Duration(seconds: 10), () {
+      if (mounted) {
+        _toggleContainer();
+      }
+    });
+  }
+
+  // Add this function in the _BerandaScreenState class
+  void _showTestSelectionDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Container(
+            height: 400, // Menambah tinggi agar lebih besar
+            width: 500, // Menambah lebar agar lebih luas
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              mainAxisSize: MainAxisSize.max, // Menggunakan ukuran maksimal
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment:
+                      MainAxisAlignment.center, // Memusatkan elemen
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Pilih test yang kamu butuhkan',
+                        textAlign:
+                            TextAlign.center, // Membuat teks berada di tengah
+                        style: const TextStyle(
+                          fontSize: 18, // Memperbesar ukuran teks
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Nunito',
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: 24, // Lebar lingkaran kecil
+                      height: 24, // Tinggi lingkaran kecil
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xFF193A63), // Warna biru gelap
+                      ),
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.close,
+                          color: Colors.white,
+                          size: 14, // Ukuran ikon lebih kecil
+                        ),
+                        onPressed: () => Navigator.pop(context),
+                        padding: EdgeInsets.zero, // Menghapus padding default
+                        constraints:
+                            const BoxConstraints(), // Menghilangkan batasan default
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 24),
+                Expanded(
+                  child: Column(
+                    children: [
+                      _buildTestOption(
+                        imagePath:
+                            'lib/assets/images/testmanager/testpositif.png',
+                        title: 'Test kesehatan mental positif',
+                        onTap: () {
+                          Navigator.pushNamed(context, '/testpositif');
+                        },
+                      ),
+                      const SizedBox(height: 16),
+                      _buildTestOption(
+                        imagePath:
+                            'lib/assets/images/testmanager/testnegatif.png',
+                        title: 'Test kesehatan mental negatif',
+                        onTap: () {
+                          Navigator.pushNamed(context, '/testnegatif');
+                        },
+                        backgroundColor: const Color(0xFFF4D160),
+                      ),
+                      const SizedBox(height: 16),
+                      _buildTestOption(
+                        imagePath:
+                            'lib/assets/images/testmanager/testhidup.png',
+                        title: 'Test kesehatan gaya hidup',
+                        onTap: () {
+                          Navigator.pushNamed(context, '/testhidup');
+                        },
+                        backgroundColor: Colors.grey.shade400,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  // Add this helper widget in the _BerandaScreenState class
+  Widget _buildTestOption({
+    required String imagePath,
+    required String title,
+    required VoidCallback onTap,
+    Color backgroundColor = const Color(0xFF9FDAFD),
+  }) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(40),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                color: const Color(0xFF0F2A4A),
+                borderRadius: BorderRadius.circular(40),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  imagePath,
+                  width: 24,
+                  height: 24,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                title,
+                style: const TextStyle(
+                  color: Color(0xFF0F2A4A),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  fontFamily: 'Nunito',
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildKenaliDiriContainer() {
+    return Container(
+      key: const ValueKey('kenaliDiri'),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: const Color(0xFFE8F1FF),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Wrap(
+                  children: const [
+                    Text(
+                      'Kenali Diri Kamu',
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF193A63),
+                          fontFamily: "Nunito"),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Wrap(
+                    children: const [
+                      Text(
+                        'Yuk, coba tes ini dan temukan apa yang benar-benar kamu butuhkan',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 8),
+                ElevatedButton(
+                  onPressed: () {
+                    _showTestSelectionDialog();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white54,
+                    backgroundColor: const Color(0xFF1A4D8C),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  ),
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Ikuti Tes',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 20,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Image.asset(
+            'lib/assets/images/beranda/positiveAffirmation.png',
+            width: 160,
+            height: 160,
+            fit: BoxFit.fill,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTenanginDiriContainer() {
+    return Container(
+      key: const ValueKey('tenanginDiri'),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: const Color(0xFFEBE1C2),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Wrap(
+                  children: const [
+                    Text(
+                      'Tenangin Diri Kamu',
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF193A63),
+                          fontFamily: "Nunito"),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Wrap(
+                    children: const [
+                      Text(
+                        'Ikuti panduan meditasi untuk hidup damai dan menenangkan',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 8),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/meditasi');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white54,
+                    backgroundColor: const Color(0xFF1A4D8C),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  ),
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Meditasi Sekarang',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Image.asset(
+            'lib/assets/images/test_result/deepbreath.png',
+            width: 160,
+            height: 160,
+            fit: BoxFit.fill,
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +382,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
                     color: Colors.grey.shade300,
                     border: Border.all(color: Colors.white, width: 1),
                   ),
-                  child: Icon(
+                  child: const Icon(
                     Icons.person,
                     size: 50,
                     color: Colors.grey,
@@ -60,9 +405,9 @@ class _BerandaScreenState extends State<BerandaScreen> {
                       children: [
                         Image.asset(
                           "lib/assets/images/beranda/api.png",
-                          width: 16, // Sesuaikan ukuran jika perlu
+                          width: 16,
                           height: 16,
-                          fit: BoxFit.cover, // Agar gambar tidak pecah
+                          fit: BoxFit.cover,
                         ),
                         const SizedBox(width: 4),
                         const Text(
@@ -89,96 +434,20 @@ class _BerandaScreenState extends State<BerandaScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFE8F1FF),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Wrap(
-                            children: const [
-                              Text(
-                                'Kenali Diri Kamu',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xFF193A63),
-                                    fontFamily: "Nunito"),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 4),
-                          Padding(
-                            padding: const EdgeInsets.all(
-                                8.0), // Atur padding sesuai kebutuhan
-                            child: Wrap(
-                              children: const [
-                                Text(
-                                  'Yuk, coba tes ini dan temukan apa yang benar-benar kamu butuhkan',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w800,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          ElevatedButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/mentaltest');
-                            },
-                            style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white54,
-                              backgroundColor: const Color(0xFF1A4D8C),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 16, vertical: 8),
-                            ),
-                            child: const Row(
-                              mainAxisSize:
-                                  MainAxisSize.min, // Agar ukuran tidak melebar
-                              children: [
-                                Text(
-                                  'Ikuti Tes',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                                SizedBox(
-                                    width: 8), // Jarak antara teks dan ikon
-                                Icon(
-                                  Icons.add, // Ikon plus
-                                  color: Colors.white,
-                                  size: 20,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Image.asset(
-                      'lib/assets/images/beranda/positiveAffirmation.png', // Replace with your actual image path
-                      width: 160,
-                      height: 160,
-                      fit: BoxFit.fill,
-                    ),
-                  ],
-                ),
+              const SizedBox(height: 5),
+
+              // Animated containers
+              AnimatedSwitcher(
+                duration: const Duration(milliseconds: 100),
+                transitionBuilder: (Widget child, Animation<double> animation) {
+                  return FadeTransition(
+                    opacity: animation,
+                    child: child,
+                  );
+                },
+                child: _showFirstContainer
+                    ? _buildKenaliDiriContainer()
+                    : _buildTenanginDiriContainer(),
               ),
 
               // Recent Used section
