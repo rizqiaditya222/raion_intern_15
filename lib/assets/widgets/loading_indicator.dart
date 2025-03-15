@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LoadingIndicator extends StatelessWidget {
+class LoadingIndicator extends StatefulWidget {
   final double progress;
   final String message;
   final Color trackColor;
@@ -9,7 +9,7 @@ class LoadingIndicator extends StatelessWidget {
 
   const LoadingIndicator({
     Key? key,
-    this.progress = 0.1, // Default to 10%
+    this.progress = 1, // Default to 10%
     this.message = 'Tunggu sebentar ya!\nHasil mu sedang di proses',
     this.trackColor = const Color(0xFFF8E8A6),
     this.progressColor = const Color(0xFF3D5A80),
@@ -17,10 +17,26 @@ class LoadingIndicator extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<LoadingIndicator> createState() => _LoadingIndicatorState();
+}
+
+class _LoadingIndicatorState extends State<LoadingIndicator> {
+  double animatedProgress = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 300), () {
+      setState(() {
+        animatedProgress = widget.progress;
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(
-          20), // Ensure container has transparent background
+      padding: const EdgeInsets.all(20),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -28,32 +44,48 @@ class LoadingIndicator extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               SizedBox(
-                width: 120,
-                height: 120,
-                child: CircularProgressIndicator(
-                  value: progress,
-                  strokeWidth: 12,
-                  backgroundColor: trackColor,
-                  valueColor: AlwaysStoppedAnimation<Color>(progressColor),
+                width: 180,
+                height: 180,
+                child: TweenAnimationBuilder<double>(
+                  tween: Tween<double>(begin: 0.0, end: animatedProgress),
+                  duration: Duration(seconds: 1), // Durasi animasi 1 detik
+                  curve: Curves.easeInOut, // Gunakan kurva animasi yang halus
+                  builder: (context, value, child) {
+                    return Transform.rotate(
+                      angle: -3.14, // Rotasi -90° agar mulai dari bawah
+                      child: CircularProgressIndicator(
+                        value:
+                            value, // Animasi berjalan dari 0 hingga nilai target
+                        strokeWidth: 12,
+                        backgroundColor: widget.trackColor,
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(widget.progressColor),
+                      ),
+                    );
+                  },
                 ),
               ),
-              Text(
-                '${(progress * 100).toInt()}%',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: textColor,
+              AnimatedSwitcher(
+                duration: Duration(milliseconds: 500),
+                child: Text(
+                  '${(animatedProgress * 100).toInt()}%',
+                  key: ValueKey<int>((animatedProgress * 100).toInt()),
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    color: widget.textColor,
+                  ),
                 ),
               ),
             ],
           ),
           const SizedBox(height: 20),
           Text(
-            message,
+            widget.message,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 14,
-              color: textColor,
+              fontSize: 24,
+              color: widget.textColor,
               height: 1.5,
             ),
           ),

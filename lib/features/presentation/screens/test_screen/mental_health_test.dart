@@ -66,7 +66,7 @@ class _MentalHealthTestState extends State<MentalHealthTest> {
         curve: Curves.easeInOut,
       );
     } else {
-      Navigator.pushReplacementNamed(context, '/main');
+      Navigator.pushReplacementNamed(context, '/testloading');
     }
   }
 
