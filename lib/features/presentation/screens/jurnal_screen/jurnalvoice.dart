@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:raion_intern_15/assets/color.dart';
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_manager.dart';
 
 class Jurnalvoice extends StatefulWidget {
@@ -109,9 +110,13 @@ class _JurnalvoiceState extends State<Jurnalvoice> {
                   // Waveform visualization
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 20),
-                    height: 100,
+                    height: 150,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade300),
+                      border: Border.all(
+                        color: _isRecording
+                            ? Color(0xFF193A63)
+                            : Colors.blue.shade200,
+                      ),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Row(
@@ -120,9 +125,11 @@ class _JurnalvoiceState extends State<Jurnalvoice> {
                         _waveformData.length,
                         (index) => Container(
                           width: 10,
-                          height: 60 * _waveformData[index],
+                          height: 100 * _waveformData[index],
                           decoration: BoxDecoration(
-                            color: Colors.blue.shade200,
+                            color: _isRecording
+                                ? primary[90]
+                                : Colors.blue.shade200,
                             borderRadius: BorderRadius.circular(5),
                           ),
                         ),

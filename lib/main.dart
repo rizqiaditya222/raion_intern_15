@@ -12,6 +12,9 @@ import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurn
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnalvoice.dart';
 import 'package:raion_intern_15/features/presentation/provider/bottom_navbar.dart';
 import 'package:raion_intern_15/features/presentation/screens/homescreen/main_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/meditasi_screen/audio_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/meditasi_screen/meditasi_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/meditasi_screen/video_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/mood_screen/mood_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/onboardingpage.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile.dart';
@@ -111,6 +114,9 @@ class MyApp extends StatelessWidget {
           '/artikelmental': (context) => const ArtikelMental(),
           '/artikelbipolar': (context) => const ArtikelBipolar(),
           '/listartikel': (context) => const ListArtikel(),
+          '/meditasi': (context) => const MeditasiScreen(),
+          '/audio': (context) => const AudioScreen(),
+          '/video': (context) => const VideoScreen(),
         },
       ),
     );
