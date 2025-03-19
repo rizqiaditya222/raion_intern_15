@@ -112,9 +112,11 @@ class _ArtikelScreenState extends State<ArtikelScreen> {
         title: const Text(
           'Artikel',
           style: TextStyle(
-            color: Colors.white,
-            fontFamily: "Nunito",
-          ),
+              color: Colors.white,
+              fontFamily: "Nunito",
+              fontSize: 16,
+              fontWeight: FontWeight.w700 // Ubah jadi hitam agar lebih terlihat
+              ),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),

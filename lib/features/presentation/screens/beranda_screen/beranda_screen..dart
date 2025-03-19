@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:raion_intern_15/assets/color.dart';
-import 'package:raion_intern_15/assets/widgets/artikel_card.dart';
+import 'package:raion_intern_15/features/presentation/screens/profile_screen/profile_screen.dart';
+import '../../provider/auth_provider.dart';
 
 class BerandaScreen extends StatefulWidget {
   const BerandaScreen({super.key});
@@ -263,9 +265,9 @@ class _BerandaScreenState extends State<BerandaScreen> {
           ),
           Image.asset(
             'lib/assets/images/beranda/positiveAffirmation.png',
-            width: 160,
-            height: 160,
-            fit: BoxFit.fill,
+            width: 120,
+            height: 120,
+            fit: BoxFit.contain,
           ),
         ],
       ),
@@ -346,9 +348,9 @@ class _BerandaScreenState extends State<BerandaScreen> {
           ),
           Image.asset(
             'lib/assets/images/test_result/deepbreath.png',
-            width: 160,
-            height: 160,
-            fit: BoxFit.fill,
+            width: 120,
+            height: 120,
+            fit: BoxFit.contain,
           ),
         ],
       ),
@@ -357,12 +359,18 @@ class _BerandaScreenState extends State<BerandaScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
+    final user = authProvider.currentUser;
+
     return Scaffold(
       backgroundColor: Colors.white,
+      drawer: Drawer(
+        child: ProfileScreen(),
+      ),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(120),
         child: AppBar(
-          backgroundColor: primary[90],
+          backgroundColor: const Color(0xFF193A63),
           elevation: 0,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -374,18 +382,25 @@ class _BerandaScreenState extends State<BerandaScreen> {
             padding: const EdgeInsets.only(top: 21.0, left: 24, right: 16),
             child: Row(
               children: [
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.grey.shade300,
-                    border: Border.all(color: Colors.white, width: 1),
-                  ),
-                  child: const Icon(
-                    Icons.person,
-                    size: 50,
-                    color: Colors.grey,
+                Builder(
+                  builder: (context) => GestureDetector(
+                    onTap: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                    child: Container(
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.grey.shade300,
+                        border: Border.all(color: Colors.white, width: 1),
+                      ),
+                      child: const Icon(
+                        Icons.person,
+                        size: 50,
+                        color: Colors.black, // Changed to black
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -393,9 +408,9 @@ class _BerandaScreenState extends State<BerandaScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      'Hai, Anonim!',
-                      style: TextStyle(
+                    Text(
+                      "Hai, ${user?.fullName}!",
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -434,9 +449,6 @@ class _BerandaScreenState extends State<BerandaScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 5),
-
-              // Animated containers
               AnimatedSwitcher(
                 duration: const Duration(milliseconds: 100),
                 transitionBuilder: (Widget child, Animation<double> animation) {
@@ -464,7 +476,9 @@ class _BerandaScreenState extends State<BerandaScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/sleeptracker');
+                    },
                     child: const Text(
                       'Lihat semua',
                       style: TextStyle(
@@ -484,25 +498,41 @@ class _BerandaScreenState extends State<BerandaScreen> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    _buildCalendarWidget(
-                      'Januari 2025',
-                      '0/30',
-                      Colors.white,
-                      Color(0xFFEE8834),
+                    GestureDetector(
+                      onTap: () {
+                        //Navigate TODO
+                        // Tambahkan navigasi atau aksi lain di sini jika perlu
+                      },
+                      child: _buildCalendarWidget(
+                        'Januari 2025',
+                        '0/30',
+                        Colors.white,
+                        Color(0xFFEE8834),
+                      ),
                     ),
                     const SizedBox(width: 12),
-                    _buildCalendarWidget(
-                      'Februari 2025',
-                      '21/28',
-                      Colors.white,
-                      Color(0xFF88BFFD),
+                    GestureDetector(
+                      onTap: () {
+                        //Navigate TODO
+                      },
+                      child: _buildCalendarWidget(
+                        'Februari 2025',
+                        '21/28',
+                        Colors.white,
+                        Color(0xFF88BFFD),
+                      ),
                     ),
                     const SizedBox(width: 12),
-                    _buildCalendarWidget(
-                      'Maret 2025',
-                      '27/31',
-                      Colors.white,
-                      Color(0xFFA688FD),
+                    GestureDetector(
+                      onTap: () {
+                        //Navigate TODO
+                      },
+                      child: _buildCalendarWidget(
+                        'Maret 2025',
+                        '27/31',
+                        Colors.white,
+                        Color(0xFFA688FD),
+                      ),
                     ),
                   ],
                 ),
@@ -541,25 +571,35 @@ class _BerandaScreenState extends State<BerandaScreen> {
 
               // Article cards
               const SizedBox(height: 10),
-              const SizedBox(height: 10),
-              ArticleCard(
-                title:
-                    'Pentingnya Dukungan Sosial dalam Menjaga Kesehatan Mental',
-                imagePath: 'lib/assets/images/beranda/artikel1.png',
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/artikelmental');
+                },
+                child: _buildArticleCard(
+                  'Pentingnya Dukungan Sosial dalam Menjaga Kesehatan Mental',
+                  'lib/assets/images/beranda/artikel1.png',
+                ),
               ),
               const SizedBox(height: 16),
-              ArticleCard(
-                title:
-                    'Kesepian dapat memberi dampak buruk bagi mental seseorang',
-                imagePath: 'lib/assets/images/beranda/artikel2.png',
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/artikelmental');
+                },
+                child: _buildArticleCard(
+                  'Kesepian dapat memberi dampak buruk bagi mental seseorang',
+                  'lib/assets/images/beranda/artikel2.png',
+                ),
               ),
               const SizedBox(height: 16),
-              ArticleCard(
-                title: 'Teman baik kurangi beban pikiran yang menumpuk terus',
-                imagePath: 'lib/assets/images/beranda/artikel3.png',
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/artikelmental');
+                },
+                child: _buildArticleCard(
+                  'Teman baik kurangi beban pikiran yang menumpuk terus',
+                  'lib/assets/images/beranda/artikel3.png',
+                ),
               ),
-
-              const SizedBox(height: 20),
             ],
           ),
         ),
@@ -631,6 +671,91 @@ class _BerandaScreenState extends State<BerandaScreen> {
                 ),
               );
             },
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildArticleCard(String title, String imagePath) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey.shade200),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(16),
+              bottomLeft: Radius.circular(16),
+            ),
+            child: Image.asset(
+              imagePath,
+              width: 100,
+              height: 100,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Spacer antara info & judul
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: 6),
+                  Row(
+                    children: [
+                      Text(
+                        "Mozaik",
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey.shade600,
+                        ),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(
+                        Icons.chat_bubble_outline,
+                        size: 14,
+                        color: Colors.grey.shade500,
+                      ),
+                      SizedBox(width: 4),
+                      Text(
+                        "28",
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey.shade600,
+                        ),
+                      ),
+                      SizedBox(width: 8),
+                      Text(
+                        "12h",
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey.shade600,
+                        ),
+                      ),
+                      Spacer(),
+                      Icon(
+                        Icons.more_horiz,
+                        color: Colors.grey.shade500,
+                        size: 18,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),

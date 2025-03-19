@@ -16,9 +16,11 @@ class _ArtikelBipolarState extends State<ArtikelBipolar> {
         title: const Text(
           'Artikel',
           style: TextStyle(
-            color: Colors.black,
-            fontFamily: "Nunito",
-          ),
+              color: Colors.black,
+              fontFamily: "Nunito",
+              fontSize: 16,
+              fontWeight: FontWeight.w700 // Ubah jadi hitam agar lebih terlihat
+              ),
         ),
         centerTitle: true, // Ini akan memastikan judul di tengah
         leading: IconButton(

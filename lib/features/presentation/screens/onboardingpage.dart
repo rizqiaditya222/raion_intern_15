@@ -128,6 +128,7 @@ class _OnboardingpageState extends State<Onboardingpage> {
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
+                      // ignore: deprecated_member_use
                       color: Colors.black.withOpacity(0.1),
                       spreadRadius: 1,
                       blurRadius: 5,
@@ -215,7 +216,7 @@ class _OnboardingpageState extends State<Onboardingpage> {
                     curve: Curves.easeInOut,
                   );
                 } else {
-                  Navigator.pushReplacementNamed(context, '/registerPatient');
+                  Navigator.pushReplacementNamed(context, '/login');
                 }
               },
               child: Text(

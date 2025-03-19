@@ -20,7 +20,6 @@ class AuthProvider with ChangeNotifier {
   UserEntity? _currentUser;
   UserEntity? get currentUser => _currentUser;
 
-
   bool _isLoading = false;
   String? _errorMessage;
 
@@ -53,8 +52,7 @@ Future<void> login(String email, String password, BuildContext context) async {
   _clearError();
   try {
     UserEntity user = await loginUser(LoginParams(email: email, password: password));
-    
-    // Fetch user profile setelah login berhasil
+
     await fetchUserProfile(user.id);
 
     if (user.role == UserRole.doctor) {
@@ -78,8 +76,8 @@ Future<void> login(String email, String password, BuildContext context) async {
   Future<String> getUserRole(String uid) async {
     try {
       DocumentSnapshot userDoc = await FirebaseFirestore.instance
-          .collection('users') // Pastikan koleksi Firestore benar
-          .doc(uid) // Gunakan UID, bukan email
+          .collection('users')
+          .doc(uid)
           .get();
 
       if (userDoc.exists && userDoc.data() != null) {
@@ -89,7 +87,7 @@ Future<void> login(String email, String password, BuildContext context) async {
       }
     } catch (e) {
       print("Error getting user role: $e");
-      return ""; // Kembalikan string kosong agar tidak menyebabkan error lebih lanjut
+      return "";
     }
   }
 

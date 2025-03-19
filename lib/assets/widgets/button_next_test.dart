@@ -43,12 +43,12 @@ class SubmitButtonWidget extends StatelessWidget {
               height: 50,
               margin: const EdgeInsets.only(right: 8),
               decoration: const BoxDecoration(
-                color: Color(0xFF193A63),
+                color: Color(0xFFF3BB06),
                 shape: BoxShape.circle,
               ),
               child: const Icon(
                 Icons.chevron_right,
-                color: Colors.white,
+                color: Colors.black,
                 size: 24,
               ),
             ),

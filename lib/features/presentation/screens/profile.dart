@@ -31,6 +31,8 @@ class ProfilePage extends StatelessWidget {
                   Text("Specialization: ${user.specialization ?? '-'}"),
                 ],
               ),
+            ElevatedButton(onPressed:() {Navigator.pushReplacementNamed(context, '/login');},
+                child: Text("login"))
           ],
         ),
       ),

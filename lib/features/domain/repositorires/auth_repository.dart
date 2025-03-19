@@ -4,7 +4,6 @@ import '../entities/user.dart';
 abstract class AuthRepository {
   Future<UserEntity> login(String email, String password);
 
-  // Registrasi untuk customer
   Future<UserEntity> registerCustomer({
     required String email,
     required String password,
@@ -12,7 +11,6 @@ abstract class AuthRepository {
     String bio,
   });
 
-  // Registrasi untuk dokter
   Future<UserEntity> registerDoctor({
     required String email,
     required String password,

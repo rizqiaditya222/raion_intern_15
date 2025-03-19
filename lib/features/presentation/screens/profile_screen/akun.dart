@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
 import 'package:raion_intern_15/assets/color.dart';
+import 'package:raion_intern_15/features/presentation/provider/auth_provider.dart';
 
 class Akun extends StatefulWidget {
   const Akun({super.key});
@@ -20,15 +21,20 @@ class _AkunState extends State<Akun> {
   @override
   void initState() {
     super.initState();
-    _fetchUserDetails();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _fetchUserDetails();
+    });
   }
 
   Future<void> _fetchUserDetails() async {
-    User? user = FirebaseAuth.instance.currentUser;
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    final user = authProvider.currentUser;
+
     if (user != null) {
-      _nameController.text = user.displayName ?? "";
-      _emailController.text = user.email ?? "";
-      // Note: Password cannot be fetched directly for security reasons
+      setState(() {
+        _nameController.text = user.fullName ?? "";
+        _emailController.text = user.email ?? "";
+      });
     }
   }
 
@@ -108,9 +114,11 @@ class _AkunState extends State<Akun> {
         title: const Text(
           'Akun',
           style: TextStyle(
-            color: Colors.white,
-            fontFamily: "Nunito",
-          ),
+              color: Colors.white,
+              fontFamily: "Nunito",
+              fontSize: 16,
+              fontWeight: FontWeight.w700 // Ubah jadi hitam agar lebih terlihat
+              ),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),

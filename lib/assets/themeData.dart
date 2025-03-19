@@ -12,6 +12,8 @@ class AppTheme {
     scaffoldBackgroundColor: Colors.white,
     primaryColor: primary[90]!,
     textTheme: GoogleFonts.nunitoTextTheme().apply(
+      bodyColor: Color(0xFF3D3B3B),
+      displayColor: Color(0xFF3D3B3B),
     ).copyWith(
       headlineLarge: GoogleFonts.nunito(fontWeight: FontWeight.bold, color: primary[90]),
       headlineMedium: GoogleFonts.nunito(fontWeight: FontWeight.bold, color: primary[90]),

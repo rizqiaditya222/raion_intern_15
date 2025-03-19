@@ -41,8 +41,8 @@ class FormFieldWidget extends StatelessWidget {
           keyboardType: inputType,
           obscureText: obscureText,
           decoration: InputDecoration(
-            hintText: hintText, // Perbaikan hintText agar sesuai parameter
-            hintStyle: TextStyle(color: defaultLightSilver[100]!), // Perbaikan hintText agar sesuai parameter
+            hintText: hintText,
+            hintStyle: TextStyle(color: defaultLightSilver[100]!),
             prefixIcon: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Image.asset(
@@ -73,4 +73,5 @@ class FormFieldWidget extends StatelessWidget {
       ],
     );
   }
+
 }

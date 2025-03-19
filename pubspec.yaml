@@ -22,6 +22,8 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^5.0.0
   google_fonts: ^6.2.1
+  table_calendar: ^3.2.0
+  intl: ^0.20.2
 
 flutter:
   uses-material-design: true
@@ -29,23 +31,62 @@ flutter:
     - lib/assets/images/google_icon.png
     - lib/assets/images/lockIcon.png
     - lib/assets/images/logo.png
+    - lib/assets/images/logoIcon.png
     - lib/assets/images/mailIcon.png
     - lib/assets/images/nameIcon.png
     - lib/assets/images/onBoard1.png
     - lib/assets/images/onBoard2.png
     - lib/assets/images/onBoard3.png
     - lib/assets/images/bottomWidget.png
+    - lib/assets/images/lines.png
+    - lib/assets/images/doctor.png
+    - lib/assets/images/check.png
+    - lib/assets/images/chart.png
+    - lib/assets/images/Mastercard.png
     - lib/assets/images/navbar_icon/book.png
     - lib/assets/images/navbar_icon/health.png
     - lib/assets/images/navbar_icon/home.png
     - lib/assets/images/navbar_icon/profile.png
     - lib/assets/images/navbar_icon/happy.png
+    - lib/assets/images/navbar_icon/sad.png
+    - lib/assets/images/navbar_icon/anxious.png
+    - lib/assets/images/navbar_icon/flat.png
+    - lib/assets/images/navbar_icon/excellent.png
     - lib/assets/images/navbar_icon/profile_active.png
+    - lib/assets/images/navbar_icon/book_active.png
+    - lib/assets/images/navbar_icon/home_active.png
+    - lib/assets/images/navbar_icon/health_active.png
     - lib/assets/images/mood/happy.png
     - lib/assets/images/mood/sad.png
     - lib/assets/images/mood/anxious.png
     - lib/assets/images/mood/flat.png
     - lib/assets/images/mood/excellent.png
+    - lib/assets/images/consultation/thumbnail.png
+    - lib/assets/images/consultation/map.png
+    - lib/assets/images/consultation/hospital.png
+    - lib/assets/images/consultation/rating.png
+    - lib/assets/images/consultation/ratingOff.png
+    - lib/assets/images/consultation/success.png
+    - lib/assets/images/radio_icon/adiksi.png
+    - lib/assets/images/radio_icon/adiksi_active.png
+    - lib/assets/images/radio_icon/anak.png
+    - lib/assets/images/radio_icon/anak_active.png
+    - lib/assets/images/radio_icon/anxiety.png
+    - lib/assets/images/radio_icon/anxiety_active.png
+    - lib/assets/images/radio_icon/bipolar.png
+    - lib/assets/images/radio_icon/bipolar_active.png
+    - lib/assets/images/radio_icon/depresi.png
+    - lib/assets/images/radio_icon/depresi_active.png
+    - lib/assets/images/radio_icon/hubungan.png
+    - lib/assets/images/radio_icon/hubungan_active.png
+    - lib/assets/images/radio_icon/lgbt.png
+    - lib/assets/images/radio_icon/lgbt_active.png
+    - lib/assets/images/radio_icon/makan.png
+    - lib/assets/images/radio_icon/makan_active.png
+    - lib/assets/images/radio_icon/skizo.png
+    - lib/assets/images/radio_icon/skizo_active.png
+    - lib/assets/images/radio_icon/tidur.png
+    - lib/assets/images/radio_icon/tidur_active.png
     - lib/assets/images/jurnal/therapy3.png
     - lib/assets/images/jurnal/jurnaldetail.png
     - lib/assets/images/jurnal/jurnalcek.png
@@ -54,6 +95,17 @@ flutter:
     - lib/assets/images/beranda/artikel2.png
     - lib/assets/images/beranda/artikel3.png
     - lib/assets/images/beranda/positiveAffirmation.png
+    - lib/assets/images/payment/bca.png
+    - lib/assets/images/payment/dana.png
+    - lib/assets/images/payment/gopay.png
+    - lib/assets/images/payment/mastercard.png
+    - lib/assets/images/consultation/information/address.png
+    - lib/assets/images/consultation/information/gender.png
+    - lib/assets/images/consultation/information/height.png
+    - lib/assets/images/consultation/information/name.png
+    - lib/assets/images/consultation/information/online.png
+    - lib/assets/images/consultation/information/weight.png
+    - lib/assets/images/consultation/information/weight.png
     - lib/assets/images/test_result/deepbreath.png
     - lib/assets/images/artikel/bantuankecil.png
     - lib/assets/images/artikel/empati.png
@@ -80,3 +132,4 @@ flutter:
     - lib/assets/images/meditasi/video_image/video9.png
     - lib/assets/images/meditasi/video_image/konten_video.png
     - lib/assets/images/meditasi/audio_image/audio_screen.png
+    - lib/assets/images/catatan/anxiety_catatan.png
