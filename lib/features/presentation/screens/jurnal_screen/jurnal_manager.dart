@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnal_screen.dart';
-import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnalblank.dart';
+import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnalblank.dart';
 
 // Provider to manage journal state
 class JournalSaveProvider extends ChangeNotifier {

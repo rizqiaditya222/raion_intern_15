@@ -6,7 +6,7 @@ const String logoIcon = "lib/assets/images/logoIcon.png";
 const String name = "lib/assets/images/nameIcon.png";
 const String line = "lib/assets/images/lines.png";
 const String card = "lib/assets/images/Mastercard.png";
-const String doctor = "lib/assets/images/doctor.png";
+const String doctorImage = "lib/assets/images/doctor.png";
 const String check = "lib/assets/images/check.png";
 const String chart = "lib/assets/images/chart.png";
 
@@ -66,3 +66,8 @@ const String height = "lib/assets/images/consultation/information/height.png";
 const String nameInfo = "lib/assets/images/consultation/information/name.png";
 const String online = "lib/assets/images/consultation/information/online.png";
 const String weight = "lib/assets/images/consultation/information/weight.png";
+
+const String bca = "lib/assets/images/payment/bca.png";
+const String dana = "lib/assets/images/payment/dana.png";
+const String gopay = "lib/assets/images/payment/gopay.png";
+const String mastercard = "lib/assets/images/payment/mastercard.png";

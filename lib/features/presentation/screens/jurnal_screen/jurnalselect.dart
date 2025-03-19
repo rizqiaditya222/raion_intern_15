@@ -17,7 +17,7 @@ class _JurnalselectState extends State<Jurnalselect> {
           'Jurnal',
           style: TextStyle(
             color: Colors.white,
-            fontFamily: "Nutino",
+            fontFamily: "Nunito",
           ),
         ),
         leading: IconButton(
@@ -43,7 +43,7 @@ class _JurnalselectState extends State<Jurnalselect> {
               "Yuk Buat Jurnal Hari ini!",
               style: TextStyle(
                   color: primary[90],
-                  fontFamily: "Nutino",
+                  fontFamily: "Nunito",
                   fontSize: 22,
                   fontWeight: FontWeight.bold),
             ),
@@ -56,7 +56,7 @@ class _JurnalselectState extends State<Jurnalselect> {
                   "Menulis jurnal bisa membantumu lebih tenang dan memahami diri sendiri dengan lebih baik!",
                   style: TextStyle(
                     color: primary[90],
-                    fontFamily: "Nutino",
+                    fontFamily: "Nunito",
                     fontSize: 18,
                   ),
                 ),
@@ -67,7 +67,6 @@ class _JurnalselectState extends State<Jurnalselect> {
               height: 30,
             ),
 
-            // Journal Voice Card
             // Journal Voice Card
             Card(
               color: Colors.white,
@@ -109,7 +108,7 @@ class _JurnalselectState extends State<Jurnalselect> {
                               Text(
                                 "Jurnal Suara",
                                 style: TextStyle(
-                                  fontFamily: "Nutino",
+                                  fontFamily: "Nunito",
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                   color: primary[90],
@@ -131,7 +130,7 @@ class _JurnalselectState extends State<Jurnalselect> {
                       Text(
                         "Ceritakan dengan merekam suara apa yang terjadi hari ini. Kami akan mentranskripsikannya.",
                         style: TextStyle(
-                          fontFamily: "Nutino",
+                          fontFamily: "Nunito",
                           fontSize: 14,
                           color: primary[90],
                         ),
@@ -185,7 +184,7 @@ class _JurnalselectState extends State<Jurnalselect> {
                               Text(
                                 "Jurnal Teks",
                                 style: TextStyle(
-                                  fontFamily: "Nutino",
+                                  fontFamily: "Nunito",
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                   color: primary[90],
@@ -207,7 +206,7 @@ class _JurnalselectState extends State<Jurnalselect> {
                       Text(
                         "Tuliskan ceritamu di sini! Bagikan apa yang terjadi hari ini, perasaanmu, atau hal-hal yang ingin kamu ingat.",
                         style: TextStyle(
-                          fontFamily: "Nutino",
+                          fontFamily: "Nunito",
                           fontSize: 14,
                           color: primary[90],
                         ),
@@ -239,7 +238,7 @@ class _JurnalselectState extends State<Jurnalselect> {
                   "Buat Jurnal",
                   style: TextStyle(
                     fontSize: 16,
-                    fontFamily: "Nutino",
+                    fontFamily: "Nunito",
                     fontWeight: FontWeight.bold,
                   ),
                 ),

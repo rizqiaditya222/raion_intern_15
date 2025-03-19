@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:raion_intern_15/assets/themeData.dart';
-import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnal_manager.dart';
-import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnal_screen.dart';
-import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnalselect.dart';
-import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnaltext.dart';
-import 'package:raion_intern_15/features/presentation/jurnal_screen/jurnalvoice.dart';
+import 'package:raion_intern_15/features/domain/usecases/create_appointment.dart';
+import 'package:raion_intern_15/features/domain/usecases/get_appoinment.dart';
+import 'package:raion_intern_15/features/presentation/provider/appointment_provider.dart';
+import 'package:raion_intern_15/features/presentation/provider/date_provider.dart';
+import 'package:raion_intern_15/features/presentation/provider/doctor_provider.dart';
+import 'package:raion_intern_15/features/presentation/provider/form_provider.dart';
+import 'package:raion_intern_15/features/presentation/provider/payment_provider.dart';
+import 'package:raion_intern_15/features/presentation/provider/specialization_provider.dart';
+import 'package:raion_intern_15/features/presentation/provider/create_appoinment_provider.dart';
+import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_manager.dart';
+import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnalselect.dart';
+import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnaltext.dart';
+import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnalvoice.dart';
 import 'package:raion_intern_15/features/presentation/provider/bottom_navbar.dart';
 import 'package:raion_intern_15/features/presentation/provider/mood.provider.dart';
 import 'package:raion_intern_15/features/presentation/provider/step_provider.dart';
@@ -25,6 +34,7 @@ import 'package:raion_intern_15/features/presentation/screens/profile_screen/faq
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/privacy_policy.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/profile_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/term_of_service.dart';
+import 'features/domain/usecases/get_doctor.dart';
 import 'features/presentation/screens/login_screen/login_page.dart';
 import 'features/presentation/screens/signup_screen/sign_up_patients.dart';
 import 'firebase_options.dart';
@@ -32,9 +42,12 @@ import 'package:provider/provider.dart';
 import 'features/presentation/provider/auth_provider.dart';
 import 'di/injection_container.dart' as di;
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await initializeDateFormatting('id_ID', null);
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -57,10 +70,15 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(create: (context) => BottomNavbarProvider()),
         ChangeNotifierProvider(create: (context) => MoodProvider()),
+        ChangeNotifierProvider(create: (context) => DateProvider()),
         ChangeNotifierProvider(create: (context) => StepProvider()),
-        ChangeNotifierProvider(
-            create: (context) =>
-                JournalSaveProvider()), 
+        ChangeNotifierProvider(create: (context) => InformationFormProvider()),
+        ChangeNotifierProvider(create: (context) => PaymentProvider()),
+        ChangeNotifierProvider(create: (context) => SpecializationProvider()),
+        ChangeNotifierProvider(create: (context) => AppointmentProvider()),
+        ChangeNotifierProvider(create: (context) => CreateAppoinmentProvider(createAppointmentUseCase: di.sl<CreateAppointment>(), getAppoinment: di.sl<GetAppoinment>()),),
+        ChangeNotifierProvider(create: (context) => DoctorProvider(getDoctor: di.sl<GetDoctor>())),
+        ChangeNotifierProvider(create: (context) => JournalSaveProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -82,7 +100,7 @@ class MyApp extends StatelessWidget {
                   );
                 }
                 final user = snapshot.data;
-                return user != null ? DoctorProfile() : DoctorProfile();
+                return user != null ? Onboardingpage() : Onboardingpage();
               },
             );
           },
@@ -108,7 +126,7 @@ class MyApp extends StatelessWidget {
           '/jurnaltext': (context) => const Jurnaltext(),
           '/jurnalscreen': (context) => const JurnalScreen(),
           '/jurnalmanager': (context) => const JurnalManager(),
-
+          '/profile': (context) => DoctorProfile(),
         },
       ),
     );

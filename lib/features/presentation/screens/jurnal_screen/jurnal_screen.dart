@@ -15,28 +15,16 @@ class _JurnalScreenState extends State<JurnalScreen> {
       backgroundColor: Color(0xFF1D3557), // Dark blue background
       body: Stack(
         children: [
-          // Background circles (decorative elements)
           Positioned(
-            top: -50,
-            right: -50,
-            child: Container(
-              width: 150,
-              height: 150,
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.05),
-                shape: BoxShape.circle,
-              ),
-            ),
-          ),
-          Positioned(
-            top: 100,
-            left: -30,
-            child: Container(
-              width: 80,
-              height: 80,
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.05),
-                shape: BoxShape.circle,
+            top: -80,
+            left: 0,
+            right: 30,
+            child: Transform.scale(
+              scale: 1.8, // Perbesar gambar 1.5x dari ukuran aslinya
+              child: Image.asset(
+                "lib/assets/images/jurnal/jurnaldetail.png",
+                width: double.infinity,
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -59,10 +47,6 @@ class _JurnalScreenState extends State<JurnalScreen> {
                 child: Container(
                   width: 120,
                   height: 120,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.15),
-                    shape: BoxShape.circle,
-                  ),
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -71,10 +55,11 @@ class _JurnalScreenState extends State<JurnalScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(
-                                Icons.checklist,
-                                color: Colors.white,
-                                size: 50,
+                              Image.asset(
+                                "lib/assets/images/jurnal/jurnalcek.png",
+                                width: 50,
+                                height: 50,
+                                fit: BoxFit.contain,
                               ),
                               SizedBox(width: 8),
                               Text(
@@ -83,7 +68,7 @@ class _JurnalScreenState extends State<JurnalScreen> {
                                     fontSize: 48,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontFamily: "Nutino"),
+                                    fontFamily: "Nunito"),
                               ),
                             ],
                           ),
@@ -91,9 +76,9 @@ class _JurnalScreenState extends State<JurnalScreen> {
                         Text(
                           "Jurnal bulan ini",
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 16,
                             color: Colors.white,
-                            fontFamily: "Nutino",
+                            fontFamily: "Nunito",
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -112,7 +97,7 @@ class _JurnalScreenState extends State<JurnalScreen> {
             right: 0,
             child: Container(
               height: MediaQuery.of(context).size.height *
-                  0.6, // Adjust height to match image
+                  0.55, // Adjust height to match image
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -138,7 +123,7 @@ class _JurnalScreenState extends State<JurnalScreen> {
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: primary[90],
-                          fontFamily: "Nutino"),
+                          fontFamily: "Nunito"),
                     ),
                     const SizedBox(height: 16),
 
@@ -153,14 +138,14 @@ class _JurnalScreenState extends State<JurnalScreen> {
                       child: Row(
                         children: [
                           Container(
-                            width: 40,
+                            width: 50,
                             height: 50,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               shape: BoxShape.circle,
                             ),
-                            child: Icon(Icons.play_arrow,
-                                color: primary[90], size: 20),
+                            child: Icon(Icons.play_arrow_rounded,
+                                color: primary[90], size: 40),
                           ),
                           SizedBox(width: 12),
                           Expanded(
@@ -171,20 +156,30 @@ class _JurnalScreenState extends State<JurnalScreen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text("Rekaman 1",
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600)),
+                                    Text(
+                                      "Rekaman 1",
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: "Nunito",
+                                        fontWeight: FontWeight.bold,
+                                        color: primary[90],
+                                      ),
+                                    ),
                                     Icon(Icons.more_horiz, color: Colors.grey),
                                   ],
                                 ),
                                 SizedBox(height: 8),
                                 Row(
                                   children: [
-                                    Text("01:32",
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            color: Colors.grey[600])),
+                                    Text(
+                                      "01:32",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontFamily: "Nunito",
+                                        fontWeight: FontWeight.bold,
+                                        color: primary[90],
+                                      ),
+                                    ),
                                     Expanded(
                                       child: Container(
                                         margin:
@@ -200,8 +195,10 @@ class _JurnalScreenState extends State<JurnalScreen> {
                                     Text(
                                       "20:00",
                                       style: TextStyle(
-                                        fontSize: 12,
-                                        color: Colors.grey[600],
+                                        fontSize: 14,
+                                        fontFamily: "Nunito",
+                                        fontWeight: FontWeight.bold,
+                                        color: primary[90],
                                       ),
                                     ),
                                   ],

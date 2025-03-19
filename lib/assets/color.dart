@@ -11,6 +11,13 @@ const MaterialColor primary = MaterialColor(
   },
 );
 
+const MaterialColor primaryBlack = MaterialColor(
+  0xFF3D3B3B,
+  <int, Color>{
+    100: Color(0xFF3D3B3B)
+  },
+);
+
 const MaterialColor secondaryBlue = MaterialColor(
   0xFF9FDAFD,
   <int, Color>{

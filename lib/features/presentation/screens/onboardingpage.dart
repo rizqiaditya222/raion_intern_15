@@ -216,7 +216,7 @@ class _OnboardingpageState extends State<Onboardingpage> {
                     curve: Curves.easeInOut,
                   );
                 } else {
-                  Navigator.pushReplacementNamed(context, '/registerPatient');
+                  Navigator.pushReplacementNamed(context, '/login');
                 }
               },
               child: Text(

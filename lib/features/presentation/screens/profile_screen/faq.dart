@@ -17,7 +17,7 @@ class _FaqState extends State<Faq> {
           'FAQ',
           style: TextStyle(
             color: Colors.white,
-            fontFamily: "Nutino", // Ubah jadi hitam agar lebih terlihat
+            fontFamily: "Nunito", // Ubah jadi hitam agar lebih terlihat
           ),
         ),
         leading: IconButton(
@@ -47,7 +47,7 @@ class _FaqState extends State<Faq> {
                     style: TextStyle(
                       color: primary[90],
                       fontSize: 20,
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -69,7 +69,7 @@ class _FaqState extends State<Faq> {
                     style: TextStyle(
                       color: primary[90],
                       fontSize: 20,
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -94,7 +94,7 @@ class _FaqState extends State<Faq> {
                           style: TextStyle(
                             color: primary[90],
                             fontSize: 20,
-                            fontFamily: "Nutino",
+                            fontFamily: "Nunito",
                             fontWeight: FontWeight.bold,
                           ),
                         ),

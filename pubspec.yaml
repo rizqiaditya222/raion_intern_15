@@ -65,6 +65,7 @@ flutter:
     - lib/assets/images/consultation/map.png
     - lib/assets/images/consultation/hospital.png
     - lib/assets/images/consultation/rating.png
+    - lib/assets/images/consultation/ratingOff.png
     - lib/assets/images/consultation/success.png
     - lib/assets/images/radio_icon/adiksi.png
     - lib/assets/images/radio_icon/adiksi_active.png
@@ -87,9 +88,21 @@ flutter:
     - lib/assets/images/radio_icon/tidur.png
     - lib/assets/images/radio_icon/tidur_active.png
     - lib/assets/images/jurnal/therapy3.png
+    - lib/assets/images/jurnal/jurnaldetail.png
+    - lib/assets/images/jurnal/jurnalcek.png
+    - lib/assets/images/beranda/api.png
+    - lib/assets/images/beranda/artikel1.png
+    - lib/assets/images/beranda/artikel2.png
+    - lib/assets/images/beranda/artikel3.png
+    - lib/assets/images/beranda/positiveAffirmation.png
+    - lib/assets/images/payment/bca.png
+    - lib/assets/images/payment/dana.png
+    - lib/assets/images/payment/gopay.png
+    - lib/assets/images/payment/mastercard.png
     - lib/assets/images/consultation/information/address.png
     - lib/assets/images/consultation/information/gender.png
     - lib/assets/images/consultation/information/height.png
     - lib/assets/images/consultation/information/name.png
     - lib/assets/images/consultation/information/online.png
+    - lib/assets/images/consultation/information/weight.png
     - lib/assets/images/consultation/information/weight.png

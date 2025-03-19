@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
 import 'package:raion_intern_15/assets/color.dart';
+import 'package:raion_intern_15/features/presentation/provider/auth_provider.dart';
+
 
 class Akun extends StatefulWidget {
   const Akun({super.key});
@@ -20,15 +22,20 @@ class _AkunState extends State<Akun> {
   @override
   void initState() {
     super.initState();
-    _fetchUserDetails();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _fetchUserDetails();
+    });
   }
 
   Future<void> _fetchUserDetails() async {
-    User? user = FirebaseAuth.instance.currentUser;
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    final user = authProvider.currentUser;
+
     if (user != null) {
-      _nameController.text = user.displayName ?? "";
-      _emailController.text = user.email ?? "";
-      // Note: Password cannot be fetched directly for security reasons
+      setState(() {
+        _nameController.text = user.fullName ?? "";
+        _emailController.text = user.email ?? "";
+      });
     }
   }
 
@@ -67,22 +74,22 @@ class _AkunState extends State<Akun> {
             hintText: 'Masukkan $label',
             hintStyle: TextStyle(
               color: Colors.black54,
-              fontFamily: "Nutino",
+              fontFamily: "Nunito",
             ),
             suffixIcon: isPassword
                 ? IconButton(
-                    icon: Icon(
-                      _obscurePassword
-                          ? Icons.visibility_off
-                          : Icons.visibility,
-                      color: Colors.black,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _obscurePassword = !_obscurePassword;
-                      });
-                    },
-                  )
+              icon: Icon(
+                _obscurePassword
+                    ? Icons.visibility_off
+                    : Icons.visibility,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                setState(() {
+                  _obscurePassword = !_obscurePassword;
+                });
+              },
+            )
                 : null,
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
@@ -109,7 +116,7 @@ class _AkunState extends State<Akun> {
           'Akun',
           style: TextStyle(
             color: Colors.white,
-            fontFamily: "Nutino",
+            fontFamily: "Nunito",
           ),
         ),
         leading: IconButton(
@@ -139,7 +146,7 @@ class _AkunState extends State<Akun> {
                         shape: BoxShape.circle,
                         color: Colors.grey.shade300,
                         border:
-                            Border.all(color: Colors.grey.shade300, width: 1),
+                        Border.all(color: Colors.grey.shade300, width: 1),
                       ),
                       child: Icon(Icons.person, size: 60, color: Colors.grey),
                     ),
@@ -149,7 +156,7 @@ class _AkunState extends State<Akun> {
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          fontFamily: "Nutino",
+                          fontFamily: "Nunito",
                           color: primary[90]),
                     ),
                     SizedBox(height: 20),
@@ -194,7 +201,7 @@ class _AkunState extends State<Akun> {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                     ),
                   ),
                 ),

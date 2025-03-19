@@ -10,7 +10,6 @@ class FirebaseAuthService {
   FirebaseAuthService({firebase_auth.FirebaseAuth? firebaseAuth})
       : _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance;
 
-  // 🔹 Registrasi Customer
   Future<UserModel> registerCustomer({
     required String email,
     required String password,
@@ -31,7 +30,7 @@ class FirebaseAuthService {
           email: email,
           fullName: fullName,
           bio: bio,
-          role: UserRole.customer, // Tetapkan role sebagai customer
+          role: UserRole.customer,
         );
 
         await _firestore.collection('users').doc(firebaseUser.uid).set(userModel.toJson());
@@ -45,7 +44,6 @@ class FirebaseAuthService {
     }
   }
 
-  // 🔹 Registrasi Dokter
   Future<UserModel> registerDoctor({
     required String email,
     required String password,
@@ -68,7 +66,7 @@ class FirebaseAuthService {
           email: email,
           fullName: fullName,
           bio: bio,
-          role: UserRole.doctor, // Tetapkan role sebagai dokter
+          role: UserRole.doctor,
           licenseNumber: licenseNumber,
           specialization: specialization,
         );
@@ -84,14 +82,12 @@ class FirebaseAuthService {
     }
   }
 
-  // 🔹 Login User
   Future<UserModel> login(String email, String password) async {
     try {
       final userCredential = await _firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-
       final firebaseUser = userCredential.user;
 
       if (firebaseUser != null) {
@@ -111,7 +107,6 @@ class FirebaseAuthService {
     }
   }
 
-  // 🔹 Logout
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
   }

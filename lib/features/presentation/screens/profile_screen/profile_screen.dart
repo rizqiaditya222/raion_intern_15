@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:raion_intern_15/assets/color.dart';
 import 'package:raion_intern_15/assets/widgets/profilebutton.dart';
+
+import '../../provider/auth_provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -8,9 +11,15 @@ class ProfileScreen extends StatefulWidget {
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
+
+
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+
+    final authProvider = Provider.of<AuthProvider>(context);
+    final user = authProvider.currentUser;
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -37,11 +46,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: Icon(Icons.person, size: 60, color: Colors.grey),
                       ),
                       const SizedBox(width: 20),
-                      const Text(
-                        'Anonim',
+                      Text(
+                        user?.fullName ?? 'Anonim',
                         style: TextStyle(
                           fontSize: 18,
-                          fontFamily: "Nutino",
+                          fontFamily: "Nunito",
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -55,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     'Informasi Pribadi',
                     style: TextStyle(
                       color: Colors.black,
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -80,7 +89,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 18,
-                      fontFamily: "Nutino",
+                      fontFamily: "Nunito",
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -126,7 +135,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       style: TextStyle(
                         color: Colors.red,
                         fontSize: 16,
-                        fontFamily: "Nutino",
+                        fontFamily: "Nunito",
                         fontWeight: FontWeight.bold,
                       ),
                     ),

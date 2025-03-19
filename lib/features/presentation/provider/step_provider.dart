@@ -11,7 +11,9 @@ class StepProvider extends ChangeNotifier {
   String get appbarText => _appbarText;
   String get buttonText => _buttonText;
 
-  void nextStep() {
+  void resetStep() {
+    _currentStep = 0;
+  }void nextStep() {
     if (_currentStep < 2) {
       _currentStep++;
       updateAppbarText();

@@ -58,7 +58,7 @@ class ProfileButton extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
-                  fontFamily: "Nutino",
+                  fontFamily: "Nunito",
                   color: primary[90],
                 ),
               ),

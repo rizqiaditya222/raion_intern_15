@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:raion_intern_15/assets/color.dart';
 import 'package:raion_intern_15/assets/constants/image_strings.dart';
 import 'package:raion_intern_15/features/presentation/provider/auth_provider.dart';
 import 'package:raion_intern_15/assets/widgets/button.dart';
@@ -19,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  bool _isLoading = false; // Tambahkan state loading
+  bool _isLoading = false;
 
   @override
   void dispose() {
@@ -29,12 +28,10 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<void> _handleLogin() async {
-    if (!_formKey.currentState!.validate()) {
-      return; // Tidak lanjut jika form tidak valid
-    }
+    if (!_formKey.currentState!.validate()) return;
 
     setState(() {
-      _isLoading = true; // Tampilkan loading indicator
+      _isLoading = true;
     });
 
     try {
@@ -44,11 +41,10 @@ class _LoginPageState extends State<LoginPage> {
         context,
       );
     } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(e.toString())));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
     } finally {
       setState(() {
-        _isLoading = false; // Sembunyikan loading indicator setelah proses selesai
+        _isLoading = false;
       });
     }
   }
@@ -127,9 +123,10 @@ class _LoginPageState extends State<LoginPage> {
                                 .textTheme
                                 .bodyLarge
                                 ?.copyWith(fontWeight: FontWeight.bold),
-                            recognizer: TapGestureRecognizer()..onTap = () {
-                              Navigator.pushReplacementNamed(context, '/registerPatient');
-                            },
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Navigator.pushReplacementNamed(context, '/registerPatient');
+                              },
                           ),
                         ],
                       ),
