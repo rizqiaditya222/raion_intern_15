@@ -1,11 +1,10 @@
-import 'package:raion_intern_15/features/domain/entities/user.dart';
-import 'doctor.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AppointmentEntity {
   final String id;
   final String userID;
   final String doctorID;
-  final DateTime dateTime;
+  final DateTime dateTime; // Gunakan DateTime
   final String status;
   final String fullName;
   final String gender;
@@ -28,31 +27,23 @@ class AppointmentEntity {
     required this.address,
   });
 
-  AppointmentEntity copyWith({
-    String? id,
-    String? userID,
-    String? doctorID,
-    DateTime? dateTime,
-    String? status,
-    String? fullName,
-    String? gender,
-    String? consultation,
-    double? height,
-    double? weight,
-    String? address,
-  }) {
+  factory AppointmentEntity.fromJson(Map<String, dynamic> json, String docId) {
     return AppointmentEntity(
-      id: id ?? this.id,
-      userID: userID ?? this.userID,
-      doctorID: doctorID ?? this.doctorID,
-      dateTime: dateTime ?? this.dateTime,
-      status: status ?? this.status,
-      fullName: fullName ?? this.fullName,
-      gender: gender ?? this.gender,
-      consultation: consultation ?? this.consultation,
-      height: height ?? this.height,
-      weight: weight ?? this.weight,
-      address: address ?? this.address,
+      id: docId,
+      userID: json['userID'] ?? '',
+      doctorID: json['doctorID'] ?? '',
+      dateTime: json['dateTime'] is Timestamp
+          ? (json['dateTime'] as Timestamp).toDate()
+          : (json['dateTime'] is String ? DateTime.tryParse(json['dateTime']) ?? DateTime(2000) : DateTime(2000)),
+
+      status: json['status'] ?? '',
+      fullName: json['fullName'] ?? '',
+      gender: json['gender'] ?? '',
+      consultation: json['consultation'] ?? '',
+      height: (json['height'] as num?)?.toDouble() ?? 0.0,
+      weight: (json['weight'] as num?)?.toDouble() ?? 0.0,
+      address: json['address'] ?? '',
     );
   }
+
 }

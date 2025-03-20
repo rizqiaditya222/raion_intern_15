@@ -44,7 +44,6 @@ class AuthProvider with ChangeNotifier {
     } finally {
       _setLoading(false);
     }
-  }
 
   Future<void> login(
       String email, String password, BuildContext context) async {
@@ -104,7 +103,6 @@ class AuthProvider with ChangeNotifier {
         password: password,
         fullName: fullName,
       ));
-      Navigator.pop(context);
     } catch (e) {
       _setError(e.toString());
     } finally {

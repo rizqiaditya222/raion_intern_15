@@ -143,7 +143,6 @@
           setState(() {
             _isLoading = false;
           });
-          _showSuccessDialog();
         }
       } catch (e) {
         if (mounted) {
@@ -155,29 +154,29 @@
         }
       }
     }
-
-    void _showSuccessDialog() {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text("Registrasi Berhasil"),
-            content: const Text("Akun Anda telah berhasil dibuat!"),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  Future.delayed(Duration.zero, () {
-                    if (mounted) {
-                      Navigator.pushReplacementNamed(context, '/registerPatient');
-                    }
-                  });
-                },
-                child: const Text("OK"),
-              ),
-            ],
-          );
-        },
-      );
-    }
+    //
+    // void _showSuccessDialog() {
+    //   showDialog(
+    //     context: context,
+    //     builder: (BuildContext context) {
+    //       return AlertDialog(
+    //         title: const Text("Registrasi Berhasil"),
+    //         content: const Text("Akun Anda telah berhasil dibuat!"),
+    //         actions: [
+    //           TextButton(
+    //             onPressed: () {
+    //               Navigator.of(context).pop();
+    //               Future.delayed(Duration.zero, () {
+    //                 if (mounted) {
+    //                   Navigator.pushReplacementNamed(context, '/registerPatient');
+    //                 }
+    //               });
+    //             },
+    //             child: const Text("OK"),
+    //           ),
+    //         ],
+    //       );
+    //     },
+    //   );
+    // }
   }

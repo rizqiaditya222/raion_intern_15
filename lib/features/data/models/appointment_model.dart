@@ -34,7 +34,10 @@ class AppointmentModel extends AppointmentEntity {
       id: docId,
       userID: json['userID'] ?? '',
       doctorID: json['doctorID'] ?? '',
-      dateTime: (json['dateTime'] as Timestamp).toDate(),
+      dateTime: json['dateTime'] is Timestamp
+          ? (json['dateTime'] as Timestamp).toDate()
+          : (json['dateTime'] is String ? DateTime.tryParse(json['dateTime']) ?? DateTime(2000) : DateTime(2000)),
+
       status: json['status'] ?? '',
       fullName: json['fullName'] ?? '',
       gender: json['gender'] ?? '',
@@ -49,7 +52,7 @@ class AppointmentModel extends AppointmentEntity {
     return {
       'userID': userID,
       'doctorID': doctorID,
-      'dateTime': dateTime,
+      'dateTime': Timestamp.fromDate(dateTime),
       'status': status,
       'fullName': fullName,
       'gender': gender,

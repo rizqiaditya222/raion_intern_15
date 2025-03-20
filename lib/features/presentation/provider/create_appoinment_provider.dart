@@ -1,4 +1,3 @@
-
 import 'package:flutter/foundation.dart';
 import 'package:raion_intern_15/features/domain/repositorires/appointment_repository.dart';
 import 'package:raion_intern_15/features/domain/usecases/create_appointment.dart';
@@ -7,10 +6,15 @@ import 'package:raion_intern_15/features/domain/usecases/get_appoinment.dart';
 import '../../domain/entities/appointment.dart';
 
 class CreateAppoinmentProvider with ChangeNotifier {
+  final AppointmentRepository repository;
   final CreateAppointment createAppointmentUseCase;
   final GetAppoinment getAppoinment;
 
-  CreateAppoinmentProvider({required this.getAppoinment, required this.createAppointmentUseCase});
+  CreateAppoinmentProvider({
+    required this.repository,
+    required this.getAppoinment,
+    required this.createAppointmentUseCase,
+  });
 
   bool _isLoading = false;
   String? _errorMessage;
@@ -18,12 +22,15 @@ class CreateAppoinmentProvider with ChangeNotifier {
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
 
+  List<Map<String, dynamic>> _appointmentsWithDoctors = [];
+  List<Map<String, dynamic>> get appointmentsWithDoctors => _appointmentsWithDoctors;
+
   List<AppointmentEntity> _appoinments = [];
   List<AppointmentEntity> get appoinments => _appoinments;
   AppointmentEntity? _currentAppointment;
   AppointmentEntity? get currentAppointment => _currentAppointment;
 
-  Future<void> fetchAllDoctors(AppointmentRepository repository) async {
+  Future<void> fetchAllAppoinment() async {
     _setLoading(true);
     _clearError();
     try {
@@ -50,6 +57,32 @@ class CreateAppoinmentProvider with ChangeNotifier {
       _setLoading(false);
     }
   }
+
+  Future<void> fetchAppointmentsWithDoctors(String currentUserID) async {
+    try {
+      final appointments = await repository.getAllAppoinment();
+      debugPrint("Fetch appointments berhasil, jumlah: ${appointments.length}");
+
+      List<Map<String, dynamic>> tempList = [];
+
+      for (var appointment in appointments) {
+        if (appointment.userID == currentUserID) {  // Filter appointment berdasarkan user yang sedang login
+          final doctor = await repository.getDoctorById(appointment.doctorID);
+          tempList.add({
+            'appointment': appointment,
+            'doctor': doctor,
+          });
+        }
+      }
+
+      _appointmentsWithDoctors = tempList;
+      notifyListeners();
+    } catch (e) {
+      print("Error fetching appointments: $e");
+    }
+  }
+
+
 
   Future<void> createAppointment({
     required String userID,

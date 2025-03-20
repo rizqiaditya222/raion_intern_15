@@ -1,5 +1,7 @@
 import 'package:raion_intern_15/features/domain/entities/appointment.dart';
 
+import '../../data/models/doctor_model.dart';
+
 abstract class AppointmentRepository {
   Future<AppointmentEntity> createAppointment({
     required String userID,
@@ -17,4 +19,6 @@ abstract class AppointmentRepository {
   Future<AppointmentEntity> getAppoinment(String id);
 
   Future<List<AppointmentEntity>> getAllAppoinment();
+
+  Future<DoctorModel?> getDoctorById(String doctorId);
 }

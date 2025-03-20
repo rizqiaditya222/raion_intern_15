@@ -144,48 +144,77 @@ class _SearchDoctorState extends State<SearchDoctor> {
               ),
             ),
             const SizedBox(width: 24),
-            SizedBox(
-              height: 115,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(doctor.name, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
-                  Row(
-                    children: [
-                      Image.asset(hospital, width: 20),
-                      const SizedBox(width: 4),
-                      Text(doctor.hospital, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
-                      const SizedBox(width: 32),
-                      Image.asset(map, width: 20),
-                      const SizedBox(width: 4),
-                      Text("${doctor.distance} km", style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Image.asset(depresi, width: 20),
-                      const SizedBox(width: 4),
-                      Text("Ahli ${doctor.specialization}", style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      buildRatingStars(doctor.rating),
-                      const SizedBox(width: 8),
-                      Text(doctor.rating.toString(), style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
-                      const SizedBox(width: 8),
-                      Container(
-                        height: 4,
-                        width: 4,
-                        decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
-                      ),
-                      const SizedBox(width: 16),
-                      Text("${doctor.ratingAmount}",
-                          style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16, color: Color(0xFF736B66))),
-                    ],
-                  ),
-                ],
+            Expanded( // Menggunakan Expanded agar kolom menyesuaikan lebar yang tersedia
+              child: SizedBox(
+                height: 115,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      doctor.name,
+                      style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Row(
+                      children: [
+                        Image.asset(hospital, width: 20),
+                        const SizedBox(width: 4),
+                        Flexible(
+                          child: Text(
+                            doctor.hospital,
+                            style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        const SizedBox(width: 32),
+                        Image.asset(map, width: 20),
+                        const SizedBox(width: 4),
+                        Text(
+                          "${doctor.distance} km",
+                          style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Image.asset(depresi, width: 20),
+                        const SizedBox(width: 4),
+                        Flexible(
+                          child: Text(
+                            "Ahli ${doctor.specialization}",
+                            style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        buildRatingStars(doctor.rating),
+                        const SizedBox(width: 8),
+                        Text(
+                          doctor.rating.toString(),
+                          style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
+                        ),
+                        const SizedBox(width: 8),
+                        Container(
+                          height: 4,
+                          width: 4,
+                          decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+                        ),
+                        const SizedBox(width: 16),
+                        Text(
+                          "${doctor.ratingAmount}",
+                          style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16, color: Color(0xFF736B66)),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
@@ -193,5 +222,6 @@ class _SearchDoctorState extends State<SearchDoctor> {
       ),
     );
   }
+
 
 }
