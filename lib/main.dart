@@ -123,7 +123,7 @@ class MyApp extends StatelessWidget {
                   );
                 }
                 final user = snapshot.data;
-                return user != null ? UpcomingConsultation() : UpcomingConsultation();
+                return user != null ? LoginPage() : LoginPage();
               },
             );
           },
