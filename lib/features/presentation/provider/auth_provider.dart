@@ -44,7 +44,7 @@ class AuthProvider with ChangeNotifier {
     } finally {
       _setLoading(false);
     }
-
+  }
   Future<void> login(
       String email, String password, BuildContext context) async {
     _setLoading(true);

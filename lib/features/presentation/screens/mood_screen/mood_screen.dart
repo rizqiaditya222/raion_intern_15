@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:raion_intern_15/assets/color.dart';
 import 'package:raion_intern_15/assets/constants/image_strings.dart';
 import 'package:raion_intern_15/assets/widgets/button.dart';
-import 'package:raion_intern_15/features/presentation/provider/mood.provider.dart';
+import 'package:raion_intern_15/features/presentation/provider/mood_data_provider.dart';
 
 class MoodScreen extends StatelessWidget {
    MoodScreen({super.key});
@@ -91,8 +91,8 @@ class Mood extends StatelessWidget {
               ),
             ),
             SubmitButton(
-              myText: "Set Mood", 
-              onPressed: (){
+              myText: "Set Mood",
+              onPressed: () {
                 moodProvider.updateMood(icon);
               },
               fgColor: primary[90]!,

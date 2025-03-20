@@ -19,7 +19,7 @@
     final _passwordController = TextEditingController();
     final _fullNameController = TextEditingController();
     final _bioController = TextEditingController();
-    final _formKey = GlobalKey<FormState>(); // Untuk validasi form
+    final _formKey = GlobalKey<FormState>();
     bool _isLoading = false;
 
     @override

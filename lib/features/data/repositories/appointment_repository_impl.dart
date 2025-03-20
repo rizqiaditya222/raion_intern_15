@@ -112,5 +112,16 @@ import 'package:flutter/cupertino.dart';
       }
     }
 
+    @override
+    Future<void> deleteAppointment(String appointmentId) async {
+      try {
+        await firestore.collection('appointments').doc(appointmentId).delete();
+        debugPrint("Appointment dengan ID: $appointmentId berhasil dihapus");
+      } catch (e) {
+        debugPrint("Error menghapus appointment: $e");
+        throw Exception("Gagal menghapus appointment");
+      }
+    }
+
 
   }

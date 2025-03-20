@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:raion_intern_15/assets/color.dart';
 import 'package:raion_intern_15/assets/constants/image_strings.dart';
 import 'package:raion_intern_15/features/presentation/provider/bottom_navbar.dart';
-import 'package:raion_intern_15/features/presentation/provider/mood.provider.dart';
+import 'package:raion_intern_15/features/presentation/provider/mood_data_provider.dart';
 import 'package:raion_intern_15/features/presentation/screens/beranda_screen/beranda_screen..dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/appointment_date.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/consultation.dart';
@@ -11,11 +11,15 @@ import 'package:raion_intern_15/features/presentation/screens/consultation_scree
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/search_doctor.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/specialization.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/stepper.dart';
+import 'package:raion_intern_15/features/presentation/screens/consultation_screen/upcoming_consultation.dart';
 import 'package:raion_intern_15/features/presentation/screens/dummy.dart';
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/mood_screen/calendar_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/mood_screen/mood_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/profile_screen.dart';
+
+import '../../provider/mood_provider.dart';
 
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});
@@ -31,7 +35,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bottomProvider = Provider.of<BottomNavbarProvider>(context);
-    final moodProvider = Provider.of<MoodProvider>(context);
+    final moodProvider = Provider.of<MoodDataProvider>(context);
     return Scaffold(
       body: screens[bottomProvider.currentIndex],
       floatingActionButton: Transform.translate(
@@ -77,14 +81,14 @@ class MainScreen extends StatelessWidget {
           ),
 
           Container(
-            height: 80, // Ubah dari 80 ke 70
+            height: 80,
             decoration: BoxDecoration(
-              color: primary[90], // Warna latar belakang navbar
+              color: primary[90],
             ),
             child: Theme(
               data: Theme.of(context).copyWith(
 
-                splashFactory: NoSplash.splashFactory, // Menghilangkan efek sentuhan
+                splashFactory: NoSplash.splashFactory,
                 highlightColor: Colors.transparent, 
               ),
               child: BottomNavigationBar(
@@ -111,7 +115,7 @@ class MainScreen extends StatelessWidget {
                   ),
                   BottomNavigationBarItem(
 
-                    icon: Container(width: 0), // Kosong agar tidak memengaruhi layout
+                    icon: Container(width: 0),
                     label: "",
                   ),
                   BottomNavigationBarItem(

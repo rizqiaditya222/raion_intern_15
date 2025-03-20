@@ -483,7 +483,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/sleeptracker');
+                      Navigator.pushNamed(context, '/calendar');
                     },
 
                     child: const Text(

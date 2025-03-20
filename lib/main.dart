@@ -14,6 +14,8 @@ import 'package:raion_intern_15/features/presentation/screens/artikel_screen/art
 import 'package:raion_intern_15/features/presentation/screens/artikel_screen/artikel_mental.dart';
 import 'package:raion_intern_15/features/presentation/screens/artikel_screen/artikel_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/artikel_screen/list_artikel.dart';
+import 'package:raion_intern_15/features/presentation/screens/chat_screen/chat_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/consultation_screen/consultation.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/end_session.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/upcoming_consultation.dart';
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_manager.dart';
@@ -22,7 +24,7 @@ import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurn
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnaltext.dart';
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnalvoice.dart';
 import 'package:raion_intern_15/features/presentation/provider/bottom_navbar.dart';
-import 'package:raion_intern_15/features/presentation/provider/mood.provider.dart';
+import 'package:raion_intern_15/features/presentation/provider/mood_data_provider.dart';
 import 'package:raion_intern_15/features/presentation/provider/step_provider.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/doctor_profile.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/information_form.dart';
@@ -35,6 +37,7 @@ import 'package:raion_intern_15/features/presentation/screens/homescreen/main_sc
 import 'package:raion_intern_15/features/presentation/screens/meditasi_screen/audio_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/meditasi_screen/meditasi_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/meditasi_screen/video_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/mood_screen/calendar_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/mood_screen/mood_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/onboardingpage.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile.dart';
@@ -99,6 +102,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => PaymentProvider()),
         ChangeNotifierProvider(create: (context) => SpecializationProvider()),
         ChangeNotifierProvider(create: (context) => AppointmentProvider()),
+        ChangeNotifierProvider(create: (context) => MoodProvider()),
         ChangeNotifierProvider(create: (context) => CreateAppoinmentProvider(createAppointmentUseCase: di.sl<CreateAppointment>(), getAppoinment: di.sl<GetAppoinment>(), repository: di.sl<AppointmentRepository>()),),
         ChangeNotifierProvider(create: (context) => DoctorProvider(getDoctor: di.sl<GetDoctor>())),
         ChangeNotifierProvider(create: (context) => JournalSaveProvider()),
@@ -107,25 +111,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Mental Health App',
         theme: AppTheme.lighTheme,
-        home: Consumer<AuthProvider>(
-          builder: (context, authProvider, _) {
-            return StreamBuilder<firebase_auth.User?>(
-              stream: firebase_auth.FirebaseAuth.instance.authStateChanges(),
-              builder: (context, snapshot) {
-                // if (snapshot.connectionState == ConnectionState.waiting) {
-                //   return const Scaffold(
-                //     body: Center(child: CircularProgressIndicator()),
-                //   );
-                // }
-                if (snapshot.hasError) {
-                  return const Scaffold(
-                    body: Center(child: Text('Something went wrong!')),
-                  );
-                }
-                final user = snapshot.data;
-                return user != null ? UpcomingConsultation() : UpcomingConsultation();
-              },
-            );
+        home: StreamBuilder(
+          stream: firebase_auth.FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot) {
+            return snapshot.hasData ?  LoginPage() : const LoginPage();
           },
         ),
         routes: {
@@ -170,7 +159,11 @@ class MyApp extends StatelessWidget {
           '/kesibukantracker': (context) => const Kesibukan(),
           '/stresslevel': (context) => const StressLevel(),
           '/catatan': (context) => const Catatan(),
-          '/end': (context) => const EndSession(),
+          '/end': (context) => EndSession(),
+          '/upcoming': (context) => const UpcomingConsultation(),
+          '/consult': (context) => const Consultation(),
+          '/calendar': (context) => CalendarScreen(),
+          '/chat': (context) => ChatScreen()
         },
       ),
     );

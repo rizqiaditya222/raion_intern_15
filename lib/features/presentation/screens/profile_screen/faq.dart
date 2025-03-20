@@ -16,11 +16,11 @@ class _FaqState extends State<Faq> {
         title: const Text(
           'FAQ',
           style: TextStyle(
-              color: Colors.white,
-              fontFamily: "Nunito",
-              fontSize: 16,
-              fontWeight: FontWeight.w700 // Ubah jadi hitam agar lebih terlihat
-              ),
+            color: Colors.white,
+            fontFamily: "Nunito",
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+          ),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -28,9 +28,9 @@ class _FaqState extends State<Faq> {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: primary[90], // Ganti dari transparent ke putih
-        elevation: 2, // Beri sedikit bayangan agar lebih terlihat
-        toolbarHeight: 80, // Atur tinggi AppBar
+        backgroundColor: primary[90],
+        elevation: 2,
+        toolbarHeight: 80,
         titleSpacing: -5,
       ),
       body: Padding(
@@ -40,56 +40,56 @@ class _FaqState extends State<Faq> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 50),
+
+              // FAQ 1
               InkWell(
                 onTap: () {
                   Navigator.pushNamed(context, '/faqpengenalan');
                 },
                 child: Row(
                   children: [
-                    Text(
-                      'Apa itu Serenia?',
-                      style: TextStyle(
-                        color: primary[90],
-                        fontSize: 16,
-                        fontFamily: "Nunito",
-                        fontWeight: FontWeight.bold,
+                    Expanded(
+                      child: Text(
+                        'Apa itu Serenia?',
+                        style: TextStyle(
+                          color: primary[90],
+                          fontSize: 16,
+                          fontFamily: "Nunito",
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                    const Spacer(),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      size: 30,
-                      color: primary[90],
-                    ),
+                    Icon(Icons.arrow_forward_ios, size: 30, color: primary[90]),
                   ],
                 ),
               ),
               const SizedBox(height: 30),
+
+              // FAQ 2
               InkWell(
                 onTap: () {
                   Navigator.pushNamed(context, '/faqbagaimana');
                 },
                 child: Row(
                   children: [
-                    Text(
-                      'Bagaimana Serenia bekerja?',
-                      style: TextStyle(
-                        color: primary[90],
-                        fontSize: 16,
-                        fontFamily: "Nunito",
-                        fontWeight: FontWeight.bold,
+                    Expanded(
+                      child: Text(
+                        'Bagaimana Serenia bekerja?',
+                        style: TextStyle(
+                          color: primary[90],
+                          fontSize: 16,
+                          fontFamily: "Nunito",
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                    const Spacer(),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      size: 30,
-                      color: primary[90],
-                    ),
+                    Icon(Icons.arrow_forward_ios, size: 30, color: primary[90]),
                   ],
                 ),
               ),
               const SizedBox(height: 30),
+
+              // FAQ 3 (Diperbaiki)
               InkWell(
                 onTap: () {
                   Navigator.pushNamed(context, '/faqpayment');
@@ -97,62 +97,24 @@ class _FaqState extends State<Faq> {
                 child: Row(
                   children: [
                     Expanded(
-                      child: Wrap(
-                        children: [
-                          Text(
-                            'Apakah Serenia dapat digunakan secara gratis?',
-                            style: TextStyle(
-                              color: primary[90],
-                              fontSize: 16,
-                              fontFamily: "Nunito",
-                              fontWeight: FontWeight.bold,
-                            ),
-
-                          ),
-                        ),
-                        const Spacer(),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 30,
+                      child: Text(
+                        'Apakah Serenia dapat digunakan secara gratis?',
+                        style: TextStyle(
                           color: primary[90],
+                          fontSize: 16,
+                          fontFamily: "Nunito",
+                          fontWeight: FontWeight.bold,
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 30),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/faqpayment');
-                    },
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Wrap(
-                            children: [
-                              Text(
-                                'Apakah Serenia dapat digunakan secara gratis?',
-                                style: TextStyle(
-                                  color: primary[90],
-                                  fontSize: 16,
-                                  fontFamily: "Nunito",
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 30,
-                          color: primary[90],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                    Icon(Icons.arrow_forward_ios, size: 30, color: primary[90]),
+                  ],
+                ),
               ),
-            ),
-            ),
-        );
-    }
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }

@@ -44,6 +44,7 @@ flutter:
     - lib/assets/images/check.png
     - lib/assets/images/chart.png
     - lib/assets/images/hug.png
+    - lib/assets/images/walk.png
     - lib/assets/images/Mastercard.png
     - lib/assets/images/navbar_icon/book.png
     - lib/assets/images/navbar_icon/health.png
