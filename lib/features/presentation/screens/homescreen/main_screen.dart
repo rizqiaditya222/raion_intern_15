@@ -36,6 +36,7 @@ class MainScreen extends StatelessWidget {
       body: screens[bottomProvider.currentIndex],
       floatingActionButton: Transform.translate(
         offset: Offset(0, -10),
+
         child: SizedBox(
           width: 65,
           height: 65,
@@ -55,6 +56,7 @@ class MainScreen extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
       bottomNavigationBar: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -73,6 +75,7 @@ class MainScreen extends StatelessWidget {
               ),
             ),
           ),
+
           Container(
             height: 80, // Ubah dari 80 ke 70
             decoration: BoxDecoration(
@@ -80,10 +83,9 @@ class MainScreen extends StatelessWidget {
             ),
             child: Theme(
               data: Theme.of(context).copyWith(
-                splashFactory:
-                    NoSplash.splashFactory, // Menghilangkan efek sentuhan
-                highlightColor:
-                    Colors.transparent, // Menghilangkan efek highlight
+
+                splashFactory: NoSplash.splashFactory, // Menghilangkan efek sentuhan
+                highlightColor: Colors.transparent, 
               ),
               child: BottomNavigationBar(
                 currentIndex: bottomProvider.currentIndex,
@@ -108,8 +110,8 @@ class MainScreen extends StatelessWidget {
                     activeIcon: Image.asset(health_active, height: 26),
                   ),
                   BottomNavigationBarItem(
-                    icon: Container(
-                        width: 0), // Kosong agar tidak memengaruhi layout
+
+                    icon: Container(width: 0), // Kosong agar tidak memengaruhi layout
                     label: "",
                   ),
                   BottomNavigationBarItem(
@@ -128,6 +130,7 @@ class MainScreen extends StatelessWidget {
           ),
         ],
       ),
+
     );
   }
 }

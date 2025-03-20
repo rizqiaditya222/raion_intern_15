@@ -96,13 +96,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => PaymentProvider()),
         ChangeNotifierProvider(create: (context) => SpecializationProvider()),
         ChangeNotifierProvider(create: (context) => AppointmentProvider()),
-        ChangeNotifierProvider(
-          create: (context) => CreateAppoinmentProvider(
-              createAppointmentUseCase: di.sl<CreateAppointment>(),
-              getAppoinment: di.sl<GetAppoinment>()),
-        ),
-        ChangeNotifierProvider(
-            create: (context) => DoctorProvider(getDoctor: di.sl<GetDoctor>())),
+        ChangeNotifierProvider(create: (context) => CreateAppoinmentProvider(createAppointmentUseCase: di.sl<CreateAppointment>(), getAppoinment: di.sl<GetAppoinment>()),),
+        ChangeNotifierProvider(create: (context) => DoctorProvider(getDoctor: di.sl<GetDoctor>())),
         ChangeNotifierProvider(create: (context) => JournalSaveProvider()),
       ],
       child: MaterialApp(

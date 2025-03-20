@@ -21,6 +21,7 @@ class _FaqState extends State<Faq> {
               fontSize: 16,
               fontWeight: FontWeight.w700 // Ubah jadi hitam agar lebih terlihat
               ),
+
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -60,6 +61,10 @@ class _FaqState extends State<Faq> {
                       Icons.arrow_forward_ios,
                       size: 30,
                       color: primary[90],
+                      fontSize: 20,
+                      fontFamily: "Nunito",
+                      fontWeight: FontWeight.bold,
+
                     ),
                   ],
                 ),
@@ -85,6 +90,9 @@ class _FaqState extends State<Faq> {
                       Icons.arrow_forward_ios,
                       size: 30,
                       color: primary[90],
+                      fontSize: 20,
+                      fontFamily: "Nunito",
+                      fontWeight: FontWeight.bold,
                     ),
                   ],
                 ),
@@ -107,6 +115,7 @@ class _FaqState extends State<Faq> {
                               fontFamily: "Nunito",
                               fontWeight: FontWeight.bold,
                             ),
+
                           ),
                         ],
                       ),

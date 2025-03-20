@@ -41,8 +41,7 @@ class _LoginPageState extends State<LoginPage> {
         context,
       );
     } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(e.toString())));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
     } finally {
       setState(() {
         _isLoading = false;
@@ -80,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                           hintText: "example@gmail.com",
                           icon: mail,
                           validator: (val) =>
-                              val!.isEmpty ? 'Enter an email address' : null,
+                          val!.isEmpty ? 'Enter an email address' : null,
                         ),
                         FormFieldWidget(
                           controller: _passwordController,
@@ -103,9 +102,9 @@ class _LoginPageState extends State<LoginPage> {
                         _isLoading
                             ? const CircularProgressIndicator()
                             : SubmitButton(
-                                myText: "Sign in",
-                                onPressed: _handleLogin,
-                              ),
+                          myText: "Sign in",
+                          onPressed: _handleLogin,
+                        ),
                         const SizedBox(height: 20),
                         GoogleButton(myText: "Login with Google"),
                       ],
@@ -128,8 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                                 ?.copyWith(fontWeight: FontWeight.bold),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                Navigator.pushReplacementNamed(
-                                    context, '/registerPatient');
+                                Navigator.pushReplacementNamed(context, '/registerPatient');
                               },
                           ),
                         ],

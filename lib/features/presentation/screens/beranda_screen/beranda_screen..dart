@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:raion_intern_15/assets/color.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/profile_screen.dart';
+
 import '../../provider/auth_provider.dart';
 
 class BerandaScreen extends StatefulWidget {
@@ -12,6 +13,7 @@ class BerandaScreen extends StatefulWidget {
 }
 
 class _BerandaScreenState extends State<BerandaScreen> {
+
   bool _showFirstContainer = true;
 
   @override
@@ -359,6 +361,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     final authProvider = Provider.of<AuthProvider>(context);
     final user = authProvider.currentUser;
 
@@ -371,6 +374,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
         preferredSize: const Size.fromHeight(120),
         child: AppBar(
           backgroundColor: const Color(0xFF193A63),
+
           elevation: 0,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -410,7 +414,8 @@ class _BerandaScreenState extends State<BerandaScreen> {
                   children: [
                     Text(
                       "Hai, ${user?.fullName}!",
-                      style: const TextStyle(
+
+                      style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -423,6 +428,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
                           width: 16,
                           height: 16,
                           fit: BoxFit.cover,
+
                         ),
                         const SizedBox(width: 4),
                         const Text(
@@ -479,6 +485,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/sleeptracker');
                     },
+
                     child: const Text(
                       'Lihat semua',
                       style: TextStyle(
@@ -533,6 +540,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
                         Colors.white,
                         Color(0xFFA688FD),
                       ),
+
                     ),
                   ],
                 ),
@@ -556,6 +564,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/artikel');
                     },
+
                     child: const Text(
                       'Lihat semua',
                       style: TextStyle(

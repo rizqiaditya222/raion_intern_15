@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:raion_intern_15/assets/color.dart';
 import 'package:raion_intern_15/features/presentation/provider/auth_provider.dart';
-
 class Akun extends StatefulWidget {
   const Akun({super.key});
 
@@ -77,18 +76,18 @@ class _AkunState extends State<Akun> {
             ),
             suffixIcon: isPassword
                 ? IconButton(
-                    icon: Icon(
-                      _obscurePassword
-                          ? Icons.visibility_off
-                          : Icons.visibility,
-                      color: Colors.black,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _obscurePassword = !_obscurePassword;
-                      });
-                    },
-                  )
+              icon: Icon(
+                _obscurePassword
+                    ? Icons.visibility_off
+                    : Icons.visibility,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                setState(() {
+                  _obscurePassword = !_obscurePassword;
+                });
+              },
+            )
                 : null,
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
@@ -119,6 +118,7 @@ class _AkunState extends State<Akun> {
               fontSize: 16,
               fontWeight: FontWeight.w700 // Ubah jadi hitam agar lebih terlihat
               ),
+
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -147,7 +147,7 @@ class _AkunState extends State<Akun> {
                         shape: BoxShape.circle,
                         color: Colors.grey.shade300,
                         border:
-                            Border.all(color: Colors.grey.shade300, width: 1),
+                        Border.all(color: Colors.grey.shade300, width: 1),
                       ),
                       child: Icon(Icons.person, size: 60, color: Colors.grey),
                     ),

@@ -9,7 +9,6 @@ class Jurnalselect extends StatefulWidget {
 }
 
 class _JurnalselectState extends State<Jurnalselect> {
-  // Track which journal type is selected
   String selectedJournalType = ""; // Empty means nothing selected
 
   @override
@@ -23,6 +22,7 @@ class _JurnalselectState extends State<Jurnalselect> {
               fontFamily: "Nunito",
               fontSize: 16,
               fontWeight: FontWeight.w700),
+
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -117,6 +117,7 @@ class _JurnalselectState extends State<Jurnalselect> {
                                 ),
                               ),
                               const SizedBox(width: 16),
+
                               Text(
                                 "Jurnal Suara",
                                 style: TextStyle(
@@ -142,6 +143,7 @@ class _JurnalselectState extends State<Jurnalselect> {
 
                       const SizedBox(height: 4),
 
+\
                       Text(
                         "Ceritakan dengan merekam suara apa yang terjadi hari ini. Kami akan mentranskripsikannya.",
                         style: TextStyle(
@@ -177,17 +179,20 @@ class _JurnalselectState extends State<Jurnalselect> {
                   setState(() {
                     selectedJournalType = "text";
                   });
+
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: [
+
                               Container(
                                 width: 40,
                                 height: 40,
@@ -201,6 +206,7 @@ class _JurnalselectState extends State<Jurnalselect> {
                                 ),
                               ),
                               const SizedBox(width: 16),
+
                               Text(
                                 "Jurnal Teks",
                                 style: TextStyle(
@@ -224,6 +230,7 @@ class _JurnalselectState extends State<Jurnalselect> {
                         ],
                       ),
                       const SizedBox(height: 4),
+
                       Text(
                         "Tuliskan ceritamu di sini! Bagikan apa yang terjadi hari ini, perasaanmu, atau hal-hal yang ingin kamu ingat.",
                         style: TextStyle(
