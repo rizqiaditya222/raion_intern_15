@@ -609,6 +609,9 @@ class _BerandaScreenState extends State<BerandaScreen> {
                   'lib/assets/images/beranda/artikel3.png',
                 ),
               ),
+              SizedBox(
+                height: 24,
+              )
             ],
           ),
         ),
