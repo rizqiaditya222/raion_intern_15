@@ -24,6 +24,7 @@ dev_dependencies:
   google_fonts: ^6.2.1
   table_calendar: ^3.2.0
   intl: ^0.20.2
+  shared_preferences: ^2.2.2
 
 flutter:
   uses-material-design: true
@@ -42,6 +43,7 @@ flutter:
     - lib/assets/images/doctor.png
     - lib/assets/images/check.png
     - lib/assets/images/chart.png
+    - lib/assets/images/hug.png
     - lib/assets/images/Mastercard.png
     - lib/assets/images/navbar_icon/book.png
     - lib/assets/images/navbar_icon/health.png
@@ -106,6 +108,8 @@ flutter:
     - lib/assets/images/consultation/information/online.png
     - lib/assets/images/consultation/information/weight.png
     - lib/assets/images/consultation/information/weight.png
+    - lib/assets/images/consultation/time.png
+    - lib/assets/images/consultation/money.png
     - lib/assets/images/test_result/deepbreath.png
     - lib/assets/images/artikel/bantuankecil.png
     - lib/assets/images/artikel/empati.png

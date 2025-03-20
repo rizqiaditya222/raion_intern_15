@@ -143,7 +143,7 @@ class _JurnalselectState extends State<Jurnalselect> {
 
                       const SizedBox(height: 4),
 
-\
+
                       Text(
                         "Ceritakan dengan merekam suara apa yang terjadi hari ini. Kami akan mentranskripsikannya.",
                         style: TextStyle(

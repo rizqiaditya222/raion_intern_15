@@ -38,7 +38,7 @@ class AuthProvider with ChangeNotifier {
   _clearError();
   try {
     UserEntity user = await getUserProfile(userId);
-    _currentUser = user;  
+    _currentUser = user;
     notifyListeners();
   } catch (e) {
     _setError(e.toString());
@@ -105,7 +105,6 @@ Future<void> login(String email, String password, BuildContext context) async {
         password: password,
         fullName: fullName,
       ));
-      Navigator.pop(context);
     } catch (e) {
       _setError(e.toString());
     } finally {

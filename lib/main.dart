@@ -14,6 +14,8 @@ import 'package:raion_intern_15/features/presentation/screens/artikel_screen/art
 import 'package:raion_intern_15/features/presentation/screens/artikel_screen/artikel_mental.dart';
 import 'package:raion_intern_15/features/presentation/screens/artikel_screen/artikel_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/artikel_screen/list_artikel.dart';
+import 'package:raion_intern_15/features/presentation/screens/consultation_screen/end_session.dart';
+import 'package:raion_intern_15/features/presentation/screens/consultation_screen/upcoming_consultation.dart';
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_manager.dart';
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnalselect.dart';
@@ -38,12 +40,10 @@ import 'package:raion_intern_15/features/presentation/screens/onboardingpage.dar
 import 'package:raion_intern_15/features/presentation/screens/profile.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/akun.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/faq.dart';
-import 'package:raion_intern_15/features/presentation/screens/profile_screen/faq_bagaimana.dart';
-import 'package:raion_intern_15/features/presentation/screens/profile_screen/faq_payment.dart';
-import 'package:raion_intern_15/features/presentation/screens/profile_screen/faq_pengenalan.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/privacy_policy.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/profile_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/term_of_service.dart';
+import 'features/domain/repositorires/appointment_repository.dart';
 import 'package:raion_intern_15/features/presentation/screens/test_screen/hasil_hidup.dart';
 import 'package:raion_intern_15/features/presentation/screens/test_screen/hasil_negatif.dart';
 import 'package:raion_intern_15/features/presentation/screens/test_screen/hasil_positif.dart';
@@ -56,6 +56,9 @@ import 'package:raion_intern_15/features/presentation/screens/today_tracker/slee
 import 'package:raion_intern_15/features/presentation/screens/today_tracker/stress_level.dart';
 import 'features/domain/usecases/get_doctor.dart';
 import 'features/presentation/screens/login_screen/login_page.dart';
+import 'features/presentation/screens/profile_screen/faq_bagaimana.dart';
+import 'features/presentation/screens/profile_screen/faq_payment.dart';
+import 'features/presentation/screens/profile_screen/faq_pengenalan.dart';
 import 'features/presentation/screens/signup_screen/sign_up_patients.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';
@@ -96,7 +99,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => PaymentProvider()),
         ChangeNotifierProvider(create: (context) => SpecializationProvider()),
         ChangeNotifierProvider(create: (context) => AppointmentProvider()),
-        ChangeNotifierProvider(create: (context) => CreateAppoinmentProvider(createAppointmentUseCase: di.sl<CreateAppointment>(), getAppoinment: di.sl<GetAppoinment>()),),
+        ChangeNotifierProvider(create: (context) => CreateAppoinmentProvider(createAppointmentUseCase: di.sl<CreateAppointment>(), getAppoinment: di.sl<GetAppoinment>(), repository: di.sl<AppointmentRepository>()),),
         ChangeNotifierProvider(create: (context) => DoctorProvider(getDoctor: di.sl<GetDoctor>())),
         ChangeNotifierProvider(create: (context) => JournalSaveProvider()),
       ],
@@ -120,14 +123,14 @@ class MyApp extends StatelessWidget {
                   );
                 }
                 final user = snapshot.data;
-                return user != null ? Onboardingpage() : Onboardingpage();
+                return user != null ? UpcomingConsultation() : UpcomingConsultation();
               },
             );
           },
         ),
         routes: {
           '/registerPatient': (context) => const RegisterCustomerScreen(),
-          '/login': (context) => const LoginPage(),
+          '/login': (context) => LoginPage(),
           '/moodScreen': (context) => MoodScreen(),
           '/loading': (context) => LoadingScreen(),
           '/information': (context) => InformationForm(),
@@ -136,7 +139,6 @@ class MyApp extends StatelessWidget {
           '/success': (context) => PaymentSuccess(),
           '/search': (context) => SearchDoctor(),
           '/main': (context) => MainScreen(),
-          '/moodScreen': (context) => MoodScreen(),
           '/faq': (context) => const Faq(),
           '/faqpengenalan': (context) => const FaqPengenalan(),
           '/faqbagaimana': (context) => const FaqBagaimana(),
@@ -168,6 +170,7 @@ class MyApp extends StatelessWidget {
           '/kesibukantracker': (context) => const Kesibukan(),
           '/stresslevel': (context) => const StressLevel(),
           '/catatan': (context) => const Catatan(),
+          '/end': (context) => const EndSession(),
         },
       ),
     );

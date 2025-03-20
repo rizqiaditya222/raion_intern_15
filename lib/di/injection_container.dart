@@ -54,6 +54,7 @@ sl.registerLazySingleton<AppointmentRepository>(() => AppointmentRepositoryImpl(
 
   sl.registerLazySingleton<DoctorProvider>(() => DoctorProvider(getDoctor: sl<GetDoctor>()));
   sl.registerLazySingleton<CreateAppoinmentProvider>(() => CreateAppoinmentProvider(
+    repository: sl<AppointmentRepository>(),
     createAppointmentUseCase: sl<CreateAppointment>(),
     getAppoinment: sl<GetAppoinment>()
   ));

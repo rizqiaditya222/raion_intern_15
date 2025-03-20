@@ -26,7 +26,7 @@ class PaymentSuccess extends StatelessWidget {
               SubmitButton(
                   myText: "Kembali ke Beranda",
                   onPressed: (){
-                    Navigator.pushReplacementNamed(context, "/main");
+                    Navigator.pushReplacementNamed(context, "/end");
                   },
                   )
             ],
