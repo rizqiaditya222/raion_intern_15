@@ -33,10 +33,10 @@ class MainScreen extends StatelessWidget {
     final bottomProvider = Provider.of<BottomNavbarProvider>(context);
     final moodProvider = Provider.of<MoodProvider>(context);
     return Scaffold(
-      body:
-      screens[bottomProvider.currentIndex],
+      body: screens[bottomProvider.currentIndex],
       floatingActionButton: Transform.translate(
-        offset: Offset(0, -10 ),
+        offset: Offset(0, -10),
+
         child: SizedBox(
           width: 65,
           height: 65,
@@ -50,13 +50,13 @@ class MainScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(50),
               side: BorderSide(color: Colors.white, width: 5),
             ),
-            child: Image.asset(moodProvider.selectedMoodImage, width: 65, height: 65),
+            child: Image.asset(moodProvider.selectedMoodImage,
+                width: 65, height: 65),
           ),
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
-      floatingActionButtonLocation:
-      FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -83,8 +83,9 @@ class MainScreen extends StatelessWidget {
             ),
             child: Theme(
               data: Theme.of(context).copyWith(
+
                 splashFactory: NoSplash.splashFactory, // Menghilangkan efek sentuhan
-                highlightColor: Colors.transparent, // Menghilangkan efek highlight
+                highlightColor: Colors.transparent, 
               ),
               child: BottomNavigationBar(
                 currentIndex: bottomProvider.currentIndex,
@@ -109,6 +110,7 @@ class MainScreen extends StatelessWidget {
                     activeIcon: Image.asset(health_active, height: 26),
                   ),
                   BottomNavigationBarItem(
+
                     icon: Container(width: 0), // Kosong agar tidak memengaruhi layout
                     label: "",
                   ),

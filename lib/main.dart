@@ -10,6 +10,10 @@ import 'package:raion_intern_15/features/presentation/provider/form_provider.dar
 import 'package:raion_intern_15/features/presentation/provider/payment_provider.dart';
 import 'package:raion_intern_15/features/presentation/provider/specialization_provider.dart';
 import 'package:raion_intern_15/features/presentation/provider/create_appoinment_provider.dart';
+import 'package:raion_intern_15/features/presentation/screens/artikel_screen/artikel_bipolar.dart';
+import 'package:raion_intern_15/features/presentation/screens/artikel_screen/artikel_mental.dart';
+import 'package:raion_intern_15/features/presentation/screens/artikel_screen/artikel_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/artikel_screen/list_artikel.dart';
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_manager.dart';
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnalselect.dart';
@@ -26,14 +30,30 @@ import 'package:raion_intern_15/features/presentation/screens/consultation_scree
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/specialization.dart';
 import 'package:raion_intern_15/features/presentation/screens/consultation_screen/stepper.dart';
 import 'package:raion_intern_15/features/presentation/screens/homescreen/main_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/meditasi_screen/audio_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/meditasi_screen/meditasi_screen.dart';
+import 'package:raion_intern_15/features/presentation/screens/meditasi_screen/video_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/mood_screen/mood_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/onboardingpage.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/akun.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/faq.dart';
+import 'package:raion_intern_15/features/presentation/screens/profile_screen/faq_bagaimana.dart';
+import 'package:raion_intern_15/features/presentation/screens/profile_screen/faq_payment.dart';
+import 'package:raion_intern_15/features/presentation/screens/profile_screen/faq_pengenalan.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/privacy_policy.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/profile_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/term_of_service.dart';
+import 'package:raion_intern_15/features/presentation/screens/test_screen/hasil_hidup.dart';
+import 'package:raion_intern_15/features/presentation/screens/test_screen/hasil_negatif.dart';
+import 'package:raion_intern_15/features/presentation/screens/test_screen/hasil_positif.dart';
+import 'package:raion_intern_15/features/presentation/screens/test_screen/test_gaya_hidup.dart';
+import 'package:raion_intern_15/features/presentation/screens/test_screen/test_negatif.dart';
+import 'package:raion_intern_15/features/presentation/screens/test_screen/test_positif.dart';
+import 'package:raion_intern_15/features/presentation/screens/today_tracker/catatan.dart';
+import 'package:raion_intern_15/features/presentation/screens/today_tracker/kesibukan.dart';
+import 'package:raion_intern_15/features/presentation/screens/today_tracker/sleep_tracker.dart';
+import 'package:raion_intern_15/features/presentation/screens/today_tracker/stress_level.dart';
 import 'features/domain/usecases/get_doctor.dart';
 import 'features/presentation/screens/login_screen/login_page.dart';
 import 'features/presentation/screens/signup_screen/sign_up_patients.dart';
@@ -118,6 +138,9 @@ class MyApp extends StatelessWidget {
           '/main': (context) => MainScreen(),
           '/moodScreen': (context) => MoodScreen(),
           '/faq': (context) => const Faq(),
+          '/faqpengenalan': (context) => const FaqPengenalan(),
+          '/faqbagaimana': (context) => const FaqBagaimana(),
+          '/faqpayment': (context) => const FaqPayment(),
           '/privacypolicy': (context) => const PrivacyPolicy(),
           '/termofService': (context) => const TermOfService(),
           '/akun': (context) => const Akun(),
@@ -127,6 +150,24 @@ class MyApp extends StatelessWidget {
           '/jurnalscreen': (context) => const JurnalScreen(),
           '/jurnalmanager': (context) => const JurnalManager(),
           '/profile': (context) => DoctorProfile(),
+          '/profileuser': (context) => ProfileScreen(),
+          '/testpositif': (context) => const TestPositif(),
+          '/testnegatif': (context) => const TestNegatif(),
+          '/testhidup': (context) => const TestGayaHidup(),
+          '/hasilnegatif': (context) => const HasilNegatif(),
+          '/hasilpositif': (context) => const HasilPositif(),
+          '/hasilhidup': (context) => const HasilHidup(),
+          '/artikel': (context) => const ArtikelScreen(),
+          '/artikelmental': (context) => const ArtikelMental(),
+          '/artikelbipolar': (context) => const ArtikelBipolar(),
+          '/listartikel': (context) => const ListArtikel(),
+          '/meditasi': (context) => const MeditasiScreen(),
+          '/audio': (context) => const AudioScreen(),
+          '/video': (context) => const VideoScreen(),
+          '/sleeptracker': (context) => const SleepTracker(),
+          '/kesibukantracker': (context) => const Kesibukan(),
+          '/stresslevel': (context) => const StressLevel(),
+          '/catatan': (context) => const Catatan(),
         },
       ),
     );

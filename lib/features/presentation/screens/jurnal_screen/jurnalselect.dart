@@ -9,6 +9,8 @@ class Jurnalselect extends StatefulWidget {
 }
 
 class _JurnalselectState extends State<Jurnalselect> {
+  String selectedJournalType = ""; // Empty means nothing selected
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,9 +18,11 @@ class _JurnalselectState extends State<Jurnalselect> {
         title: const Text(
           'Jurnal',
           style: TextStyle(
-            color: Colors.white,
-            fontFamily: "Nunito",
-          ),
+              color: Colors.white,
+              fontFamily: "Nunito",
+              fontSize: 16,
+              fontWeight: FontWeight.w700),
+
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -69,15 +73,24 @@ class _JurnalselectState extends State<Jurnalselect> {
 
             // Journal Voice Card
             Card(
-              color: Colors.white,
+              color: selectedJournalType == "voice"
+                  ? Color(0xFFE6EBF2)
+                  : Colors.white,
               elevation: 0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
-                side: BorderSide(color: Color(0xFF193A63)),
+                side: BorderSide(
+                  color: selectedJournalType == "voice"
+                      ? primary[90]!
+                      : Color(0xFF193A63),
+                  width: selectedJournalType == "voice" ? 2 : 1,
+                ),
               ),
               child: InkWell(
                 onTap: () {
-                  Navigator.pushNamed(context, '/jurnalvoice');
+                  setState(() {
+                    selectedJournalType = "voice";
+                  });
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -103,8 +116,8 @@ class _JurnalselectState extends State<Jurnalselect> {
                                   color: Colors.white,
                                 ),
                               ),
-                              const SizedBox(
-                                  width: 16), // Spasi antara ikon dan teks
+                              const SizedBox(width: 16),
+
                               Text(
                                 "Jurnal Suara",
                                 style: TextStyle(
@@ -116,17 +129,21 @@ class _JurnalselectState extends State<Jurnalselect> {
                               ),
                             ],
                           ),
-                          const Icon(
-                            Icons.chevron_right,
-                            color: Color(0xFF193A63),
-                          ),
+                          selectedJournalType == "voice"
+                              ? Icon(
+                                  Icons.chevron_right,
+                                  color: primary[90],
+                                )
+                              : Icon(
+                                  Icons.chevron_right,
+                                  color: Color(0xFF193A63),
+                                ),
                         ],
                       ),
 
-                      const SizedBox(
-                          height: 4), // Spasi antara judul dan deskripsi
+                      const SizedBox(height: 4),
 
-                      // Deskripsi jurnal suara (DI LUAR ROW)
+\
                       Text(
                         "Ceritakan dengan merekam suara apa yang terjadi hari ini. Kami akan mentranskripsikannya.",
                         style: TextStyle(
@@ -143,30 +160,39 @@ class _JurnalselectState extends State<Jurnalselect> {
 
             const SizedBox(height: 16),
 
-            // Journal Text Card
             Card(
-              color: Colors.white,
+              color: selectedJournalType == "text"
+                  ? Color(0xFFE6EBF2)
+                  : Colors.white,
               elevation: 0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
-                side: BorderSide(color: Color(0xFF193A63)),
+                side: BorderSide(
+                  color: selectedJournalType == "text"
+                      ? primary[90]!
+                      : Color(0xFF193A63),
+                  width: selectedJournalType == "text" ? 2 : 1,
+                ),
               ),
               child: InkWell(
                 onTap: () {
-                  Navigator.pushNamed(context, '/jurnaltext');
+                  setState(() {
+                    selectedJournalType = "text";
+                  });
+
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Row untuk judul dan ikon panah
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: [
-                              // Ikon lingkaran
+
                               Container(
                                 width: 40,
                                 height: 40,
@@ -179,8 +205,8 @@ class _JurnalselectState extends State<Jurnalselect> {
                                   color: Colors.white,
                                 ),
                               ),
-                              const SizedBox(
-                                  width: 16), // Spasi antara ikon dan teks
+                              const SizedBox(width: 16),
+
                               Text(
                                 "Jurnal Teks",
                                 style: TextStyle(
@@ -192,17 +218,19 @@ class _JurnalselectState extends State<Jurnalselect> {
                               ),
                             ],
                           ),
-                          const Icon(
-                            Icons.chevron_right,
-                            color: Color(0xFF193A63),
-                          ),
+                          selectedJournalType == "text"
+                              ? Icon(
+                                  Icons.chevron_right,
+                                  color: primary[90],
+                                )
+                              : Icon(
+                                  Icons.chevron_right,
+                                  color: Color(0xFF193A63),
+                                ),
                         ],
                       ),
+                      const SizedBox(height: 4),
 
-                      const SizedBox(
-                          height: 4), // Spasi antara judul dan deskripsi
-
-                      // Deskripsi jurnal teks (DI LUAR ROW)
                       Text(
                         "Tuliskan ceritamu di sini! Bagikan apa yang terjadi hari ini, perasaanmu, atau hal-hal yang ingin kamu ingat.",
                         style: TextStyle(
@@ -223,12 +251,19 @@ class _JurnalselectState extends State<Jurnalselect> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/jurnaltext');
-                },
+                onPressed: selectedJournalType.isEmpty
+                    ? null
+                    : () {
+                        if (selectedJournalType == "text") {
+                          Navigator.pushNamed(context, '/jurnaltext');
+                        } else if (selectedJournalType == "voice") {
+                          Navigator.pushNamed(context, '/jurnalvoice');
+                        }
+                      },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primary[90],
                   foregroundColor: Colors.white,
+                  disabledBackgroundColor: Colors.grey,
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),

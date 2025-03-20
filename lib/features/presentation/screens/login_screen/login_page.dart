@@ -64,7 +64,8 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height: MediaQuery.of(context).size.height * 0.15),
                   WelcomeSection(
                     title: "Selamat datang!",
-                    subtitle: "Silakan login menggunakan email yang sudah terdaftar",
+                    subtitle:
+                        "Silakan login menggunakan email yang sudah terdaftar",
                   ),
                   Form(
                     key: _formKey,
@@ -94,7 +95,8 @@ class _LoginPageState extends State<LoginPage> {
                         Align(
                           alignment: Alignment.centerRight,
                           child: TextButton(
-                              onPressed: () {}, child: Text("Lupa kata sandi?")),
+                              onPressed: () {},
+                              child: Text("Lupa kata sandi?")),
                         ),
                         const SizedBox(height: 20),
                         _isLoading

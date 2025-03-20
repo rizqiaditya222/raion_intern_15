@@ -16,9 +16,12 @@ class _FaqState extends State<Faq> {
         title: const Text(
           'FAQ',
           style: TextStyle(
-            color: Colors.white,
-            fontFamily: "Nunito", // Ubah jadi hitam agar lebih terlihat
-          ),
+              color: Colors.white,
+              fontFamily: "Nunito",
+              fontSize: 16,
+              fontWeight: FontWeight.w700 // Ubah jadi hitam agar lebih terlihat
+              ),
+
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -37,76 +40,93 @@ class _FaqState extends State<Faq> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 50,
+              const SizedBox(height: 50),
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/faqpengenalan');
+                },
+                child: Row(
+                  children: [
+                    Text(
+                      'Apa itu Serenia?',
+                      style: TextStyle(
+                        color: primary[90],
+                        fontSize: 16,
+                        fontFamily: "Nunito",
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Spacer(),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 30,
+                      color: primary[90],
+                      fontSize: 20,
+                      fontFamily: "Nunito",
+                      fontWeight: FontWeight.bold,
+
+                    ),
+                  ],
+                ),
               ),
-              Row(
-                children: [
-                  Text(
-                    'Apa itu Serenia?',
-                    style: TextStyle(
+              const SizedBox(height: 30),
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/faqbagaimana');
+                },
+                child: Row(
+                  children: [
+                    Text(
+                      'Bagaimana Serenia bekerja?',
+                      style: TextStyle(
+                        color: primary[90],
+                        fontSize: 16,
+                        fontFamily: "Nunito",
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Spacer(),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 30,
                       color: primary[90],
                       fontSize: 20,
                       fontFamily: "Nunito",
                       fontWeight: FontWeight.bold,
                     ),
-                  ),
-                  Spacer(),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 30,
-                    color: primary[90],
-                  ),
-                ],
+                  ],
+                ),
               ),
-              SizedBox(
-                height: 30,
-              ),
-              Row(
-                children: [
-                  Text(
-                    'Bagaimana Serenia bekerja?',
-                    style: TextStyle(
-                      color: primary[90],
-                      fontSize: 20,
-                      fontFamily: "Nunito",
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Spacer(),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 30,
-                    color: primary[90],
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Wrap(
-                      children: [
-                        Text(
-                          'Apakah Serenia dapat digunakan secara gratis?',
-                          style: TextStyle(
-                            color: primary[90],
-                            fontSize: 20,
-                            fontFamily: "Nunito",
-                            fontWeight: FontWeight.bold,
+              const SizedBox(height: 30),
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/faqpayment');
+                },
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Wrap(
+                        children: [
+                          Text(
+                            'Apakah Serenia dapat digunakan secara gratis?',
+                            style: TextStyle(
+                              color: primary[90],
+                              fontSize: 16,
+                              fontFamily: "Nunito",
+                              fontWeight: FontWeight.bold,
+                            ),
+
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 30,
-                    color: primary[90],
-                  ),
-                ],
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 30,
+                      color: primary[90],
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

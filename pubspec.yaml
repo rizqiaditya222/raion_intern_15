@@ -106,3 +106,31 @@ flutter:
     - lib/assets/images/consultation/information/online.png
     - lib/assets/images/consultation/information/weight.png
     - lib/assets/images/consultation/information/weight.png
+    - lib/assets/images/test_result/deepbreath.png
+    - lib/assets/images/artikel/bantuankecil.png
+    - lib/assets/images/artikel/empati.png
+    - lib/assets/images/artikel/kecemasan.png
+    - lib/assets/images/artikel/kesehatan_mental.png
+    - lib/assets/images/artikel/bipolar.png
+    - lib/assets/images/artikel/bipolar2.png
+    - lib/assets/images/artikel/bipolar3.png
+    - lib/assets/images/artikel/bipolar4.png
+    - lib/assets/images/artikel/bipolar5.png
+    - lib/assets/images/artikel/bipolar6.png
+    - lib/assets/images/testmanager/testhidup.png
+    - lib/assets/images/testmanager/testnegatif.png
+    - lib/assets/images/testmanager/testpositif.png
+    - lib/assets/images/loading/check.png
+    - lib/assets/images/meditasi/video_image/video1.png
+    - lib/assets/images/meditasi/video_image/video2.png
+    - lib/assets/images/meditasi/video_image/video3.png
+    - lib/assets/images/meditasi/video_image/video4.png
+    - lib/assets/images/meditasi/video_image/video5.png
+    - lib/assets/images/meditasi/video_image/video6.png
+    - lib/assets/images/meditasi/video_image/video7.png
+    - lib/assets/images/meditasi/video_image/video8.png
+    - lib/assets/images/meditasi/video_image/video9.png
+    - lib/assets/images/meditasi/video_image/konten_video.png
+    - lib/assets/images/meditasi/audio_image/audio_screen.png
+    - lib/assets/images/catatan/anxiety_catatan.png
+

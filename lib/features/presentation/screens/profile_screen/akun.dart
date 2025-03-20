@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:raion_intern_15/assets/color.dart';
 import 'package:raion_intern_15/features/presentation/provider/auth_provider.dart';
-
-
 class Akun extends StatefulWidget {
   const Akun({super.key});
 
@@ -115,9 +113,12 @@ class _AkunState extends State<Akun> {
         title: const Text(
           'Akun',
           style: TextStyle(
-            color: Colors.white,
-            fontFamily: "Nunito",
-          ),
+              color: Colors.white,
+              fontFamily: "Nunito",
+              fontSize: 16,
+              fontWeight: FontWeight.w700 // Ubah jadi hitam agar lebih terlihat
+              ),
+
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
