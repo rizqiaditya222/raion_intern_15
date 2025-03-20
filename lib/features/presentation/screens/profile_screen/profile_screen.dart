@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:raion_intern_15/assets/color.dart';
 import 'package:raion_intern_15/assets/widgets/profilebutton.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../provider/auth_provider.dart';
+import '../../provider/auth_provider.dart' as local_auth;
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -11,13 +12,10 @@ class ProfileScreen extends StatefulWidget {
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-
-
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-
-    final authProvider = Provider.of<AuthProvider>(context);
+    final authProvider = Provider.of<local_auth.AuthProvider>(context);
     final user = authProvider.currentUser;
 
     return Scaffold(
@@ -129,7 +127,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 // Logout button
                 Center(
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      await FirebaseAuth.instance.signOut();
+                      Navigator.pushReplacementNamed(context, '/login');
+                    },
                     child: const Text(
                       'Keluar',
                       style: TextStyle(

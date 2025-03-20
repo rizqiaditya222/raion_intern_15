@@ -33,7 +33,10 @@ class FirebaseAuthService {
           role: UserRole.customer,
         );
 
-        await _firestore.collection('users').doc(firebaseUser.uid).set(userModel.toJson());
+        await _firestore
+            .collection('users')
+            .doc(firebaseUser.uid)
+            .set(userModel.toJson());
 
         return userModel;
       } else {
@@ -71,7 +74,10 @@ class FirebaseAuthService {
           specialization: specialization,
         );
 
-        await _firestore.collection('users').doc(firebaseUser.uid).set(userModel.toJson());
+        await _firestore
+            .collection('users')
+            .doc(firebaseUser.uid)
+            .set(userModel.toJson());
 
         return userModel;
       } else {
@@ -91,7 +97,8 @@ class FirebaseAuthService {
       final firebaseUser = userCredential.user;
 
       if (firebaseUser != null) {
-        final userDoc = await _firestore.collection('users').doc(firebaseUser.uid).get();
+        final userDoc =
+            await _firestore.collection('users').doc(firebaseUser.uid).get();
 
         if (!userDoc.exists) {
           throw Exception('User data not found');
