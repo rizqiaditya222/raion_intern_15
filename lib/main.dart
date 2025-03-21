@@ -7,6 +7,8 @@ import 'package:raion_intern_15/features/presentation/provider/appointment_provi
 import 'package:raion_intern_15/features/presentation/provider/date_provider.dart';
 import 'package:raion_intern_15/features/presentation/provider/doctor_provider.dart';
 import 'package:raion_intern_15/features/presentation/provider/form_provider.dart';
+import 'package:raion_intern_15/features/presentation/provider/jurnal_provider.dart';
+import 'package:raion_intern_15/features/presentation/provider/mood_provider.dart';
 import 'package:raion_intern_15/features/presentation/provider/payment_provider.dart';
 import 'package:raion_intern_15/features/presentation/provider/specialization_provider.dart';
 import 'package:raion_intern_15/features/presentation/provider/create_appoinment_provider.dart';
@@ -46,6 +48,7 @@ import 'package:raion_intern_15/features/presentation/screens/profile_screen/faq
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/privacy_policy.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/profile_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/profile_screen/term_of_service.dart';
+import 'features/data/repositories/jurnal_repository.dart';
 import 'features/domain/repositorires/appointment_repository.dart';
 import 'package:raion_intern_15/features/presentation/screens/test_screen/hasil_hidup.dart';
 import 'package:raion_intern_15/features/presentation/screens/test_screen/hasil_negatif.dart';
@@ -102,10 +105,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => PaymentProvider()),
         ChangeNotifierProvider(create: (context) => SpecializationProvider()),
         ChangeNotifierProvider(create: (context) => AppointmentProvider()),
-        ChangeNotifierProvider(create: (context) => MoodProvider()),
+        ChangeNotifierProvider(create: (context) => MoodDataProvider()),
         ChangeNotifierProvider(create: (context) => CreateAppoinmentProvider(createAppointmentUseCase: di.sl<CreateAppointment>(), getAppoinment: di.sl<GetAppoinment>(), repository: di.sl<AppointmentRepository>()),),
         ChangeNotifierProvider(create: (context) => DoctorProvider(getDoctor: di.sl<GetDoctor>())),
-        ChangeNotifierProvider(create: (context) => JournalSaveProvider()),
+        ChangeNotifierProvider(create: (context) => JournalProvider(journalRepository: di.sl<JournalRepository>())),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -114,9 +117,14 @@ class MyApp extends StatelessWidget {
         home: StreamBuilder(
           stream: firebase_auth.FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
-            return snapshot.hasData ?  LoginPage() : const LoginPage();
+            if (snapshot.hasData) {
+              return LoginPage();
+            } else {
+              return const LoginPage();
+            }
           },
         ),
+
         routes: {
           '/registerPatient': (context) => const RegisterCustomerScreen(),
           '/login': (context) => LoginPage(),

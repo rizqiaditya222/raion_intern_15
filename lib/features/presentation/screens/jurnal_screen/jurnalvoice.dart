@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:raion_intern_15/assets/color.dart';
+import 'package:raion_intern_15/features/presentation/provider/jurnal_provider.dart';
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_manager.dart';
 
 class Jurnalvoice extends StatefulWidget {
@@ -54,8 +55,8 @@ class _JurnalvoiceState extends State<Jurnalvoice> {
   void _saveRecording() {
     // Update the journal saved state when save button is pressed
     final journalProvider =
-        Provider.of<JournalSaveProvider>(context, listen: false);
-    journalProvider.saveJournal();
+        Provider.of<JournalProvider>(context, listen: false);
+    // journalProvider.simpanJournal(userId, journal);
 
     // Navigate back to the main screen which will show JurnalManager
     Navigator.pushNamed(context, '/main');

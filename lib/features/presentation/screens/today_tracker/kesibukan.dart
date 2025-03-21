@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:raion_intern_15/assets/color.dart';
+
+import '../../provider/mood_data_provider.dart';
 
 class Kesibukan extends StatefulWidget {
   const Kesibukan({super.key});
@@ -225,8 +228,12 @@ class _KesibukanState extends State<Kesibukan> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
+                      print("${selectedQuality}");
+                      Provider.of<MoodDataProvider>(context, listen: false).updateKesibukan(selectedQuality);
+
                       Navigator.pushNamed(context, '/catatan');
                     },
+
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFF4D160),
                       foregroundColor: Colors.black,

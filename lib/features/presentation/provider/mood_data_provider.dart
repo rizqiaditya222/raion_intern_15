@@ -17,7 +17,6 @@ class MoodDataProvider with ChangeNotifier {
   int get stress => _stress;
   int get kesibukan => _kesibukan;
 
-  // Setter dengan notifyListeners()
   void updateMood(String newMoodImage) {
     _selectedMoodImage = newMoodImage;
     notifyListeners();

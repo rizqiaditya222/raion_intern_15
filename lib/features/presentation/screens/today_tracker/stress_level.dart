@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:raion_intern_15/features/presentation/provider/mood_data_provider.dart';
 
 class StressLevel extends StatefulWidget {
   const StressLevel({super.key});
@@ -170,7 +172,6 @@ class _StressLevelState extends State<StressLevel> {
                 ),
               ),
 
-              // Tombol Selanjutnya
               Padding(
                 padding: const EdgeInsets.only(bottom: 24.0),
                 child: SizedBox(
@@ -178,6 +179,10 @@ class _StressLevelState extends State<StressLevel> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
+                      print("${selectedLevel}");
+                      Provider.of<MoodDataProvider>(context, listen: false).updateStress(selectedLevel);
+
+                      // Navigasi ke halaman berikutnya
                       Navigator.pushNamed(context, '/kesibukantracker');
                     },
                     style: ElevatedButton.styleFrom(

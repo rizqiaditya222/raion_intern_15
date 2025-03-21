@@ -136,14 +136,14 @@
       final fullName = _fullNameController.text;
 
       try {
-        await Provider.of<AuthProvider>(context, listen: false)
-            .registerAsCustomer(email, password, fullName, context);
+        await Provider.of<AuthProvider>(context, listen: false).registerCustomerManually(email: email, password: password, fullName: fullName);
 
         if (mounted) {
           setState(() {
             _isLoading = false;
           });
         }
+        _showSuccessDialog();
       } catch (e) {
         if (mounted) {
           setState(() {
@@ -154,29 +154,29 @@
         }
       }
     }
-    //
-    // void _showSuccessDialog() {
-    //   showDialog(
-    //     context: context,
-    //     builder: (BuildContext context) {
-    //       return AlertDialog(
-    //         title: const Text("Registrasi Berhasil"),
-    //         content: const Text("Akun Anda telah berhasil dibuat!"),
-    //         actions: [
-    //           TextButton(
-    //             onPressed: () {
-    //               Navigator.of(context).pop();
-    //               Future.delayed(Duration.zero, () {
-    //                 if (mounted) {
-    //                   Navigator.pushReplacementNamed(context, '/registerPatient');
-    //                 }
-    //               });
-    //             },
-    //             child: const Text("OK"),
-    //           ),
-    //         ],
-    //       );
-    //     },
-    //   );
-    // }
-  }
+
+    void _showSuccessDialog() {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Registrasi Berhasil"),
+            content: const Text("Akun Anda telah berhasil dibuat!"),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Future.delayed(Duration.zero, () {
+                    if (mounted) {
+                      Navigator.pushReplacementNamed(
+                          context, '/registerPatient');
+                    }
+                  });
+                },
+                child: const Text("OK"),
+              ),
+            ],
+          );
+        },
+      );
+    }}

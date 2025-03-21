@@ -129,6 +129,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: TextButton(
                     onPressed: () async {
                       await FirebaseAuth.instance.signOut();
+                      authProvider.signOut();
                       Navigator.pushReplacementNamed(context, '/login');
                     },
                     child: const Text(
