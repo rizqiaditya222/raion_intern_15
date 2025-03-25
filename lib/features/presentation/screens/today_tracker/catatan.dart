@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../data/models/mood_model.dart';
+import '../../provider/auth_provider.dart';
+import '../../provider/mood_data_provider.dart';
+import '../../provider/mood_provider.dart';
 
 class Catatan extends StatefulWidget {
   const Catatan({super.key});
@@ -192,8 +198,27 @@ class _CatatanState extends State<Catatan> {
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/main');
+                    onPressed: () async {
+                      print("${_messageController.text}");
+                      final moodDataProvider = Provider.of<MoodDataProvider>(context, listen: false);
+                      final moodProvider = Provider.of<MoodProvider>(context, listen: false);
+                      final authProvider = Provider.of<AuthProvider>(context, listen: false);
+                      final user = authProvider.currentUser;
+
+                      moodDataProvider.updateNotes(_messageController.text);
+
+
+                      MoodModel newMood = MoodModel(
+                        date: DateTime.now(),
+                        mood: moodDataProvider.selectedMoodImage,
+                        note: moodDataProvider.notes,
+                        sleep: moodDataProvider.sleep,
+                        stress: moodDataProvider.stress,
+                        kesibukan: moodDataProvider.kesibukan,
+                      );
+
+                      await moodProvider.saveMood(user!.id, newMood);
+                      Navigator.pushReplacementNamed(context, '/main');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF355A89),

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:raion_intern_15/assets/color.dart';
+
+import '../../provider/mood_data_provider.dart';
 
 class SleepTracker extends StatefulWidget {
   const SleepTracker({super.key});
@@ -9,7 +12,7 @@ class SleepTracker extends StatefulWidget {
 }
 
 class _SleepTrackerState extends State<SleepTracker> {
-  int selectedQuality = 1; // Default ke 1 (Worst)
+  int selectedQuality = 1;
   double sliderPosition = 0;
   bool isDragging = false;
 
@@ -221,6 +224,8 @@ class _SleepTrackerState extends State<SleepTracker> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
+                      print("${selectedQuality}");
+                      Provider.of<MoodDataProvider>(context, listen: false).updateSleep(selectedQuality);
                       Navigator.pushNamed(context, '/stresslevel');
                     },
                     style: ElevatedButton.styleFrom(

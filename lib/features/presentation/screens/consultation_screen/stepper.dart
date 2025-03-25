@@ -113,8 +113,15 @@ class StepperScreen extends StatelessWidget {
                           appointmentProvider.updateAddress(formProvider.addressController.text);
                           stepProvider.nextStep();
                         } else if (stepProvider.currentStep == 1) {
-                          appointmentProvider.updateDateTime(dateProvider.selectedDate!, dateProvider.selectedTime!);
-                          stepProvider.nextStep();
+                          if (dateProvider.selectedDate != null && dateProvider.selectedTime != null) {
+                            appointmentProvider.updateDateTime(dateProvider.selectedDate!, dateProvider.selectedTime!);
+                            stepProvider.nextStep();
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Harap pilih tanggal dan waktu konsultasi terlebih dahulu")),
+                            );
+                          }
+
                         } else {
                           showSelectedPaymentModal(context);
                         }

@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_manager.dart';
+import '../../provider/auth_provider.dart';
+import '../../../data/models/jurnal_model.dart';
+import '../../provider/jurnal_provider.dart';
 
 class Jurnaltext extends StatefulWidget {
-  const Jurnaltext({super.key});
+  final JournalModel? journal;
+
+  const Jurnaltext({super.key, this.journal});
 
   @override
   State<Jurnaltext> createState() => _JurnaltextState();
 }
 
 class _JurnaltextState extends State<Jurnaltext> {
-  final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _contentController = TextEditingController();
+  late TextEditingController _titleController;
+  late TextEditingController _contentController;
 
-  void _cancelJournal() {
-    Navigator.pop(context);
-  }
-
-  void _saveJournal() {
-    final journalProvider =
-        Provider.of<JournalSaveProvider>(context, listen: false);
-    journalProvider.saveJournal();
-
-    Navigator.pushNamed(context, '/main');
+  @override
+  void initState() {
+    super.initState();
+    _titleController = TextEditingController(text: widget.journal?.title ?? "");
+    _contentController = TextEditingController(text: widget.journal?.content ?? "");
   }
 
   @override
@@ -51,23 +50,13 @@ class _JurnaltextState extends State<Jurnaltext> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const SizedBox(width: 50),
-                        const Text(
-                          "Jurnal Baru",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
-                          ),
+                        Text(
+                          widget.journal == null ? "Jurnal Baru" : "Edit Jurnal",
+                          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                         ),
                         TextButton(
                           onPressed: _saveJournal,
-                          child: const Text(
-                            "Simpan",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey,
-                            ),
-                          ),
+                          child: const Text("Simpan", style: TextStyle(fontSize: 16, color: Colors.grey)),
                         ),
                       ],
                     ),
@@ -75,38 +64,20 @@ class _JurnaltextState extends State<Jurnaltext> {
                   const SizedBox(height: 20),
                   TextField(
                     controller: _titleController,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
+                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     decoration: const InputDecoration(
                       hintText: "Tambahkan Judul",
-                      hintStyle: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
-                      ),
                       border: InputBorder.none,
-                      contentPadding: EdgeInsets.zero,
                     ),
                   ),
                   const SizedBox(height: 16),
                   Expanded(
                     child: TextField(
                       controller: _contentController,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.black54,
-                      ),
+                      style: const TextStyle(fontSize: 16),
                       decoration: const InputDecoration(
                         hintText: "Tulis jurnalmu di sini...",
-                        hintStyle: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black38,
-                        ),
                         border: InputBorder.none,
-                        contentPadding: EdgeInsets.zero,
                       ),
                       maxLines: null,
                       keyboardType: TextInputType.multiline,
@@ -117,26 +88,9 @@ class _JurnaltextState extends State<Jurnaltext> {
               Positioned(
                 top: 10,
                 left: 0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        spreadRadius: 1,
-                        blurRadius: 5,
-                      ),
-                    ],
-                  ),
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.arrow_back_ios_new,
-                      color: Colors.black,
-                      size: 20,
-                    ),
-                    onPressed: _cancelJournal,
-                  ),
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back_ios_new, size: 20),
+                  onPressed: () => Navigator.pop(context),
                 ),
               ),
             ],
@@ -145,4 +99,38 @@ class _JurnaltextState extends State<Jurnaltext> {
       ),
     );
   }
+  void _saveJournal() {
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    final journalProvider = Provider.of<JournalProvider>(context, listen: false);
+
+    final user = authProvider.currentUser;
+    if (user == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Gagal menyimpan jurnal. Pengguna tidak ditemukan.")),
+      );
+      return;
+    }
+
+    final newJournal = JournalModel(
+      id: widget.journal?.id ?? DateTime.now().millisecondsSinceEpoch.toString(),
+      title: _titleController.text,
+      content: _contentController.text,
+      date: DateTime.now(),
+    );
+
+    if (widget.journal == null) {
+      // Jika jurnal baru, tambahkan ke daftar jurnal
+      journalProvider.simpanJournal(user.id, newJournal);
+    } else {
+      // Jika jurnal sudah ada, update jurnal yang ada
+      journalProvider.updateJournal(user.id, newJournal);
+    }
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Jurnal berhasil disimpan!")),
+    );
+
+    Navigator.pop(context);
+  }
 }
+

@@ -82,6 +82,16 @@ class CreateAppoinmentProvider with ChangeNotifier {
     }
   }
 
+  Future<void> deleteAppointmentById(String appointmentId) async {
+    try {
+      await repository.deleteAppointment(appointmentId);
+      debugPrint("Appointment dengan ID: $appointmentId telah dihapus");
+      notifyListeners();
+    } catch (e) {
+      debugPrint("Gagal menghapus appointment: $e");
+    }
+  }
+
 
 
   Future<void> createAppointment({

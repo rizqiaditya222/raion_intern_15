@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:raion_intern_15/assets/color.dart';
 import 'package:raion_intern_15/assets/constants/image_strings.dart';
+
+import '../../features/presentation/provider/auth_provider.dart';
 
   class SubmitButton extends StatelessWidget {
   SubmitButton({
@@ -65,7 +68,9 @@ class GoogleButton extends StatelessWidget {
           width: 35,
           fit: BoxFit.contain,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Provider.of<AuthProvider>(context, listen: false).signInWithGoogle(context);
+        },
         label: Text(myText, style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600)),
       ),
     );

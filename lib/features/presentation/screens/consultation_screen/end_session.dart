@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../../../assets/color.dart';
+import '../../provider/create_appoinment_provider.dart';
 
 class EndSession extends StatelessWidget {
   const EndSession({super.key});
@@ -14,7 +16,7 @@ class EndSession extends StatelessWidget {
           return Center(
             child: SingleChildScrollView(
               child: Container(
-                width: maxWidth, // Batasi lebar maksimal 700
+                width: maxWidth,
                 padding: const EdgeInsets.all(16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -28,7 +30,7 @@ class EndSession extends StatelessWidget {
                       "Sesi Berakhir!",
                       style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         color: primaryBlack,
-                        fontSize: 20, // Ukuran font sedikit lebih besar agar terbaca jelas
+                        fontSize: 20,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -51,15 +53,15 @@ class EndSession extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(context, '/main');
+                        onPressed: () async {
+                          final provider = Provider.of<CreateAppoinmentProvider>(context, listen: false);
+                          Navigator.pushReplacementNamed(context, "/main");
                         },
+
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const [
                             Text("Kembali"),
-                            SizedBox(width: 8),
-                            Icon(Icons.add, color: Colors.white),
                           ],
                         ),
                       ),

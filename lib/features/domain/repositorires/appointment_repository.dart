@@ -21,4 +21,6 @@ abstract class AppointmentRepository {
   Future<List<AppointmentEntity>> getAllAppoinment();
 
   Future<DoctorModel?> getDoctorById(String doctorId);
+
+  Future<void> deleteAppointment(String appointmentId);
 }

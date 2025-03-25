@@ -10,6 +10,7 @@ import '../../../domain/entities/appointment.dart';
 import '../../provider/auth_provider.dart';
 import '../../provider/create_appoinment_provider.dart';
 import 'package:intl/intl.dart';
+import 'upcoming_consultation.dart';
 
 class Consultation extends StatefulWidget {
   const Consultation({super.key});
@@ -85,90 +86,94 @@ class appoinment_list extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: const [
-          BoxShadow(
-            color: Color.fromARGB(255, 241, 241, 241),
-            spreadRadius: 5,
-            blurRadius: 10,
-            offset: Offset(0, 5),
-          ),
-        ],
-      ),
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                height: 56,
-                width: 56,
-                decoration: BoxDecoration(
-                  color: Colors.pink,
-                  borderRadius: BorderRadius.circular(28),
-                  image: DecorationImage(
-                    image: AssetImage(doctorImage),
-                    fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, '/upcoming');
+      },
+      child: Container(
+        margin: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: const [
+            BoxShadow(
+              color: Color.fromARGB(255, 241, 241, 241),
+              spreadRadius: 5,
+              blurRadius: 10,
+              offset: Offset(0, 5),
+            ),
+          ],
+        ),
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 56,
+                  width: 56,
+                  decoration: BoxDecoration(
+                    color: Colors.pink,
+                    borderRadius: BorderRadius.circular(28),
+                    image: DecorationImage(
+                      image: AssetImage(doctorImage),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(width: 24),
-              SizedBox(
-                height: 56,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment:
-                  MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      doctor?.name ?? 'Nama Tidak Diketahui',
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 16),
-                    ),
-                    Row(
-                      children: [
-                        Image.asset(depresi, width: 20),
-                        const SizedBox(width: 4),
-                        Text(
-                          "Ahli ${doctor?.specialization ?? 'Tidak Diketahui'}",
-                          style: const TextStyle(
-                              fontWeight: FontWeight.w800,
-                              fontSize: 16),
-                        ),
-                      ],
-                    ),
-                  ],
+                const SizedBox(width: 24),
+                SizedBox(
+                  height: 56,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment:
+                    MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        doctor?.name ?? 'Nama Tidak Diketahui',
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 16),
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(depresi, width: 20),
+                          const SizedBox(width: 4),
+                          Text(
+                            "Ahli ${doctor?.specialization ?? 'Tidak Diketahui'}",
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 16),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
+              ],
+            ),
+            const SizedBox(height: 8),
 
-          Row(
-            children: [
-              Image.asset(time),
-              const SizedBox(width: 8),
-              Text("${formattedTime} - ${hourPlusOne}:00", style: TextStyle(fontSize: 16, color: primaryBlack, fontWeight: FontWeight.w900),),
-              const SizedBox(width: 16),
-              Container(
-                height: 4,
-                width: 4,
-                decoration: const BoxDecoration(shape: BoxShape.circle, color:primaryBlack ),
-              ),
-              const SizedBox(width: 16),
-              Image.asset(money),
-              const SizedBox(width: 8),
-              Text("Rp105.000", style: TextStyle(fontSize: 16, color: primaryBlack, fontWeight: FontWeight.w900),),
-            ],
-          ),],
+            Row(
+              children: [
+                Image.asset(time),
+                const SizedBox(width: 8),
+                Text("${formattedTime} - ${hourPlusOne}:00", style: TextStyle(fontSize: 16, color: primaryBlack, fontWeight: FontWeight.w900),),
+                const SizedBox(width: 16),
+                Container(
+                  height: 4,
+                  width: 4,
+                  decoration: const BoxDecoration(shape: BoxShape.circle, color:primaryBlack ),
+                ),
+                const SizedBox(width: 16),
+                Image.asset(money),
+                const SizedBox(width: 8),
+                Text("Rp105.000", style: TextStyle(fontSize: 16, color: primaryBlack, fontWeight: FontWeight.w900),),
+              ],
+            ),],
+        ),
       ),
-
     );
   }
 }

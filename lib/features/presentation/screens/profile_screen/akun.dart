@@ -116,7 +116,7 @@ class _AkunState extends State<Akun> {
               color: Colors.white,
               fontFamily: "Nunito",
               fontSize: 16,
-              fontWeight: FontWeight.w700 // Ubah jadi hitam agar lebih terlihat
+              fontWeight: FontWeight.w700
               ),
 
         ),
@@ -180,7 +180,6 @@ class _AkunState extends State<Akun> {
                   controller: _phoneController,
                   keyboardType: TextInputType.phone),
 
-              // Tombol Simpan
               SizedBox(height: 20),
               SizedBox(
                 width: double.infinity,

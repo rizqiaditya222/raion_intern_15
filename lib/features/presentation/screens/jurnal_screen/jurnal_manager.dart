@@ -3,35 +3,32 @@ import 'package:provider/provider.dart';
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnal_screen.dart';
 import 'package:raion_intern_15/features/presentation/screens/jurnal_screen/jurnalblank.dart';
 
-// Provider to manage journal state
-class JournalSaveProvider extends ChangeNotifier {
-  bool _journalSaved = false;
+import '../../provider/auth_provider.dart';
+import '../../provider/jurnal_provider.dart';
 
-  bool get journalSaved => _journalSaved;
-
-  void saveJournal() {
-    _journalSaved = true;
-    notifyListeners();
-  }
-
-  void resetJournalState() {
-    _journalSaved = false;
-    notifyListeners();
-  }
-}
-
-// Journal Manager widget that decides which screen to show
 class JurnalManager extends StatelessWidget {
   const JurnalManager({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final journalProvider = Provider.of<JournalSaveProvider>(context);
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    final user = authProvider.currentUser;
+    final journalProvider = Provider.of<JournalProvider>(context);
 
-    // If journal was saved, show the journal screen with entries
-    // Otherwise show the blank journal screen
-    return journalProvider.journalSaved
-        ? const JurnalScreen()
-        : const Jurnalblank();
+    if (user == null) {
+      return const Jurnalblank();
+    }
+
+    return FutureBuilder(
+      future: journalProvider.fetchJournalHistory(user.id),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        return journalProvider.journalHistory.isNotEmpty
+            ? const JurnalScreen()
+            : const Jurnalblank();
+      },
+    );
   }
 }

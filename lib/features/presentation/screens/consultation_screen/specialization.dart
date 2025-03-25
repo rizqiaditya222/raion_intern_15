@@ -143,6 +143,37 @@ class _SpecializationState extends State<Specialization> {
               ),
             ),
           ),
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.05,
+            left: 19,
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: Container(
+                width: 38,
+                height: 38,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: defaultLightSilver,
+                      blurRadius: 0,
+                      spreadRadius: 3,
+                      offset: Offset(0, 0),
+                    ),
+                  ],
+                ),
+                child: FloatingActionButton(
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, "/main");
+                  },
+                  backgroundColor: Colors.white,
+                  elevation: 0,
+                  child: Icon(Icons.keyboard_arrow_left, color: primary[90], size: 24),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

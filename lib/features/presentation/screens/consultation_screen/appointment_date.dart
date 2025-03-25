@@ -125,6 +125,7 @@ class _AppointmentDateState extends State<AppointmentDate> {
                   setState(() {
                     selectedTime = time;
                   });
+                  print("terpilih $selectedTime");
                   dateProvider.updateSelectedTime(selectedTime ?? "08:00");
                 },
                 child: Container(
