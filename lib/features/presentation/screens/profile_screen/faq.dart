@@ -107,52 +107,52 @@ class _FaqState extends State<Faq> {
                               fontFamily: "Nunito",
                               fontWeight: FontWeight.bold,
                             ),
-
                           ),
-                        ),
-                        const Spacer(),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 30,
-                          color: primary[90],
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 30),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/faqpayment');
-                    },
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Wrap(
-                            children: [
-                              Text(
-                                'Apakah Serenia dapat digunakan secara gratis?',
-                                style: TextStyle(
-                                  color: primary[90],
-                                  fontSize: 16,
-                                  fontFamily: "Nunito",
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 30,
-                          color: primary[90],
-                        ),
-                      ],
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 30,
+                      color: primary[90],
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            ),
-        );
-    }
+              const SizedBox(height: 30),
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/faqpayment');
+                },
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Wrap(
+                        children: [
+                          Text(
+                            'Apakah Serenia dapat digunakan secara gratis?',
+                            style: TextStyle(
+                              color: primary[90],
+                              fontSize: 16,
+                              fontFamily: "Nunito",
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 30,
+                      color: primary[90],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
